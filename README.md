@@ -1,17 +1,27 @@
-# CV - Lucas Carriat (SAÉ 1.04)
+# 🌐 Portfolio Technique - Lucas Carriat
 
-Ce dépôt contient le code source de mon CV en ligne réalisé dans le cadre de la SAÉ 1.04 "Se présenter sur Internet" en première année de BUT Réseaux & Télécoms à l'IUT de Colmar.
+Bienvenue sur le dépôt de mon portfolio professionnel.
 
-## 📋 Description du projet
-L'objectif était de concevoir et développer un site web personnel respectant un cahier des charges précis.
-## 🛠 Technologies utilisées
-* **HTML5** : Structure sémantique des pages (usage de `<header>`, `<main>`, `<nav>`, etc.).
-* **CSS3** : Mise en forme personnalisée avec utilisation de **Flexbox** pour la mise en page et d'un fichier de style unique.
+Initialement conçu dans le cadre de la **SAÉ 1.04 "Se présenter sur Internet"** au BUT Réseaux & Télécoms de l'IUT de Colmar, ce projet a évolué pour devenir ma vitrine technique personnelle. Il me permet de documenter et de présenter ma progression en **architectures réseaux complexes**, **administration système** et **cybersécurité**.
 
-## 🚀 Fonctionnalités
-* **Navigation** : Menu fixe et liens fonctionnels entre toutes les pages.
-* **Responsive Design** : Site adapté aux différents écrans (ordinateur, tablette, mobile).
-* **Contenu** : Présentation détaillée de mon parcours (Formation, Diplômes, Expériences, Hobbies).
+---
 
-## 👤 Auteur
-**Lucas Carriat** - Étudiant BUT R&T 1ère année
+## 🚀 Ce que je mets en avant
+
+Ce portfolio n'est pas qu'un CV en ligne, c'est un espace où je partage mes travaux pratiques :
+* **Architectures Réseaux :** Simulations avancées sur **EVE-NG, GNS3, Containerlab et CML** (Topologies multi-sites, VLANs, OSPF).
+* **Systèmes & Services :** Déploiement d'environnements **Windows Server (Active Directory)** et **Ubuntu Server** (DHCP, DNS).
+* **Cybersécurité :** Retours d'expériences sur des challenges **CTF** (ex: 12ème place au Rhinotec Mulhouse) et ma progression sur **TryHackMe / Root-me**.
+
+---
+
+## 🛠 Détails Techniques du Site
+
+* **HTML5 / CSS3 :** Structure sémantique et mise en page personnalisée via **Flexbox**.
+* **Responsive Design :** Interface optimisée pour une lecture sur tous types d'écrans.
+* **Hébergement :** Déployé via **GitHub Pages**.
+
+---
+
+## 👤 À propos de moi
+**Lucas Carriat** - Étudiant en BUT Réseaux et Télécommunications (18 ans).
