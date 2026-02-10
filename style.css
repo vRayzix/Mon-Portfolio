@@ -8,6 +8,17 @@
 
 html {
     scroll-behavior: smooth;
+    cursor: default;
+}
+
+html, body {
+pointer-events:auto;
+  user-select:none;
+  -webkit-user-select:none;
+  -moz-user-select:none;
+  -ms-user-select:none;
+  outline:none;
+  cursor: default 
 }
 
 
