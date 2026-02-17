@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Lucas Carriat">
+    <title>Projet SAE 1.03 - Installation & Mesures Réseaux | Lucas Carriat</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/tsparticles-slim@2.0.6/tsparticles.slim.bundle.min.js"></script>
+</head>
+<body>
+
+    <div id="tsparticles"></div>
+
+    <div id="top-banner" class="info-banner">
+        <span class="banner-text">🚧 Site en cours de modification : certaines sections techniques sont en cours de finalisation.</span>
+        <button id="close-banner" class="close-btn" title="Fermer"></button>
+    </div>
+
+    <nav class="navbar">
+        <a href="index.html" class="site-title-logo">
+            <div class="logo-shape"></div>
+            <span>Mon Portfolio</span>
+        </a>
+        <ul class="nav-links">
+            <li><a href="index.html">Accueil</a></li>
+            <li><a href="diplome.html">Diplôme</a></li>
+            <li><a href="formation.html">Formation</a></li> 
+            <li><a href="projets.html">Projets</a></li>
+            <li><a href="hobbies.html">Hobbies</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
+
+    <main class="container">
+        
+        <header class="hero-section" style="flex-direction: column; text-align: center; gap: 20px;">
+            <div class="hero-text">
+                <h1>SAE 1.03 : Installation & Mesures</h1>
+                <p style="font-size: 1.2rem; color: var(--primary-color); font-weight: bold;">
+                    Du Câblage Physique à la Simulation Logique
+                </p>
+                <p style="max-width: 800px; margin: 0 auto; color: var(--gray-text);">
+                    Ce projet transversal m'a permis de maîtriser la chaîne complète d'une infrastructure réseau : réalisation de la connectique, analyse de la couverture Wi-Fi sur le terrain et simulation d'une architecture complexe sous Packet Tracer.
+                </p>
+            </div>
+        </header> 
+
+        <section id="simulation">
+            <h2>🖥️ Architecture Logique & Services</h2>
+            <div class="main-layout" style="grid-template-columns: 1.5fr 1fr; gap: 40px; align-items: start;">
+                
+                <div class="project-image-container" style="
+                    padding: 10px;
+                    border: 1px solid var(--primary-color);
+                    border-radius: 12px;
+                    background: rgba(15, 23, 42, 0.8);
+                    box-shadow: 0 0 30px rgba(124, 58, 237, 0.15);
+                ">
+                    <img src="SAE103PKT.PNG" alt="Topologie Packet Tracer UHA" style="width: 100%; border-radius: 8px;">
+                    <p style="text-align: center; font-style: italic; color: var(--gray-text); font-size: 0.85rem; margin-top: 10px;">
+                        Simulation complète de l'infrastructure réseau (Figure 5)
+                    </p>
+                </div>
+
+                <div style="display: flex; flex-direction: column; gap: 20px;">
+                    
+                    <div>
+                        <h3 style="margin-top: 0;">Configuration Réalisée</h3>
+                        <ul class="summary-list">
+                            <li><strong>Routage :</strong> Routeur 2811 assurant l'interconnexion des 3 zones.</li>
+                            <li><strong>Administration :</strong> Contrôleur WLC pour la gestion centralisée des bornes Wi-Fi.</li>
+                            <li><strong>Services :</strong> Serveurs DNS et Web fonctionnels.</li>
+                        </ul>
+                    </div>
+
+                    <div style="
+                        background: rgba(124, 58, 237, 0.1); 
+                        border: 1px solid rgba(124, 58, 237, 0.3); 
+                        border-radius: 10px; 
+                        padding: 15px;
+                    ">
+                        <h4 style="margin: 0 0 10px 0; color: var(--primary-color); font-size: 1rem;">✅ Preuve de Service</h4>
+                        <img src="SAE103UHA.PNG" alt="Page Web UHA sur Packet Tracer" style="width: 100%; border-radius: 5px; border: 1px solid var(--gray-text);">
+                        <p style="font-size: 0.8rem; color: var(--gray-text); margin-top: 5px; font-style: italic;">
+                            Accès réussi au site "uha1.fr" (Figure 6)
+                        </p>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <section id="wifi-analysis">
+            <h2>📡 Audit Wi-Fi & Rapport Complet</h2>
+            
+            <div class="main-layout" style="grid-template-columns: 1fr 1fr; gap: 30px; margin-top: 30px; align-items: center;">
+                
+                <section style="background: transparent; border: none; padding: 0; box-shadow: none;">
+                    <h3>Contenu du Rapport</h3>
+                    <p style="color: var(--gray-text);">
+                        Une analyse approfondie de la couverture sans-fil des bâtiments de l'IUT a été réalisée via le logiciel <strong>Acrylic Wi-Fi</strong>.
+                    </p>
+                    <ul class="summary-list">
+                        <li>
+                            <strong>Cartographie (Heatmaps) :</strong> Visualisation des zones blanches et des interférences sur les bandes 2.4 GHz et 5 GHz.
+                        </li>
+                        <li>
+                            <strong>Mesures Physiques :</strong> Calculs d'atténuation des matériaux (Placo vs Béton) et analyse des débits descendants.
+                        </li>
+                    </ul>
+                </section>
+
+                <div class="project-image-container" style="
+                    border-radius: 12px;
+                    border: 1px solid rgba(255, 255, 255, 0.1);
+                    background: rgba(15, 23, 42, 0.8);
+                    box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+                    text-align: center;
+                    padding: 40px 20px;
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    gap: 15px;
+                ">
+                    <div style="font-size: 4rem;">📄</div>
+                    
+                    <h3 style="margin: 0; color: white;">Rapport Technique SAE 1.03</h3>
+                    <p style="color: var(--gray-text); font-size: 0.9rem;">
+                        Document PDF (15 Pages) incluant schémas de câblage, mesures PoE et toutes les heatmaps.
+                    </p>
+                    
+                    <a href="Rapport projet SAE13 2025.pdf" target="_blank" class="gradient-button" style="display: flex; align-items: center; gap: 10px;">
+                        <span>📥</span> Télécharger le Rapport
+                    </a>
+                </div>
+
+            </div>
+        </section>
+
+        <section id="cabling">
+            <h2>🔌 Infrastructure Physique & PoE</h2>
+            <div class="flex-container">
+                <div class="flex-item">
+                    <h3>Câblage Structuré</h3>
+                    <p>Réalisation manuelle de câbles droits <strong>Catégorie 7</strong> respectant la norme <strong>TIA-568B</strong>.</p>
+                    <p>Sertissage de connecteurs RJ45 mâles et montage de noyaux femelles pour plastron mural.</p>
+                </div>
+                <div class="flex-item">
+                    <h3>Analyse PoE</h3>
+                    <p>Mesures sur un Switch Cisco Catalyst 2960.</p>
+                    <ul>
+                        <li>Tension mesurée : <strong>54 V</strong></li>
+                        <li>Puissance consommée (AP) : <strong>13 W</strong></li>
+                        <li>Calcul d'intensité : \( I = 0.24 A \)</li>
+                    </ul>
+                </div>
+                <div class="flex-item">
+                    <h3>Matériel Utilisé</h3>
+                    <ul>
+                        <li>Cisco AIR-AP1231G (Borne Wi-Fi)</li>
+                        <li>Switch Cisco WS-C2960</li>
+                        <li>Analyseur de spectre Wi-Fi</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <div style="margin-top: 40px; display: flex; gap: 20px;">
+            <a href="projets.html" class="back-link">← Retour aux Projets</a>
+        </div>
+
+    </main>
+
+    <footer>
+        <p>© 2025 - Carriat Lucas. Tous droits réservés.</p>
+        <div class="footer-socials">
+            <a href="mailto:lucalexandrecrr@gmail.com">Contact</a>
+            <a href="https://github.com/vRayzix" target="_blank">GitHub</a>
+            <a href="https://www.linkedin.com/in/lucas-c-961610396/" target="_blank">LinkedIn</a>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Lucas Carriat">
+    <title>Projet SAE 1.02 - Succursale EVE-NG | Lucas Carriat</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/tsparticles-slim@2.0.6/tsparticles.slim.bundle.min.js"></script>
+</head>
+<body>
+
+    <div id="tsparticles"></div>
+
+    <div id="top-banner" class="info-banner">
+        <span class="banner-text">🚧 Site en cours de modification : certaines sections techniques sont en cours de finalisation.</span>
+        <button id="close-banner" class="close-btn" title="Fermer"></button>
+    </div>
+
+    <nav class="navbar">
+        <a href="index.html" class="site-title-logo">
+            <div class="logo-shape"></div>
+            <span>Mon Portfolio</span>
+        </a>
+        <ul class="nav-links">
+            <li><a href="index.html">Accueil</a></li>
+            <li><a href="diplome.html">Diplôme</a></li>
+            <li><a href="formation.html">Formation</a></li> 
+            <li><a href="projets.html">Projets</a></li>
+            <li><a href="hobbies.html">Hobbies</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
+
+    <main class="container">
+        
+        <header class="hero-section" style="flex-direction: column; text-align: center; gap: 20px;">
+            <div class="hero-text">
+                <h1>SAE 1.02 : Architecture Succursale</h1>
+                <p style="font-size: 1.2rem; color: var(--primary-color); font-weight: bold;">
+                    Conception et déploiement d'un réseau local sous EVE-NG
+                </p>
+                <p style="max-width: 800px; margin: 0 auto; color: var(--gray-text);">
+                    Dans le cadre de ma première année de BUT R&T, j'ai dû concevoir l'architecture réseau complète d'une succursale d'entreprise, en assurant la connectivité, la segmentation et la sécurité via du matériel Cisco simulé.
+                </p>
+            </div>
+        </header> 
+
+        <section id="topologie">
+            <h2>🗺️ Vue d'ensemble de la Topologie</h2>
+            <p>
+                L'architecture repose sur une structure hiérarchique incluant un routeur de sortie, un switch de cœur de réseau et des switchs d'accès pour les différents services.
+            </p>
+            
+            <div class="project-image-container" style="
+                margin: 30px 0;
+                padding: 10px;
+                background: rgba(124, 58, 237, 0.1);
+                border: 1px solid var(--primary-color);
+                border-radius: 12px;
+                box-shadow: 0 0 30px rgba(124, 58, 237, 0.2);
+                text-align: center;
+            ">
+                <img src="SAE102LAB.PNG" alt="Schéma de la topologie EVE-NG" style="
+                    width: 100%;
+                    max-height: 500px;
+                    object-fit: contain;
+                    border-radius: 8px;
+                ">
+                <p style="margin-top: 10px; font-style: italic; color: var(--gray-text); font-size: 0.9rem;">
+                    Figure 1 : Topologie logique réalisée sous EVE-NG (Routeurs Cisco & Switchs)
+                </p>
+            </div>
+        </section>
+
+        <div class="main-layout" style="grid-template-columns: 1fr 1fr; align-items: center;">
+            
+            <section style="height: 100%; display: flex; flex-direction: column; justify-content: center;">
+                <h3>⚙️ Implémentation Technique</h3>
+                <ul class="summary-list" style="margin-top: 20px;">
+                    <li>
+                        <strong>Segmentation VLAN :</strong><br>
+                        Création de VLANs distincts (Direction, Employés, Wi-Fi Invités) pour isoler les flux et améliorer la sécurité.
+                    </li>
+                    <li>
+                        <strong>Routage Inter-VLAN :</strong><br>
+                        Configuration du "Router-on-a-Stick" (ou SVI) pour permettre la communication contrôlée entre les différents services.
+                    </li>
+                    <li>
+                        <strong>Services Réseaux (DHCP/DNS) :</strong><br>
+                        Mise en place d'un serveur DHCP relayé pour l'attribution dynamique des adresses IP aux postes clients.
+                    </li>
+                    <li>
+                        <strong>Protocoles :</strong><br>
+                        Utilisation d'OSPF pour le routage dynamique vers le siège social et NAT pour l'accès Internet.
+                    </li>
+                </ul>
+            </section>
+
+            <section style="background: transparent; border: none; box-shadow: none; padding: 0;">
+                <div class="project-image-container" style="
+                    position: relative;
+                    border-radius: 12px;
+                    overflow: hidden;
+                    border: 1px solid rgba(255, 255, 255, 0.1);
+                    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+                ">
+                    <img src="SAE102DHCP.PNG" alt="Preuve de la connexion DHCP à partir du Serveur Linux sur les postes VPC" style="
+                        width: 100%;
+                        display: block;
+                        transition: transform 0.3s ease;
+                    ">
+                    <div style="
+                        position: absolute;
+                        bottom: 0;
+                        left: 0;
+                        width: 100%;
+                        background: rgba(15, 23, 42, 0.9);
+                        padding: 10px;
+                        text-align: center;
+                        font-size: 0.85rem;
+                        color: var(--primary-color);
+                        font-weight: bold;
+                    ">
+                        Preuve de la connexion DHCP à partir du Serveur Linux sur les postes VPC
+                    </div>
+                </div>
+            </section>
+
+        </div>
+
+        <section id="bilan">
+            <h2>✅ Compétences Validées</h2>
+            <div class="flex-container">
+                <div class="flex-item" style="text-align: center;">
+                    <h3>AC11.03</h3>
+                    <p>Configurer les fonctions de base du réseau local (VLAN, Adressage).</p>
+                </div>
+                <div class="flex-item" style="text-align: center;">
+                    <h3>Administration</h3>
+                    <p>Maîtrise de la CLI Cisco (IOS) et des concepts de commutation.</p>
+                </div>
+                <div class="flex-item" style="text-align: center;">
+                    <h3>Virtualisation</h3>
+                    <p>Utilisation avancée de l'émulateur EVE-NG pour le prototypage.</p>
+                </div>
+            </div>
+        </section>
+
+        <div style="margin-top: 40px; display: flex; gap: 20px;">
+            <a href="projets.html" class="back-link">← Retour aux Projets</a>
+    
+        </div>
+
+    </main>
+
+    <footer>
+        <p>© 2025 - Carriat Lucas. Tous droits réservés.</p>
+        <div class="footer-socials">
+            <a href="mailto:lucalexandrecrr@gmail.com">Contact</a>
+            <a href="https://github.com/vRayzix" target="_blank">GitHub</a>
+            <a href="https://www.linkedin.com/in/lucas-c-961610396/" target="_blank">LinkedIn</a>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

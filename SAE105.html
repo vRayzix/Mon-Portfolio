@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Lucas Carriat">
+    <title>Projet SAE 1.05 - Automation & Scripting | Lucas Carriat</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/tsparticles-slim@2.0.6/tsparticles.slim.bundle.min.js"></script>
+</head>
+<body>
+
+    <div id="tsparticles"></div>
+
+    <div id="top-banner" class="info-banner">
+        <span class="banner-text">🚧 Site en cours de modification : certaines sections techniques sont en cours de finalisation.</span>
+        <button id="close-banner" class="close-btn" title="Fermer"></button>
+    </div>
+
+    <nav class="navbar">
+        <a href="index.html" class="site-title-logo">
+            <div class="logo-shape"></div>
+            <span>Mon Portfolio</span>
+        </a>
+        <ul class="nav-links">
+            <li><a href="index.html">Accueil</a></li>
+            <li><a href="diplome.html">Diplôme</a></li>
+            <li><a href="formation.html">Formation</a></li> 
+            <li><a href="projets.html">Projets</a></li>
+            <li><a href="hobbies.html">Hobbies</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
+
+    <main class="container">
+        
+        <header class="hero-section" style="flex-direction: column; text-align: center; gap: 20px;">
+            <div class="hero-text">
+                <h1>SAE 1.05 : Traiter des Données</h1>
+                <p style="font-size: 1.2rem; color: var(--primary-color); font-weight: bold;">
+                    Outil d'analyse et de nettoyage de disque hybride (Python & PowerShell)
+                </p>
+                <p style="max-width: 800px; margin: 0 auto; color: var(--gray-text);">
+                    Développement d'une solution logicielle complète permettant à un technicien d'identifier rapidement les fichiers volumineux encombrant un serveur et de les supprimer via une interface graphique sécurisée.
+                </p>
+            </div>
+        </header> 
+
+        <section id="architecture">
+            <h2>📂 Architecture & Structure du Code</h2>
+            <div class="main-layout" style="grid-template-columns: 1fr 1.5fr; gap: 40px; align-items: center;">
+                
+                <div class="project-image-container" style="
+                    border-radius: 12px;
+                    border: 1px solid rgba(255, 255, 255, 0.1);
+                    background: rgba(15, 23, 42, 0.6);
+                    padding: 15px;
+                    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+                ">
+                    <img src="SAE105FILES.PNG" alt="Liste des scripts du projet" style="width: 100%; border-radius: 8px;">
+                    <p style="text-align: center; font-style: italic; color: var(--gray-text); font-size: 0.85rem; margin-top: 10px;">
+                        Structure modulaire du projet
+                    </p>
+                </div>
+
+                <div>
+                    <h3 style="margin-top: 0;">Une approche modulaire</h3>
+                    <p>Le projet est découpé en plusieurs modules indépendants pour faciliter la maintenance et l'évolution :</p>
+                    <ul class="summary-list">
+                        <li>
+                            <strong>L'Orchestrateur (<code>sae.ps1</code>) :</strong><br>
+                            Script PowerShell qui prépare l'environnement, vérifie les dépendances et lance l'interface Python. Il gère aussi la sécurité (confirmation finale de suppression).
+                        </li>
+                        <li>
+                            <strong>Le Moteur (<code>analyse.py</code>) :</strong><br>
+                            Parcourt récursivement les dossiers avec <code>os.walk()</code>, trie les fichiers par taille (Algo de tri) et génère un fichier JSON.
+                        </li>
+                        <li>
+                            <strong>L'Interface (<code>main_gui.py</code>) :</strong><br>
+                            Développée avec <strong>PySide6</strong> (Qt), elle lit le JSON et affiche les données sous forme graphique et tabulaire.
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="interface">
+            <h2>📊 Visualisation des Données (GUI)</h2>
+            <p style="margin-bottom: 25px;">
+                L'objectif était de rendre l'analyse lisible en un coup d'œil. J'ai utilisé la librairie <strong>PySide6</strong> pour créer un camembert interactif représentant la répartition de l'espace disque.
+            </p>
+            
+            <div class="project-image-container" style="
+                margin: 0 auto;
+                max-width: 900px;
+                padding: 10px;
+                border: 1px solid var(--primary-color);
+                border-radius: 12px;
+                background: rgba(124, 58, 237, 0.05);
+                box-shadow: 0 0 40px rgba(124, 58, 237, 0.15);
+            ">
+                <img src="SAE105CAM.PNG" alt="Interface graphique Camembert PySide6" style="width: 100%; border-radius: 8px;">
+            </div>
+        </section>
+
+        <div class="main-layout" style="grid-template-columns: 1fr 1fr; gap: 30px;">
+            <section>
+                <h3>🔧 Problème : Chemins Réseaux (UNC)</h3>
+                <p style="color: var(--gray-text);">
+                    L'exécution sur les serveurs de l'IUT posait problème car Python gère mal les chemins réseaux bruts (<code>\\serveur\dossier</code>). 
+                </p>
+                <div class="details-content" style="margin-top: 15px;">
+                    <strong>Solution trouvée :</strong><br>
+                    Automatisation via PowerShell (<code>New-PSDrive</code>) pour monter temporairement le dossier réseau sur un lecteur virtuel <strong>Z:</strong>, permettant au script de fonctionner comme en local. 
+                </div>
+            </section>
+
+            <section>
+                <h3>💾 Problème : Précision des Données</h3>
+                <p style="color: var(--gray-text);">
+                    Les petits fichiers (< 1 Mo) affichaient "0 Mo" à cause d'une division entière par défaut, faussant les statistiques. 
+                </p>
+                <div class="details-content" style="margin-top: 15px;">
+                    <strong>Solution trouvée :</strong><br>
+                    Passage à une division flottante et utilisation de la fonction <code>round()</code> pour garantir une précision à la décimale près. 
+                </div>
+            </section>
+        </div>
+
+        <section id="bilan">
+            <h2>✅ Compétences Validées (AC)</h2>
+            <div class="flex-container">
+                <div class="flex-item" style="text-align: center;">
+                    <h3>AC11.02</h3>
+                    <p>Développement d'algorithmes complexes (Tri, Récursivité) et gestion de structures de données (JSON).</p>
+                </div>
+                <div class="flex-item" style="text-align: center;">
+                    <h3>Automatisation</h3>
+                    <p>Scripting système avancé avec PowerShell et interactions inter-processus.</p>
+                </div>
+                <div class="flex-item" style="text-align: center;">
+                    <h3>Interface IHM</h3>
+                    <p>Conception d'une application métier orientée utilisateur (UX/UI) avec Qt.</p>
+                </div>
+            </div>
+        </section>
+
+        <div style="margin-top: 40px; display: flex; gap: 20px;">
+            <a href="projets.html" class="back-link">← Retour aux Projets</a>
+        </div>
+
+    </main>
+
+    <footer>
+        <p>© 2025 - Carriat Lucas. Tous droits réservés.</p>
+        <div class="footer-socials">
+            <a href="mailto:lucalexandrecrr@gmail.com">Contact</a>
+            <a href="https://github.com/vRayzix" target="_blank">GitHub</a>
+            <a href="https://www.linkedin.com/in/lucas-c-961610396/" target="_blank">LinkedIn</a>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

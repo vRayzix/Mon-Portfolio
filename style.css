@@ -1,40 +1,61 @@
+/* --- style.css --- */
+
 :root {
-    --primary-color: #A78BFA; 
-    --dark-bg: #111827;       
-    --content-bg: #1F2937;    
-    --light-text: #f0f0f0;    
-    --gray-text: #a0a0a0;     
+    --primary-color: #7C3AED;   /* Violet "Electric" pour les Titres/Actions */
+    --dark-bg: #0f172a;         /* Fond global "Bleu Nuit/Tech" */
+    --content-bg: rgba(30, 41, 59, 0.7); /* Fond vitré pour les blocs */
+    --light-text: #f1f5f9;      /* Blanc cassé plus doux */
+    --gray-text: #94a3b8;       /* Gris bleuté pour le texte secondaire */
+    --subtle-border: rgba(148, 163, 184, 0.15); /* Bordure discrète */
+    
+    /* Dégradé pro conservé */
+    --violet-gradient: linear-gradient(90deg, #5B21B6, #7C3AED);
 }
 
 html {
     scroll-behavior: smooth;
     cursor: default;
+    height: 100%; /* Assure que le html prend toute la hauteur */
 }
 
 html, body {
-pointer-events:auto;
-  user-select:none;
-  -webkit-user-select:none;
-  -moz-user-select:none;
-  -ms-user-select:none;
-  outline:none;
-  cursor: default 
+    pointer-events: auto;
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    outline: none;
+    cursor: default;
 }
-
 
 section {
     scroll-margin-top: 100px; 
 }
 
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Segoe UI', Arial, sans-serif;
     margin: 0;
     padding-top: 70px; 
-    background-color: var(--dark-bg);
+    /* CORRECTION ICI : On enlève la couleur de fond opaque du body */
+    background-color: transparent; 
     color: var(--light-text);
     min-height: 100vh; 
     display: flex;
     flex-direction: column;
+    position: relative;
+    overflow-x: hidden;
+}
+
+/* --- LE FOND ANIMÉ --- */
+#tsparticles {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1; /* Derrière tout le contenu */
+    /* On met la couleur de fond ICI pour qu'elle soit derrière les particules */
+    background-color: var(--dark-bg); 
 }
 
 * {
@@ -48,7 +69,7 @@ a {
 }
 
 a:hover {
-    color: var(--light-text);
+    color: #a78bfa; /* Violet plus clair au survol */
 }
 
 ul {
@@ -62,11 +83,13 @@ img {
     border-radius: 5px;
 }
 
+/* --- NAVIGATION --- */
 .navbar {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: var(--content-bg);
+    background-color: rgba(15, 23, 42, 0.9); /* Plus opaque pour la lisibilité */
+    backdrop-filter: blur(10px);
     padding: 0 30px;
     height: 70px;
     position: fixed; 
@@ -74,7 +97,8 @@ img {
     left: 0;
     right: 0;
     z-index: 1000;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    border-bottom: 1px solid var(--subtle-border);
+    box-shadow: 0 4px 20px rgba(0,0,0,0.2);
 }
 
 .site-title-logo {
@@ -91,7 +115,7 @@ img {
     width: 48px; 
     height: 24px; 
     border-radius: 999px;
-    background: linear-gradient(90deg, #EC4899, var(--primary-color));
+    background: var(--violet-gradient) !important;
 }
 
 .site-title-logo:hover {
@@ -117,15 +141,15 @@ img {
 .nav-links a {
     font-size: 1.1rem; 
     font-weight: bold;
-    color: var(--light-text); 
+    color: var(--gray-text); 
     padding: 8px 15px;
     border-radius: 6px;
-    transition: background-color 0.3s ease, color 0.3s ease;
+    transition: all 0.3s ease;
 }
 
 .nav-links a:hover {
-    background-color: var(--primary-color);
-    color: var(--dark-bg); 
+    background-color: rgba(124, 58, 237, 0.1); 
+    color: var(--primary-color); 
 }
 
 .container {
@@ -136,14 +160,17 @@ img {
     flex-grow: 1;
 }
 
+/* Style des gros blocs (Transparence Tech) */
 main > header,
 main > section,
 .main-layout {
     background-color: var(--content-bg);
+    backdrop-filter: blur(5px); /* Effet vitré indispensable */
     padding: 25px;
     margin-bottom: 30px;
     border-radius: 8px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    border: 1px solid var(--subtle-border); 
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
 }
 
 main h1, main h2 {
@@ -154,8 +181,9 @@ main h1, main h2 {
 }
 
 main h3 {
-    color: var(--primary-color);
+    color: var(--light-text); 
     margin-top: 25px;
+    font-weight: 600;
 }
 
 .hero-section {
@@ -168,8 +196,8 @@ main h3 {
 .hero-image {
     width: 150px;
     height: 150px;
-    background-color: var(--dark-bg);
-    border: 3px solid var(--primary-color);
+    background-color: transparent;
+    border: 2px solid var(--primary-color); 
     border-radius: 50%;
     flex-shrink: 0; 
     display: flex;
@@ -178,6 +206,7 @@ main h3 {
     font-size: 3rem;
     font-weight: 600;
     color: var(--primary-color);
+    box-shadow: 0 0 20px rgba(124, 58, 237, 0.2);
 }
 
 .hero-text h1 {
@@ -205,6 +234,8 @@ main h3 {
     margin-bottom: 30px;
     border-radius: 0;
     box-shadow: none;
+    border: none;
+    backdrop-filter: none;
 }
 
 .main-layout section:last-child {
@@ -217,21 +248,24 @@ main h3 {
     gap: 20px; 
 }
 
+/* --- BOÎTES DE COMPÉTENCES --- */
 .flex-item {
     flex-basis: 32%; 
-    background-color: var(--dark-bg); 
+    background-color: rgba(15, 23, 42, 0.6); /* Fond sombre transparent */
     padding: 20px;
     border-radius: 8px; 
-    border-top: 4px solid var(--primary-color);
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid var(--subtle-border); 
+    box-shadow: none;
+    transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
     text-decoration: none;
 }
 
 .flex-item:hover {
     transform: translateY(-5px); 
-    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
-    color: var(--primary-color);
+    /* Le violet n'apparaît qu'au survol */
+    border-color: var(--primary-color);
+    box-shadow: 0 0 20px rgba(124, 58, 237, 0.15);
+    background-color: rgba(15, 23, 42, 0.9);
 }
 
 .flex-item h3 {
@@ -259,6 +293,20 @@ main h3 {
     margin-bottom: 0;
 }
 
+/* Liens dans les listes de compétences */
+.flex-item ul li a {
+    color: var(--gray-text);
+    text-decoration: none;
+    display: block;
+    padding: 2px 0;
+    transition: all 0.3s ease;
+}
+
+.flex-item ul li a:hover {
+    color: var(--primary-color);
+    padding-left: 10px;
+}
+
 .gallery-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr); 
@@ -269,7 +317,7 @@ main h3 {
     width: 100%;
     height: 280px; 
     object-fit: cover; 
-    border: 2px solid var(--content-bg);
+    border: 1px solid var(--subtle-border);
     transition: transform 0.3s, border-color 0.3s;
 }
 
@@ -278,16 +326,18 @@ main h3 {
     border-color: var(--primary-color);
 }
 
-
+/* --- ÉLÉMENTS DE DÉTAIL / TIMELINE (Ajoutés pour compenser la perte) --- */
 .summary-list li {
     padding: 10px 0;
-    border-bottom: 1px solid #444;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
 }
 
 .details-image {
     width: 100%;
     max-width: 600px;
-    border: 1px solid var(--gray-text);
+    border: 1px solid var(--subtle-border);
+    border-radius: 8px;
+    margin-top: 20px;
 }
 
 .back-link, .external-link {
@@ -295,15 +345,16 @@ main h3 {
     margin-top: 15px;
     font-weight: bold;
     background-color: var(--primary-color);
-    color: var(--dark-bg);
+    color: white;
     padding: 10px 15px;
     border-radius: 5px;
     transition: background-color 0.3s;
 }
 
 .back-link:hover, .external-link:hover {
-    background-color: #8B5CF6; 
-    color: white; 
+    background-color: #6D28D9; 
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(124, 58, 237, 0.3);
 }
 
 .details-widget {
@@ -330,12 +381,15 @@ main h3 {
 }
 
 .details-content {
-    background-color: var(--dark-bg);
+    background-color: rgba(0,0,0,0.2);
     padding: 15px;
     margin-top: 10px;
     border-radius: 5px;
     border-left: 3px solid var(--primary-color);
     color: var(--gray-text);
+    /* Ajouté pour s'assurer que le contenu est lisible */
+    border-top: 1px solid rgba(255,255,255,0.05);
+    border-right: 1px solid rgba(255,255,255,0.05);
 }
 
 .details-content ul {
@@ -351,6 +405,7 @@ main h3 {
     padding-top: 56.25%;
     margin: 20px 0;
     border-radius: 8px;
+    border: 1px solid var(--subtle-border);
 }
 
 .video-container iframe {
@@ -390,27 +445,29 @@ main h3 {
     display: inline-block;
     padding: 12px 25px;
     text-decoration: none;
-    color: white;
+    color: white !important;
     font-weight: bold;
     border-radius: 50px;
-    background: linear-gradient(90deg, #EC4899, var(--primary-color));
-    background-size: 300% 100%;
+    background: var(--violet-gradient);
+    background-size: 200% 100%;
     transition: all 0.4s ease;
     text-align: center;
+    border: none;
+    box-shadow: 0 4px 15px rgba(124, 58, 237, 0.3);
+    cursor: pointer;
 }
 
 .gradient-button:hover {
     background-position: 100% 0;
-    color: white;
     transform: translateY(-2px);
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 8px 20px rgba(124, 58, 237, 0.5);
 }
 
 footer {
     text-align: left;
     padding: 30px;
     margin-top: 30px;
-    border-top: 1px solid var(--content-bg);
+    border-top: 1px solid var(--subtle-border);
     color: var(--gray-text);
     font-size: 0.9rem;
     display: flex;
@@ -418,6 +475,7 @@ footer {
     align-items: center;
     flex-wrap: wrap;
     gap: 20px;
+    background-color: rgba(15, 23, 42, 0.9);
 }
 
 .footer-socials {
@@ -438,6 +496,66 @@ footer {
     color: var(--primary-color);
 }
 
+/* --- BANNIÈRE FIXE --- */
+.info-banner {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 45px;
+    background: var(--violet-gradient);
+    color: white;
+    z-index: 999999;
+    display: flex;
+    align-items: center;    /* Centre verticalement */
+    justify-content: center; /* Centre horizontalement le texte */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+}
+
+.banner-text {
+    font-size: 0.9rem;
+    font-weight: bold;
+    text-align: center;
+    pointer-events: none; 
+}
+
+.close-btn {
+    position: absolute; /* INDISPENSABLE : la croix ne pousse pas le texte */
+    right: 15px;
+    width: 28px;
+    height: 28px;
+    background: rgba(255, 255, 255, 0.15);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    pointer-events: auto;
+}
+
+.close-btn::before, .close-btn::after {
+    content: '';
+    position: absolute;
+    width: 14px;
+    height: 2px;
+    background-color: white;
+    border-radius: 2px;
+    transition: background-color 0.3s ease;
+}
+.close-btn::before { transform: rotate(45deg); }
+.close-btn::after { transform: rotate(-45deg); }
+
+.close-btn:hover {
+    background: white;
+    transform: rotate(90deg); 
+}
+.close-btn:hover::before, .close-btn:hover::after {
+    background-color: var(--primary-color);
+}
+
+/* --- RESPONSIVE --- */
 @media (max-width: 800px) {
     body {
         padding-top: 0; 
@@ -494,7 +612,6 @@ footer {
         padding: 20px;
     }
     
-
     .flex-container {
         flex-direction: column;
         gap: 15px;
@@ -515,5 +632,11 @@ footer {
     footer {
         justify-content: center;
         text-align: center;
+    }
+
+    /* Ajustement pour la bannière sur mobile */
+    .banner-text {
+        font-size: 0.8rem;
+        padding-right: 40px; 
     }
 }

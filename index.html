@@ -10,18 +10,25 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/tsparticles-slim@2.0.6/tsparticles.slim.bundle.min.js"></script>
 </head>
 <body>
+    <div id="tsparticles"></div>
+<div id="top-banner" class="info-banner">
+        <span class="banner-text">🚧 Site en cours de modification : certaines sections techniques sont en cours de finalisation.</span>
+        <button id="close-banner" class="close-btn" title="Fermer"></button>
+    </div>
 
     <nav class="navbar">
         <a href="index.html" class="site-title-logo">
             <div class="logo-shape"></div>
-            <span>Mon Site Web</span>
+            <span>Mon Portfolio</span>
         </a>
         <ul class="nav-links">
             <li><a href="index.html">Accueil</a></li>
-            <li><a href="formation.html">Formation</a></li> 
             <li><a href="diplome.html">Diplôme</a></li>
+            <li><a href="formation.html">Formation</a></li> 
+            <li><a href="projets.html">Projets</a></li>
             <li><a href="hobbies.html">Hobbies</a></li>
             <li><a href="contact.html">Contact</a></li>
         </ul>
@@ -37,10 +44,9 @@
                 <h1>Lucas Carriat</h1>
                 
                 <p>
-                    Actuellement étudiant en première année de <strong>BUT Réseaux & Télécomunications</strong>, je suis <strong>Lucas Carriat,</strong> passionné par tout ce qui est électronique et informatique depuis tout petit. Je monte des PC et règle régulièrement les problèmes informatiques de mes proches.
-                </p>
+                    Actuellement étudiant en première année de <strong>BUT Réseaux & Télécomunications</strong>, je suis <strong>Lucas Carriat,</strong> passionné par tout ce qui est dans le domaine de l'informatique depuis tout petit. 
                 <p>
-                    Je suis dans un domaine qui me passionne et mon objectif à long terme serait de devenir <strong>ingénieur en cybersécurité</strong>.
+                    Je suis dans un domaine qui me passionne et j'aspire à devenir <strong>analyste SOC</strong>.
                 </p>
 
             </div>
@@ -53,7 +59,7 @@
                 <section id="formation">
                     <h2>Formation</h2>
                     <ul class="summary-list">
-                        <li><a href="formation.html"><strong>2025 - Présent:</strong> B.U.T. Réseaux & Télécomunications - IUT de Colmar</a></li>
+                        <li><a href="formation.html"><strong>2025 - Maintenant:</strong> B.U.T. Réseaux & Télécomunications - IUT de Colmar</a></li>
                         <li><a href="diplome.html#diplome-bac"><strong>2024 - 2025:</strong> Baccalauréat STI2D (SIN) - Lycée Camille Claudel</a></li>
                     </ul>
                 </section>
@@ -96,59 +102,80 @@
                     </ul>
                 </section>
                 
-                <section id="competences">
-                    <h2>Mes Compétences</h2>
-                    <div class="flex-container">
-                        
-                        <div class="flex-item">
-                            <h3>Compétences R&T</h3>
-                            <ul>
-                                <li>Compréhension des modèles OSI et TCP/IP</li>
-                                <li>Analyse de trames (Wireshark)</li>
-                                <li>Configuration de VLANs</li>
-                                <li>Calcul de plans d'adressage IPv4</li>
-                                <li>Principes du routage statique</li>
-                            </ul>
-                        </div>
-                        
-                        <div class="flex-item">
-                            <h3>Autres Compétences Techniques</h3>
-                            <ul>
-                                <li>Utilisation de l'interpréteur de commandes Linux</li>
-                                <li>Simulation réseau (Packet Tracer)</li>
-                                <li>Bases du Python</li>
-                                <li>HTML/CSS</li>
-                                <li>Virtualisation (VMware)</li>
-                            </ul>
-                        </div>
-                        
-                        <div class="flex-item">
-                            <h3>Compétences Humaines</h3>
-                            <ul>
-                                <li>Travail en équipe</li>
-                                <li>Autonomie</li>
-                                <li>Capacité d'adaptation</li>
-                                <li>Esprit d'analyse</li>
-                            </ul>
-                        </div>
+<section id="competences">
+    <h2>Validation des Compétences (Référentiel BUT R&T)</h2>
+    <div class="flex-container">
+        
+        <div class="flex-item">
+            <h3>🌐 Administration & Réseaux</h3>
+            <ul>
+                <li>
+                    <strong>AC11.03 | Configurer les réseaux locaux</strong><br>
+                    <span style="font-size: 0.9em; color: var(--gray-text);">Mise en place de VLANs, routage OSPF et adressage.</span>
+                    <a href="projets.html#SAE102">👉 Voir : SAE 1.02 EVE-NG Succursale</a>
+                </li>
+                <li style="margin-top: 15px;">
+                    <strong>AC11.05 | Identifier les dysfonctionnements</strong><br>
+                    <span style="font-size: 0.9em; color: var(--gray-text);">Diagnostic de pannes et analyse de protocoles.</span>
+                </li>
+            </ul>
+        </div>
+        
+        <div class="flex-item">
+            <h3>💻 Systèmes & Services</h3>
+            <ul>
+                <li>
+                    <strong>AC11.04 | Administration des Systèmes (OS)</strong><br>
+                    <span style="font-size: 0.9em; color: var(--gray-text);">Gestion des rôles (AD DS, DNS, DHCP) sous Windows Server.</span>
+                </li>
+                <li style="margin-top: 15px;">
+                    <strong>AC11.06 | Déploiement Poste Client</strong><br>
+                    <span style="font-size: 0.9em; color: var(--gray-text);">Installation et intégration de machines dans un domaine.</span>
+                </li>
+            </ul>
+        </div>
+        
+        <div class="flex-item">
+            <h3>🛡️ Architecture & Cybersécurité</h3>
+            <ul>
+                <li>
+                    <strong>AC11.02 | Architecture Numérique & Codage</strong><br>
+                    <span style="font-size: 0.9em; color: var(--gray-text);">Scripting d'automatisation et compréhension des flux.</span>
+                    <a href="projets.html#SAE105">👉 Voir : SAE 1.05 PowerShell/Python</a>
+                </li>
+                <li style="margin-top: 15px;">
+                    <strong>Approche Cybersécurité (Vers l'Analyste SOC)</strong><br>
+                    <span style="font-size: 0.9em; color: var(--gray-text);">Détection d'intrusion et surveillance sur ma machine.</span>
+                    <a href="projets.html#projet-suricata">👉 Voir : Projet SOC</a>
 
-                    </div>
-                </section>
+                <li style="margin-top: 15px;">
+                    <strong>Pentesting & Blue Team
+Entraînement continu sur TryHackMe, Root-Me & HackTheBox.
+Formation "SOC Analyst" en cours sur LetDefend. </strong><br>
+                    <span style="font-size: 0.9em; color: var(--gray-text);">Pentesting et focus sur le coté Blue team.</span>
+                    
+
+                
+                </li>
+            </ul>
+        </div>
+
+    </div>
+</section>
 
             </aside>
 
         </div> 
     </main>
 
-    <footer>
+<footer>
         <p>© 2025 - Carriat Lucas. Tous droits réservés.</p>
         <div class="footer-socials">
-            <a href="mailto:lucas.carriat@uha.fr">lucas.carriat@uha.fr</a>
-            <a href="https://www.instagram.com/iutdecolmar/" target="_blank">📸 Insta IUT</a>
-            <a href="https://www.linkedin.com/in/lucas-c-961610396/" target="_blank">LinkedIn</a>
+            <a href="mailto:lucalexandrecrr@gmail.com">Contact</a>
             <a href="https://github.com/vRayzix" target="_blank">GitHub</a>
+            <a href="https://www.linkedin.com/in/lucas-c-961610396/" target="_blank">LinkedIn</a>
         </div>
     </footer>
-    
+    <script src="script.js"></script>
 </body>
 </html>

@@ -8,20 +8,23 @@
     <meta name="keywords" content="Portfolio, Informatique, Réseaux, Télécoms, Étudiant, Portfolio">
     <title>Détails Formation</title>
     <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/tsparticles-slim@2.0.6/tsparticles.slim.bundle.min.js"></script>
 </head>
 <body>
+<div id="tsparticles"></div>
 
     <nav class="navbar">
     <a href="index.html" class="site-title-logo">
         <div class="logo-shape"></div>
-        <span>Mon Site Web</span>
+        <span>Mon Portfolio</span>
     </a>
     <ul class="nav-links">
-        <li><a href="index.html">Accueil</a></li>
-        <li><a href="formation.html">Formation</a></li> 
-        <li><a href="diplome.html">Diplôme</a></li>
-        <li><a href="hobbies.html">Hobbies</a></li>
-        <li><a href="contact.html">Contact</a></li>
+            <li><a href="index.html">Accueil</a></li>
+            <li><a href="diplome.html">Diplôme</a></li>
+            <li><a href="formation.html">Formation</a></li> 
+            <li><a href="projets.html">Projets</a></li>
+            <li><a href="hobbies.html">Hobbies</a></li>
+            <li><a href="contact.html">Contact</a></li>
     </ul>
 </nav>
 
@@ -29,28 +32,26 @@
         <h1>Détails de la Formation</h1>
 
         <section id="but-rt">
-            <h2>B.U.T. Réseaux & Télécoms (Actuellement en première année)</h2>
+            <h2>B.U.T. Réseaux & Télécommunications</h2>
+            <p style="color: var(--gray-text); margin-top: -10px;"><strong>2025 - 2028 | IUT de Colmar (UHA)</strong></p>
             
+            <p>
+                Actuellement en première année, ce cursus me permet d'acquérir une base solide dans le déploiement et la sécurisation des infrastructures numériques. La formation est structurée autour de <strong>SAÉ (Situations d'Apprentissage et d'Évaluation)</strong>, des projets concrets qui nous mettent en situation réelle.
+            </p>
 
-            <h3 style="margin-top: 30px;">Compétences Fondamentales Acquises</h3>
+            <h3>Matières Clés & Domaines d'Étude :</h3>
             <ul class="details-content-list">
-                <li>
-                    <strong>Fondamentaux Réseau :</strong>
-                    <br>Compréhension des modèles théoriques OSI et TCP/IP, et analyse de trames (Wireshark) pour visualiser le trafic.
-                </li>
-                <li>
-                    <strong>Adressage & Commutation :</strong>
-                    <br>Calcul de plans d'adressage IPv4 (subnetting) et configuration de base de VLANs sur des switchs.
-                </li>
-                <li>
-                    <strong>Système & Outils :</strong>
-                    <br>Prise en main de l'interpréteur de commandes Linux et utilisation d'outils de simulation comme Packet Tracer.
-                </li>
+                <li><strong>Architecture des Réseaux :</strong> Modèles OSI/TCP-IP, commutation et routage.</li>
+                <li><strong>Services Réseaux :</strong> Configuration de serveurs Web, DNS et DHCP.</li>
+                <li><strong>Systèmes d'Exploitation :</strong> Administration avancée sous Linux et Windows Server.</li>
+                <li><strong>Télécommunications :</strong> Étude de la transmission des signaux et des supports physiques.</li>
             </ul>
+            
+            <p><em>Objectif : Spécialisation en Cybersécurité pour devenir Analyste SOC.</em></p>
         </section>
         
         <section id="bac">
-            <h2>Baccalauréat STI2D (2023-2025)</h2>
+            <h2>Baccalauréat STI2D (2024-2025)</h2>
             <p><strong>Spécialité :</strong> Système d'Information et Numérique (SIN).</p>
             <p style="color: var(--gray-text);">
                 Cette filière m'a permis d'apprendre les bases de la programmation. On a également fait des cours de réseaux et ça m'a permis de me familiariser avec des applications comme Cisco Packet Tracer.
@@ -64,15 +65,14 @@
 
     </main>
 
-    <footer>
+<footer>
         <p>© 2025 - Carriat Lucas. Tous droits réservés.</p>
         <div class="footer-socials">
-            <a href="mailto:lucas.carriat@uha.fr">lucas.carriat@uha.fr</a>
-            <a href="https://www.instagram.com/iutdecolmar/" target="_blank">📸 Insta IUT</a>
-            <a href="https://www.linkedin.com/in/lucas-c-961610396/" target="_blank">LinkedIn</a>
+            <a href="mailto:lucalexandrecrr@gmail.com">Contact</a>
             <a href="https://github.com/vRayzix" target="_blank">GitHub</a>
+            <a href="https://www.linkedin.com/in/lucas-c-961610396/" target="_blank">LinkedIn</a>
         </div>
     </footer>
-    
+<script src="script.js"></script>    
 </body>
 </html>
