@@ -183,22 +183,25 @@ document.addEventListener('DOMContentLoaded', () => {
         }, 500);
     }
 
-    /* ----------------------------------------------------------
-       8. NEON PROXIMITY (HOVER CARTES)
+   /* ----------------------------------------------------------
+       8. NEON PROXIMITY (OPTIMISÉ)
     ---------------------------------------------------------- */
     if (window.matchMedia("(pointer: fine)").matches) {
         document.querySelectorAll('.project-card, .skill-card').forEach(card => {
             card.addEventListener('mousemove', e => {
-                const rect = card.getBoundingClientRect();
-                const x = e.clientX - rect.left;
-                const y = e.clientY - rect.top;
-                card.style.background = `radial-gradient(circle at ${x}px ${y}px, rgba(176, 38, 255, 0.15) 0%, rgba(16, 10, 30, 0.6) 40%)`;
-                card.style.borderColor = 'rgba(176, 38, 255, 0.3)';
+                // requestAnimationFrame empêche le lag en synchronisant avec l'écran
+                window.requestAnimationFrame(() => {
+                    const rect = card.getBoundingClientRect();
+                    const x = e.clientX - rect.left;
+                    const y = e.clientY - rect.top;
+                    card.style.background = `radial-gradient(circle at ${x}px ${y}px, rgba(176, 38, 255, 0.15) 0%, rgba(16, 10, 30, 0.6) 40%)`;
+                    card.style.borderColor = 'rgba(176, 38, 255, 0.3)';
+                });
             });
 
             card.addEventListener('mouseleave', () => {
-                card.style.background = 'rgba(16, 10, 30, 0.6)';
-                card.style.borderColor = 'rgba(176, 38, 255, 0.12)';
+                card.style.background = '';
+                card.style.borderColor = '';
             });
         });
     }
@@ -218,7 +221,7 @@ document.addEventListener('DOMContentLoaded', () => {
             width = canvas.width = window.innerWidth;
             height = canvas.height = window.innerHeight;
             particles = [];
-            const particleCount = window.innerWidth < 768 ? 40 : 80;
+            const particleCount = window.innerWidth < 768 ? 20 : 40;
 
             for (let i = 0; i < particleCount; i++) {
                 particles.push({
