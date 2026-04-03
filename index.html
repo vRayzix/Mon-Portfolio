@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Lucas Carriat">
+    <meta name="description" content="Portfolio de Lucas Carriat — Cybersécurité, Réseaux & Télécommunications. Futur Analyste SOC.">
+    <meta name="keywords" content="Cybersécurité, Réseaux, Télécommunications, SOC, Portfolio, Lucas Carriat">
+    <title>Lucas Carriat — Cybersecurity & Networks</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- ========== PARTICLE CANVAS (activated by JS later) ========== -->
+    <div id="particles-bg"></div>
+
+    <!-- ========== GRID OVERLAY ========== -->
+    <div class="grid-overlay"></div>
+
+    <!-- ========== NAVIGATION ========== -->
+    <nav class="nav" id="nav">
+        <a href="#hero" class="nav__logo">
+            <span class="nav__logo-bracket">[</span>LC<span class="nav__logo-bracket">]</span>
+        </a>
+
+        <button class="nav__toggle" id="nav-toggle" aria-label="Ouvrir le menu" aria-expanded="false">
+            <span></span><span></span><span></span>
+        </button>
+
+        <ul class="nav__links" id="nav-links">
+            <li><a href="#hero" class="nav__link active">Accueil</a></li>
+            <li><a href="#parcours" class="nav__link">Parcours</a></li>
+            <li><a href="#competences" class="nav__link">Compétences</a></li>
+            <li><a href="#projets" class="nav__link">Projets</a></li>
+            <li><a href="#contact" class="nav__link">Contact</a></li>
+            <li>
+                <a href="cv_lucas_carriat.pdf" download class="nav__cta">
+                    Télécharger CV
+                </a>
+            </li>
+        </ul>
+    </nav>
+
+    <!-- ========== SECTION 01 — HERO ========== -->
+    <section class="hero" id="hero">
+        <div class="hero__content">
+            <p class="hero__tag mono">// initializing_portfolio</p>
+            <h1 class="hero__title" data-decrypt>Lucas Carriat</h1>
+            <p class="hero__subtitle">Cybersécurité & Réseaux <span class="hero__separator">|</span> Futur Analyste SOC</p>
+            <p class="hero__desc">
+                Étudiant en B.U.T. Réseaux & Télécommunications à l'IUT de Colmar,
+                passionné par la sécurité offensive et défensive depuis toujours.
+            </p>
+            <div class="hero__actions">
+                <a href="#projets" class="btn btn--primary">
+                    <span class="btn__text">Explorer mes projets</span>
+                    <span class="btn__arrow">&darr;</span>
+                </a>
+                <a href="cv_lucas_carriat.pdf" download class="btn btn--outline">
+                    <span class="btn__text">Télécharger CV</span>
+                </a>
+            </div>
+        </div>
+        <div class="hero__scroll-indicator">
+            <span class="mono">scroll</span>
+            <div class="hero__scroll-line"></div>
+        </div>
+    </section>
+
+    <!-- ========== SECTION 02 — PARCOURS ========== -->
+    <section class="section" id="parcours">
+        <div class="section__header reveal">
+            <p class="section__tag mono">// parcours</p>
+            <h2 class="section__title">Mon Parcours</h2>
+            <p class="section__subtitle">Formation, diplômes et expériences</p>
+        </div>
+
+        <div class="timeline">
+            <div class="timeline__line"></div>
+
+            <div class="timeline__item reveal" data-side="right">
+                <div class="timeline__dot"></div>
+                <div class="timeline__card glass">
+                    <span class="timeline__date mono">2025 — 2028</span>
+                    <h3 class="timeline__title">B.U.T. Réseaux & Télécommunications</h3>
+                    <p class="timeline__location">IUT de Colmar (UHA)</p>
+                    <p class="timeline__desc">
+                        Cursus axé sur le déploiement et la sécurisation des infrastructures numériques.
+                        Formation structurée autour de SAÉ (Situations d'Apprentissage et d'Évaluation).
+                    </p>
+                    <ul class="timeline__details">
+                        <li>Architecture des Réseaux (OSI/TCP-IP, commutation, routage)</li>
+                        <li>Services Réseaux (DNS, DHCP, serveurs Web)</li>
+                        <li>Administration Linux & Windows Server</li>
+                        <li>Télécommunications & signaux</li>
+                    </ul>
+                    <span class="timeline__badge timeline__badge--cyber">Objectif : Spé Cybersécurité</span>
+                </div>
+            </div>
+
+            <div class="timeline__item reveal" data-side="left">
+                <div class="timeline__dot"></div>
+                <div class="timeline__card glass">
+                    <span class="timeline__date mono">2025</span>
+                    <h3 class="timeline__title">Baccalauréat STI2D (SIN)</h3>
+                    <p class="timeline__location">Lycée Camille Claudel, Blois — Mention Assez Bien</p>
+                    <p class="timeline__desc">
+                        Spécialité Systèmes d'Information et Numérique. Bases de la programmation,
+                        réseaux avec Cisco Packet Tracer, mise en pratique de compétences techniques.
+                    </p>
+                </div>
+            </div>
+
+            <div class="timeline__item reveal" data-side="right">
+                <div class="timeline__dot"></div>
+                <div class="timeline__card glass">
+                    <span class="timeline__date mono">2022 — Présent</span>
+                    <h3 class="timeline__title">Production Musicale (Freelance)</h3>
+                    <p class="timeline__location">Beatstars — En pause</p>
+                    <p class="timeline__desc">
+                        Gestion d'un catalogue en ligne, collaboration avec des artistes en studio,
+                        immersion dans un studio professionnel (ingénierie sonore).
+                        Compétences en gestion de projet et travail collaboratif.
+                    </p>
+                </div>
+            </div>
+
+            <div class="timeline__item reveal" data-side="left">
+                <div class="timeline__dot"></div>
+                <div class="timeline__card glass">
+                    <span class="timeline__date mono">2021</span>
+                    <h3 class="timeline__title">Stage Maintenance — Labo Servier</h3>
+                    <p class="timeline__location">Laboratoires Servier, Suresnes</p>
+                    <p class="timeline__desc">
+                        Stage d'observation en maintenance industrielle. Découverte de l'entretien
+                        préventif des équipements et des normes de sécurité en milieu pharmaceutique.
+                    </p>
+                </div>
+            </div>
+
+            <div class="timeline__item reveal" data-side="right">
+                <div class="timeline__dot"></div>
+                <div class="timeline__card glass">
+                    <span class="timeline__date mono">2021</span>
+                    <h3 class="timeline__title">Brevet des Collèges</h3>
+                    <p class="timeline__location">Collège SIS de Sèvres — Mention Assez Bien</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== SECTION 03 — COMPÉTENCES ========== -->
+    <section class="section" id="competences">
+        <div class="section__header reveal">
+            <p class="section__tag mono">// compétences</p>
+            <h2 class="section__title">Compétences</h2>
+            <p class="section__subtitle">Trois piliers, une mission : sécuriser les infrastructures</p>
+        </div>
+
+        <div class="skills">
+            <div class="skill-card glass reveal">
+                <div class="skill-card__icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+                </div>
+                <h3 class="skill-card__title">Réseaux</h3>
+                <ul class="skill-card__list">
+                    <li>VLANs, Routage OSPF, NAT</li>
+                    <li>DHCP, DNS, Services Web</li>
+                    <li>CLI Cisco (IOS), EVE-NG, GNS3</li>
+                    <li>Modèles OSI / TCP-IP</li>
+                    <li>Câblage structuré (Cat 7, TIA-568B)</li>
+                </ul>
+            </div>
+
+            <div class="skill-card glass reveal">
+                <div class="skill-card__icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+                </div>
+                <h3 class="skill-card__title">Systèmes</h3>
+                <ul class="skill-card__list">
+                    <li>Windows Server (AD DS, GPO)</li>
+                    <li>Administration Linux (Ubuntu Server)</li>
+                    <li>PowerShell & Bash scripting</li>
+                    <li>Python (PySide6, automatisation)</li>
+                    <li>Virtualisation & conteneurisation</li>
+                </ul>
+            </div>
+
+            <div class="skill-card glass reveal">
+                <div class="skill-card__icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                </div>
+                <h3 class="skill-card__title">Cybersécurité</h3>
+                <ul class="skill-card__list">
+                    <li>IDS Suricata, analyse de menaces</li>
+                    <li>Pentesting & Blue Team</li>
+                    <li>CTF (Rhinotec 2025 — 12e place)</li>
+                    <li>Docker & environnements isolés</li>
+                    <li>Formation SOC Analyst (LetDefend)</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="platforms reveal">
+            <p class="platforms__label mono">// plateformes_actives</p>
+            <div class="platforms__grid">
+                <div class="platform-badge glass">TryHackMe</div>
+                <div class="platform-badge glass">HackTheBox</div>
+                <div class="platform-badge glass">Root-Me</div>
+                <div class="platform-badge glass">LetDefend</div>
+            </div>
+        </div>
+
+        <div class="languages reveal">
+            <span class="lang-tag">EN — B2</span>
+            <span class="lang-tag">DE — A2</span>
+        </div>
+    </section>
+
+    <!-- ========== SECTION 04 — PROJETS ========== -->
+    <section class="section" id="projets">
+        <div class="section__header reveal">
+            <p class="section__tag mono">// projets</p>
+            <h2 class="section__title">Projets & Labs</h2>
+            <p class="section__subtitle">Cliquez sur un projet pour voir les détails techniques</p>
+        </div>
+
+        <div class="filter reveal">
+            <button class="filter__btn active" data-filter="all">Tous</button>
+            <button class="filter__btn" data-filter="cyber">Cyber</button>
+            <button class="filter__btn" data-filter="reseaux">Réseaux</button>
+            <button class="filter__btn" data-filter="dev">Dev</button>
+        </div>
+
+        <div class="projects-grid">
+
+            <!-- PROJECT CARD 1 — Projet SOC -->
+            <article class="project-card glass reveal" data-category="cyber" data-modal="modal-soc">
+                <div class="project-card__header">
+                    <span class="project-card__tag project-card__tag--cyber">Cyber</span>
+                </div>
+                <h3 class="project-card__title">Projet SOC</h3>
+                <p class="project-card__desc">Analyse de menaces sur un service WordPress conteneurisé (Docker) à l'aide de l'IDS Suricata.</p>
+                <span class="project-card__cta mono">Voir détails &rarr;</span>
+            </article>
+
+            <!-- PROJECT CARD 2 — SAE 1.02 -->
+            <article class="project-card glass reveal" data-category="reseaux" data-modal="modal-sae102">
+                <div class="project-card__header">
+                    <span class="project-card__tag project-card__tag--reseaux">Réseaux</span>
+                </div>
+                <h3 class="project-card__title">Architecture Succursale</h3>
+                <p class="project-card__desc">Conception et déploiement d'un réseau local d'entreprise sous EVE-NG avec VLANs, OSPF, DHCP et NAT.</p>
+                <span class="project-card__cta mono">Voir détails &rarr;</span>
+            </article>
+
+            <!-- PROJECT CARD 3 — SAE 1.03 -->
+            <article class="project-card glass reveal" data-category="reseaux" data-modal="modal-sae103">
+                <div class="project-card__header">
+                    <span class="project-card__tag project-card__tag--reseaux">Réseaux</span>
+                </div>
+                <h3 class="project-card__title">Heatmap IUT & Câblage</h3>
+                <p class="project-card__desc">Audit Wi-Fi, câblage structuré Cat 7, mesures PoE et simulation Packet Tracer de l'infrastructure de l'IUT.</p>
+                <span class="project-card__cta mono">Voir détails &rarr;</span>
+            </article>
+
+            <!-- PROJECT CARD 4 — SAE 1.05 -->
+            <article class="project-card glass reveal" data-category="dev" data-modal="modal-sae105">
+                <div class="project-card__header">
+                    <span class="project-card__tag project-card__tag--dev">Dev</span>
+                </div>
+                <h3 class="project-card__title">Automation & Scripting</h3>
+                <p class="project-card__desc">Outil hybride PowerShell/Python (PySide6) d'analyse et nettoyage de disque avec interface graphique sécurisée.</p>
+                <span class="project-card__cta mono">Voir détails &rarr;</span>
+            </article>
+
+            <!-- PROJECT CARD 5 — Rhinotec CTF -->
+            <article class="project-card glass reveal" data-category="cyber" data-modal="modal-rhinotec">
+                <div class="project-card__header">
+                    <span class="project-card__tag project-card__tag--cyber">Cyber</span>
+                    <span class="project-card__rank">12e place</span>
+                </div>
+                <h3 class="project-card__title">Rhinotec Physical CTF</h3>
+                <p class="project-card__desc">Challenge de cybersécurité physique : crochetage, énigmes logiques et intrusion numérique en temps limité.</p>
+                <span class="project-card__cta mono">Voir détails &rarr;</span>
+            </article>
+
+            <!-- PROJECT CARD 6 — DYLO -->
+            <article class="project-card glass reveal" data-category="dev" data-modal="modal-dylo">
+                <div class="project-card__header">
+                    <span class="project-card__tag project-card__tag--dev">Dev</span>
+                </div>
+                <h3 class="project-card__title">Concours OSI — DYLO</h3>
+                <p class="project-card__desc">Conception d'une micro-hydrolienne (Vis d'Archimède) avec monitoring Arduino. Présenté devant le jury INSA.</p>
+                <span class="project-card__cta mono">Voir détails &rarr;</span>
+            </article>
+
+        </div>
+    </section>
+
+    <!-- ========== PROJECT MODALS ========== -->
+
+    <!-- Modal: Projet SOC -->
+    <div class="modal" id="modal-soc" aria-hidden="true">
+        <div class="modal__overlay"></div>
+        <div class="modal__container glass">
+            <button class="modal__close" aria-label="Fermer">&times;</button>
+            <div class="modal__content">
+                <span class="project-card__tag project-card__tag--cyber">Cyber</span>
+                <h2 class="modal__title">Projet SOC : Analyse de Menaces</h2>
+                <p class="modal__subtitle mono">Suricata IDS + Docker + WordPress</p>
+                <div class="modal__body">
+                    <p>Déploiement d'un service WordPress conteneurisé avec Docker, puis mise en place de l'IDS Suricata pour analyser les menaces en temps réel sur le trafic réseau entrant.</p>
+                    <h4>Objectifs</h4>
+                    <ul>
+                        <li>Configurer un environnement de surveillance réseau réaliste</li>
+                        <li>Écrire et ajuster des règles Suricata pour la détection d'intrusion</li>
+                        <li>Analyser les alertes et catégoriser les menaces détectées</li>
+                    </ul>
+                    <h4>Compétences validées</h4>
+                    <ul>
+                        <li>Détection d'intrusion et surveillance réseau</li>
+                        <li>Conteneurisation avec Docker</li>
+                        <li>Approche Blue Team / Analyste SOC</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal: SAE 1.02 -->
+    <div class="modal" id="modal-sae102" aria-hidden="true">
+        <div class="modal__overlay"></div>
+        <div class="modal__container glass">
+            <button class="modal__close" aria-label="Fermer">&times;</button>
+            <div class="modal__content">
+                <span class="project-card__tag project-card__tag--reseaux">Réseaux</span>
+                <h2 class="modal__title">SAE 1.02 : Architecture Succursale</h2>
+                <p class="modal__subtitle mono">EVE-NG &bull; Cisco IOS &bull; OSPF &bull; VLANs</p>
+                <div class="modal__body">
+                    <p>Conception de l'architecture réseau complète d'une succursale d'entreprise sous EVE-NG, avec connectivité, segmentation et sécurité via matériel Cisco simulé.</p>
+
+                    <div class="modal__image-wrapper">
+                        <img src="SAE102LAB.PNG" alt="Topologie EVE-NG de la succursale" loading="lazy">
+                        <span class="modal__image-caption mono">Topologie logique — Routeurs & Switchs Cisco</span>
+                    </div>
+
+                    <h4>Implémentation technique</h4>
+                    <ul>
+                        <li><strong>Segmentation VLAN :</strong> Direction, Employés, Wi-Fi Invités — isolation des flux</li>
+                        <li><strong>Routage Inter-VLAN :</strong> Router-on-a-Stick / SVI pour communication contrôlée</li>
+                        <li><strong>Services DHCP/DNS :</strong> Serveur DHCP relayé, attribution dynamique des IPs</li>
+                        <li><strong>Protocoles :</strong> OSPF (routage dynamique vers le siège) + NAT (accès Internet)</li>
+                    </ul>
+
+                    <div class="modal__image-wrapper">
+                        <img src="SAE102DHCP.PNG" alt="Preuve DHCP sur VPC" loading="lazy">
+                        <span class="modal__image-caption mono">Preuve DHCP — Serveur Linux vers postes VPC</span>
+                    </div>
+
+                    <h4>Compétences validées</h4>
+                    <ul>
+                        <li>AC11.03 — Configurer les fonctions de base du réseau local</li>
+                        <li>Maîtrise de la CLI Cisco (IOS) et commutation</li>
+                        <li>Virtualisation avancée avec EVE-NG</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal: SAE 1.03 -->
+    <div class="modal" id="modal-sae103" aria-hidden="true">
+        <div class="modal__overlay"></div>
+        <div class="modal__container glass">
+            <button class="modal__close" aria-label="Fermer">&times;</button>
+            <div class="modal__content">
+                <span class="project-card__tag project-card__tag--reseaux">Réseaux</span>
+                <h2 class="modal__title">SAE 1.03 : Installation & Mesures</h2>
+                <p class="modal__subtitle mono">Câblage &bull; Wi-Fi Audit &bull; Packet Tracer &bull; PoE</p>
+                <div class="modal__body">
+                    <p>Projet transversal couvrant la chaîne complète d'une infrastructure réseau : connectique physique, audit Wi-Fi terrain et simulation logique sous Packet Tracer.</p>
+
+                    <div class="modal__image-wrapper">
+                        <img src="SAE103PKT.PNG" alt="Topologie Packet Tracer" loading="lazy">
+                        <span class="modal__image-caption mono">Simulation complète de l'infrastructure réseau</span>
+                    </div>
+
+                    <h4>Infrastructure physique</h4>
+                    <ul>
+                        <li><strong>Câblage structuré :</strong> Câbles Cat 7 (norme TIA-568B), sertissage RJ45, montage noyaux femelles</li>
+                        <li><strong>Analyse PoE :</strong> Switch Cisco Catalyst 2960 — Tension : 54V, Puissance AP : 13W, Intensité : 0.24A</li>
+                        <li><strong>Matériel :</strong> Cisco AIR-AP1231G, Switch WS-C2960, analyseur de spectre Wi-Fi</li>
+                    </ul>
+
+                    <h4>Audit Wi-Fi (Heatmaps)</h4>
+                    <ul>
+                        <li>Cartographie des zones blanches et interférences (2.4 GHz / 5 GHz) via Acrylic Wi-Fi</li>
+                        <li>Mesures d'atténuation des matériaux (Placo vs Béton) et analyse des débits</li>
+                    </ul>
+
+                    <div class="modal__image-wrapper">
+                        <img src="SAE103UHA.PNG" alt="Page Web UHA sur Packet Tracer" loading="lazy">
+                        <span class="modal__image-caption mono">Accès réussi au site uha1.fr via Packet Tracer</span>
+                    </div>
+
+                    <div class="modal__download">
+                        <a href="Rapport projet SAE13 2025.pdf" target="_blank" class="btn btn--primary">
+                            <span class="btn__text">Télécharger le rapport (PDF)</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal: SAE 1.05 -->
+    <div class="modal" id="modal-sae105" aria-hidden="true">
+        <div class="modal__overlay"></div>
+        <div class="modal__container glass">
+            <button class="modal__close" aria-label="Fermer">&times;</button>
+            <div class="modal__content">
+                <span class="project-card__tag project-card__tag--dev">Dev</span>
+                <h2 class="modal__title">SAE 1.05 : Traiter des Données</h2>
+                <p class="modal__subtitle mono">PowerShell &bull; Python &bull; PySide6 &bull; JSON</p>
+                <div class="modal__body">
+                    <p>Solution logicielle complète pour identifier les fichiers volumineux sur un serveur et les supprimer via une interface graphique sécurisée.</p>
+
+                    <div class="modal__image-wrapper">
+                        <img src="SAE105FILES.PNG" alt="Structure du projet" loading="lazy">
+                        <span class="modal__image-caption mono">Structure modulaire du projet</span>
+                    </div>
+
+                    <h4>Architecture modulaire</h4>
+                    <ul>
+                        <li><strong>Orchestrateur (sae.ps1) :</strong> Script PowerShell — préparation de l'environnement, vérification des dépendances, sécurité</li>
+                        <li><strong>Moteur (analyse.py) :</strong> Parcours récursif (os.walk), tri par taille, export JSON</li>
+                        <li><strong>Interface (main_gui.py) :</strong> PySide6 (Qt) — affichage graphique et tabulaire des données</li>
+                    </ul>
+
+                    <div class="modal__image-wrapper">
+                        <img src="SAE105CAM.PNG" alt="Interface PySide6 Camembert" loading="lazy">
+                        <span class="modal__image-caption mono">Interface graphique — Répartition de l'espace disque</span>
+                    </div>
+
+                    <h4>Problèmes résolus</h4>
+                    <ul>
+                        <li><strong>Chemins UNC :</strong> Montage automatisé via PowerShell (New-PSDrive) pour les dossiers réseau</li>
+                        <li><strong>Précision :</strong> Division flottante + round() pour les fichiers &lt; 1 Mo</li>
+                    </ul>
+
+                    <h4>Compétences validées</h4>
+                    <ul>
+                        <li>AC11.02 — Algorithmes complexes (tri, récursivité), structures JSON</li>
+                        <li>Scripting système avancé et interactions inter-processus</li>
+                        <li>Conception IHM orientée utilisateur avec Qt</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal: Rhinotec CTF -->
+    <div class="modal" id="modal-rhinotec" aria-hidden="true">
+        <div class="modal__overlay"></div>
+        <div class="modal__container glass">
+            <button class="modal__close" aria-label="Fermer">&times;</button>
+            <div class="modal__content">
+                <span class="project-card__tag project-card__tag--cyber">Cyber</span>
+                <h2 class="modal__title">Rhinotec Physical CTF — Édition 2025</h2>
+                <p class="modal__subtitle mono">12e place &bull; Classement Général</p>
+                <div class="modal__body">
+                    <div class="modal__image-wrapper">
+                        <img src="Logo_clean.Cxb_HDzr.png" alt="Logo Rhinotec" loading="lazy" style="max-width: 200px; margin: 0 auto; display: block;">
+                    </div>
+                    <p>Participation au challenge de cybersécurité physique organisé à Mulhouse. Compétition multidisciplinaire testant les compétences en sécurité dans un contexte réel.</p>
+                    <h4>Épreuves</h4>
+                    <ul>
+                        <li>Crochetage et bypass de mécanismes physiques</li>
+                        <li>Résolution d'énigmes de logique sous pression</li>
+                        <li>Intrusion numérique en temps limité</li>
+                    </ul>
+                    <h4>Résultat</h4>
+                    <p><strong>12e place au classement général</strong> — une expérience qui a renforcé ma passion pour la sécurité offensive et défensive.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal: DYLO -->
+    <div class="modal" id="modal-dylo" aria-hidden="true">
+        <div class="modal__overlay"></div>
+        <div class="modal__container glass">
+            <button class="modal__close" aria-label="Fermer">&times;</button>
+            <div class="modal__content">
+                <span class="project-card__tag project-card__tag--dev">Dev</span>
+                <h2 class="modal__title">Concours OSI — Projet DYLO</h2>
+                <p class="modal__subtitle mono">Micro-hydrolienne &bull; Arduino &bull; Jury INSA</p>
+                <div class="modal__body">
+                    <div class="modal__image-wrapper">
+                        <img src="DYLO.PNG" alt="Logo DYLO" loading="lazy" style="max-width: 150px; margin: 0 auto; display: block;">
+                    </div>
+                    <p>Conception d'une micro-hydrolienne de type Vis d'Archimède pour réduire la facture énergétique d'un village (Monthou-sur-Cher) en respectant la faune et la flore.</p>
+                    <h4>Mon rôle (Électronique)</h4>
+                    <ul>
+                        <li>Intégration moteur et calculs de rendement énergétique</li>
+                        <li>Programmation Arduino pour le monitoring (capteurs tension/courant + affichage LCD)</li>
+                    </ul>
+                    <h4>Présentation</h4>
+                    <p>Projet présenté devant le jury de l'INSA dans le cadre du concours OSI.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ========== SECTION 05 — CONTACT ========== -->
+    <section class="section section--contact" id="contact">
+        <div class="section__header reveal">
+            <p class="section__tag mono">// contact</p>
+            <h2 class="section__title">Contact</h2>
+            <p class="section__subtitle">Un projet, une question, une opportunité ?</p>
+        </div>
+
+        <div class="contact reveal">
+            <div class="contact__grid">
+                <a href="mailto:lucalexandrecrr@gmail.com" class="contact__card glass">
+                    <svg class="contact__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                    <span class="contact__label">Email</span>
+                    <span class="contact__value mono">lucalexandrecrr@gmail.com</span>
+                </a>
+
+                <a href="https://www.linkedin.com/in/lucas-c-961610396/" target="_blank" rel="noopener" class="contact__card glass">
+                    <svg class="contact__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+                    <span class="contact__label">LinkedIn</span>
+                    <span class="contact__value mono">Lucas Carriat</span>
+                </a>
+
+                <a href="https://github.com/vRayzix" target="_blank" rel="noopener" class="contact__card glass">
+                    <svg class="contact__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+                    <span class="contact__label">GitHub</span>
+                    <span class="contact__value mono">vRayzix</span>
+                </a>
+            </div>
+
+            <div class="contact__location">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" width="18" height="18"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                <span>Mulhouse, France — 68200</span>
+            </div>
+
+            <a href="cv_lucas_carriat.pdf" download class="btn btn--primary contact__cv-btn">
+                <span class="btn__text">Télécharger mon CV</span>
+            </a>
+        </div>
+    </section>
+
+    <!-- ========== FOOTER ========== -->
+    <footer class="footer">
+        <div class="footer__inner">
+            <p class="footer__copy mono">&copy; 2025 — Lucas Carriat. Tous droits réservés.</p>
+            <div class="footer__links">
+                <a href="mailto:lucalexandrecrr@gmail.com">Email</a>
+                <a href="https://github.com/vRayzix" target="_blank" rel="noopener">GitHub</a>
+                <a href="https://www.linkedin.com/in/lucas-c-961610396/" target="_blank" rel="noopener">LinkedIn</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
