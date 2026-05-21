@@ -36,6 +36,7 @@
             <li><a href="#hero" class="nav__link active">Accueil</a></li>
             <li><a href="#parcours" class="nav__link">Parcours</a></li>
             <li><a href="#competences" class="nav__link">Compétences</a></li>
+            <li><a href="#apprentissages" class="nav__link">Apprentissages</a></li>
             <li><a href="#projets" class="nav__link">Projets</a></li>
             <li><a href="#contact" class="nav__link">Contact</a></li>
             <li>
@@ -226,6 +227,199 @@
         </div>
     </section>
 
+    <!-- ========== SECTION — APPRENTISSAGES (AC) ========== -->
+    <section class="section" id="apprentissages">
+        <div class="section__header reveal">
+            <p class="section__tag mono">// apprentissages_critiques</p>
+            <h2 class="section__title">Compétences Acquises</h2>
+            <p class="section__subtitle">Suivi des Apprentissages Critiques (AC) du B.U.T. R&amp;T</p>
+        </div>
+
+        <!-- Compteur de statuts -->
+        <div class="ac-stats reveal">
+            <div class="ac-stat ac-stat--acquise">
+                <span class="ac-stat__num" id="ac-count-acquise">0</span>
+                <span class="ac-stat__label">Acquises</span>
+            </div>
+            <div class="ac-stat ac-stat--encours">
+                <span class="ac-stat__num" id="ac-count-encours">0</span>
+                <span class="ac-stat__label">En cours</span>
+            </div>
+            <div class="ac-stat ac-stat--ameliorer">
+                <span class="ac-stat__num" id="ac-count-ameliorer">0</span>
+                <span class="ac-stat__label">À améliorer</span>
+            </div>
+        </div>
+
+        <!-- Filtres par catégorie -->
+        <div class="ac-filter reveal">
+            <button class="ac-filter__btn active" data-ac-filter="all">Toutes</button>
+            <button class="ac-filter__btn" data-ac-filter="AC11">AC11</button>
+            <button class="ac-filter__btn" data-ac-filter="AC12">AC12</button>
+            <button class="ac-filter__btn" data-ac-filter="AC13">AC13</button>
+        </div>
+
+        <div class="ac-grid">
+
+            <!-- ===== AC11 ===== -->
+            <article class="ac-card glass reveal" data-ac="AC11" data-status="acquise">
+                <div class="ac-card__top">
+                    <span class="ac-card__code mono">AC11.01</span>
+                    <span class="ac-card__badge ac-card__badge--acquise">Acquise</span>
+                </div>
+                <h3 class="ac-card__title">Maîtriser les lois fondamentales de l'électricité afin d'intervenir sur des équipements de réseaux et de télécommunications.</h3>
+                <p class="ac-card__desc">Acquis grâce aux TP en R1.04 d'électronique.</p>
+            </article>
+
+            <article class="ac-card glass reveal" data-ac="AC11" data-status="acquise">
+                <div class="ac-card__top">
+                    <span class="ac-card__code mono">AC11.02</span>
+                    <span class="ac-card__badge ac-card__badge--acquise">Acquise</span>
+                </div>
+                <h3 class="ac-card__title">Comprendre l'architecture et les fondements des systèmes numériques, des communications et de l'Internet.</h3>
+                <p class="ac-card__desc">Acquis grâce aux TP Python.</p>
+            </article>
+
+            <article class="ac-card glass reveal" data-ac="AC11" data-status="acquise">
+                <div class="ac-card__top">
+                    <span class="ac-card__code mono">AC11.03</span>
+                    <span class="ac-card__badge ac-card__badge--acquise">Acquise</span>
+                </div>
+                <h3 class="ac-card__title">Configurer les fonctions de base d'un réseau local.</h3>
+                <p class="ac-card__desc">Acquis grâce à la SAÉ 1.02, conception d'un réseau complet pour une entreprise.</p>
+            </article>
+
+            <article class="ac-card glass reveal" data-ac="AC11" data-status="acquise">
+                <div class="ac-card__top">
+                    <span class="ac-card__code mono">AC11.04</span>
+                    <span class="ac-card__badge ac-card__badge--acquise">Acquise</span>
+                </div>
+                <h3 class="ac-card__title">Interagir avec les systèmes d'exploitation pour la configuration et l'administration des réseaux et services.</h3>
+                <p class="ac-card__desc">Acquis via les TP Linux et machines virtuelles en R1.02, R1.08, R2.01 et R2.02, y compris pendant les TP réseaux.</p>
+            </article>
+
+            <article class="ac-card glass reveal" data-ac="AC11" data-status="acquise">
+                <div class="ac-card__top">
+                    <span class="ac-card__code mono">AC11.05</span>
+                    <span class="ac-card__badge ac-card__badge--acquise">Acquise</span>
+                </div>
+                <h3 class="ac-card__title">Identifier les dysfonctionnements d'un réseau local et savoir les signaler.</h3>
+                <p class="ac-card__desc">Facilité à détecter et résoudre les problèmes lors des TP réseaux et de la SAÉ 2.01 (R1.02, R1.05, R2.01).</p>
+            </article>
+
+            <article class="ac-card glass reveal" data-ac="AC11" data-status="acquise">
+                <div class="ac-card__top">
+                    <span class="ac-card__code mono">AC11.06</span>
+                    <span class="ac-card__badge ac-card__badge--acquise">Acquise</span>
+                </div>
+                <h3 class="ac-card__title">Installer un poste client et expliquer la procédure mise en place.</h3>
+                <p class="ac-card__desc">Maîtrisée grâce aux cours en R2.04.</p>
+            </article>
+
+            <!-- ===== AC12 ===== -->
+            <article class="ac-card glass reveal" data-ac="AC12" data-status="acquise">
+                <div class="ac-card__top">
+                    <span class="ac-card__code mono">AC12.01</span>
+                    <span class="ac-card__badge ac-card__badge--acquise">Acquise</span>
+                </div>
+                <h3 class="ac-card__title">Mesurer, analyser et commenter des signaux.</h3>
+                <p class="ac-card__desc">Acquis lors de la SAÉ 1.03 avec WiFi Analyzer et les heatmaps.</p>
+            </article>
+
+            <article class="ac-card glass reveal" data-ac="AC12" data-status="encours">
+                <div class="ac-card__top">
+                    <span class="ac-card__code mono">AC12.02</span>
+                    <span class="ac-card__badge ac-card__badge--encours">En cours</span>
+                </div>
+                <h3 class="ac-card__title">Caractériser des systèmes de transmission élémentaires et comprendre leur modélisation mathématique.</h3>
+                <p class="ac-card__desc ac-card__desc--empty">// note personnelle à compléter</p>
+            </article>
+
+            <article class="ac-card glass reveal" data-ac="AC12" data-status="acquise">
+                <div class="ac-card__top">
+                    <span class="ac-card__code mono">AC12.03</span>
+                    <span class="ac-card__badge ac-card__badge--acquise">Acquise</span>
+                </div>
+                <h3 class="ac-card__title">Déployer des supports de transmission.</h3>
+                <p class="ac-card__desc">Travaillée lors de la SAÉ 1.03 avec la configuration d'un point d'accès Wi-Fi.</p>
+            </article>
+
+            <article class="ac-card glass reveal" data-ac="AC12" data-status="encours">
+                <div class="ac-card__top">
+                    <span class="ac-card__code mono">AC12.04</span>
+                    <span class="ac-card__badge ac-card__badge--encours">En cours</span>
+                </div>
+                <h3 class="ac-card__title">Connecter les systèmes de ToIP.</h3>
+                <p class="ac-card__desc">Compétence abordée en cours, en cours d'acquisition.</p>
+            </article>
+
+            <article class="ac-card glass reveal" data-ac="AC12" data-status="acquise">
+                <div class="ac-card__top">
+                    <span class="ac-card__code mono">AC12.05</span>
+                    <span class="ac-card__badge ac-card__badge--acquise">Acquise</span>
+                </div>
+                <h3 class="ac-card__title">Communiquer avec un interlocuteur et adapter son discours.</h3>
+                <p class="ac-card__desc">Acquis lors de l'oral de la SAÉ 1.03, présentation des mesures et analyse des résultats.</p>
+            </article>
+
+            <!-- ===== AC13 ===== -->
+            <article class="ac-card glass reveal" data-ac="AC13" data-status="acquise">
+                <div class="ac-card__top">
+                    <span class="ac-card__code mono">AC13.01</span>
+                    <span class="ac-card__badge ac-card__badge--acquise">Acquise</span>
+                </div>
+                <h3 class="ac-card__title">Utiliser un système informatique et ses outils.</h3>
+                <p class="ac-card__desc">Acquis grâce à Linux et Windows en R1.08, R1.02 et R2.01.</p>
+            </article>
+
+            <article class="ac-card glass reveal" data-ac="AC13" data-status="encours">
+                <div class="ac-card__top">
+                    <span class="ac-card__code mono">AC13.02</span>
+                    <span class="ac-card__badge ac-card__badge--encours">En cours</span>
+                </div>
+                <h3 class="ac-card__title">Lire, exécuter, corriger et modifier un programme.</h3>
+                <p class="ac-card__desc">Sait lire et exécuter, mais la correction et la modification restent à progresser (R1.07, R2.08).</p>
+            </article>
+
+            <article class="ac-card glass reveal" data-ac="AC13" data-status="ameliorer">
+                <div class="ac-card__top">
+                    <span class="ac-card__code mono">AC13.03</span>
+                    <span class="ac-card__badge ac-card__badge--ameliorer">À améliorer</span>
+                </div>
+                <h3 class="ac-card__title">Traduire un algorithme dans un langage de programmation adapté.</h3>
+                <p class="ac-card__desc">Difficultés importantes observées en R1.07.</p>
+            </article>
+
+            <article class="ac-card glass reveal" data-ac="AC13" data-status="acquise">
+                <div class="ac-card__top">
+                    <span class="ac-card__code mono">AC13.04</span>
+                    <span class="ac-card__badge ac-card__badge--acquise">Acquise</span>
+                </div>
+                <h3 class="ac-card__title">Connaître l'architecture et les technologies d'un site web.</h3>
+                <p class="ac-card__desc">Acquis grâce à la SAÉ 1.01 (CV en HTML/CSS), R1.09 et R2.09.</p>
+            </article>
+
+            <article class="ac-card glass reveal" data-ac="AC13" data-status="ameliorer">
+                <div class="ac-card__top">
+                    <span class="ac-card__code mono">AC13.05</span>
+                    <span class="ac-card__badge ac-card__badge--ameliorer">À améliorer</span>
+                </div>
+                <h3 class="ac-card__title">Choisir les mécanismes de gestion de données adaptés et argumenter ses choix.</h3>
+                <p class="ac-card__desc">Des notions à consolider, vues en R1.13.</p>
+            </article>
+
+            <article class="ac-card glass reveal" data-ac="AC13" data-status="acquise">
+                <div class="ac-card__top">
+                    <span class="ac-card__code mono">AC13.06</span>
+                    <span class="ac-card__badge ac-card__badge--acquise">Acquise</span>
+                </div>
+                <h3 class="ac-card__title">S'intégrer dans un environnement de travail collaboratif.</h3>
+                <p class="ac-card__desc">Acquis grâce aux projets en groupe — SAÉ 1.01, 1.03 et 1.05.</p>
+            </article>
+
+        </div>
+    </section>
+
     <!-- ========== SECTION 04 — PROJETS ========== -->
     <section class="section" id="projets">
         <div class="section__header reveal">
@@ -238,6 +432,7 @@
             <button class="filter__btn active" data-filter="all">Tous</button>
             <button class="filter__btn" data-filter="cyber">Cyber</button>
             <button class="filter__btn" data-filter="reseaux">Réseaux</button>
+            <button class="filter__btn" data-filter="infra">Infra</button>
             <button class="filter__btn" data-filter="dev">Dev</button>
         </div>
 
@@ -301,6 +496,27 @@
                 </div>
                 <h3 class="project-card__title">Concours OSI — DYLO</h3>
                 <p class="project-card__desc">Conception d'une micro-hydrolienne (Vis d'Archimède) avec monitoring Arduino. Présenté devant le jury INSA.</p>
+                <span class="project-card__cta mono">Voir détails &rarr;</span>
+            </article>
+
+            <!-- PROJECT CARD 7 — VPS DigitalOcean & Zabbix -->
+            <article class="project-card glass reveal" data-category="infra" data-modal="modal-vps">
+                <div class="project-card__header">
+                    <span class="project-card__tag project-card__tag--infra">Infra</span>
+                    <span class="project-card__status">En production</span>
+                </div>
+                <h3 class="project-card__title">VPS DigitalOcean — Infra &amp; Supervision</h3>
+                <p class="project-card__desc">Déploiement d'un serveur VPS sous Debian, hébergement web Nginx et supervision temps réel avec Zabbix 7 via Docker.</p>
+                <span class="project-card__cta mono">Voir détails &rarr;</span>
+            </article>
+
+            <!-- PROJECT CARD 8 — SAÉ 2.02 Radio Internet ESP32 -->
+            <article class="project-card glass reveal" data-category="dev" data-modal="modal-esp32">
+                <div class="project-card__header">
+                    <span class="project-card__tag project-card__tag--dev">Dev</span>
+                </div>
+                <h3 class="project-card__title">SAÉ 2.02 — Radio Internet ESP32</h3>
+                <p class="project-card__desc">Conception d'une radio internet sur microcontrôleur ESP32 avec codec audio VS1053, protocole MQTT et affichage LCD.</p>
                 <span class="project-card__cta mono">Voir détails &rarr;</span>
             </article>
 
@@ -517,6 +733,137 @@
                     </ul>
                     <h4>Présentation</h4>
                     <p>Projet présenté devant le jury de l'INSA dans le cadre du concours OSI.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal: VPS DigitalOcean & Zabbix -->
+    <div class="modal" id="modal-vps" aria-hidden="true">
+        <div class="modal__overlay"></div>
+        <div class="modal__container glass">
+            <button class="modal__close" aria-label="Fermer">&times;</button>
+            <div class="modal__content">
+                <div class="modal__tag-row">
+                    <span class="project-card__tag project-card__tag--infra">Infra</span>
+                    <span class="project-card__status">En production</span>
+                </div>
+                <h2 class="modal__title">VPS DigitalOcean — Infra &amp; Supervision</h2>
+                <p class="modal__subtitle mono">Debian 13 &bull; Nginx &bull; Docker &bull; Zabbix 7.4</p>
+                <div class="modal__body">
+                    <p>Déploiement d'un serveur privé virtuel (VPS) sur DigitalOcean, de la mise en service à la supervision en temps réel. Le serveur héberge un site web statique et une stack de monitoring complète conteneurisée.</p>
+
+                    <h4>Stack technique</h4>
+                    <ul>
+                        <li><strong>OS :</strong> Debian 13</li>
+                        <li><strong>Serveur web :</strong> Nginx (site statique)</li>
+                        <li><strong>Conteneurs :</strong> Docker &amp; docker-compose</li>
+                        <li><strong>Supervision :</strong> Zabbix 7.4 + PostgreSQL</li>
+                        <li><strong>Sécurité :</strong> UFW, durcissement SSH</li>
+                    </ul>
+
+                    <h4>Ce qui a été fait</h4>
+                    <ul>
+                        <li>Provisioning d'un Droplet DigitalOcean</li>
+                        <li>Sécurisation SSH et pare-feu UFW</li>
+                        <li>Déploiement d'un site statique servi par Nginx</li>
+                        <li>Stack Zabbix complète via docker-compose (server + web + agent + PostgreSQL)</li>
+                        <li>Configuration de l'agent Zabbix : monitoring CPU / RAM / disque en temps réel</li>
+                    </ul>
+
+                    <div class="modal__image-wrapper">
+                        <img src="vps-droplet-digitalocean.png" alt="Droplet Debian sur DigitalOcean" loading="lazy">
+                        <span class="modal__image-caption mono">Droplet Debian provisionné — FRA1, 1 Go RAM, 25 Go SSD</span>
+                    </div>
+
+                    <div class="modal__image-wrapper">
+                        <img src="vps-nginx-status.png" alt="Service Nginx actif sur le serveur" loading="lazy">
+                        <span class="modal__image-caption mono">Service Nginx actif et opérationnel (systemctl status)</span>
+                    </div>
+
+                    <div class="modal__image-wrapper">
+                        <img src="zabbix-supervision.png" alt="Dashboard de supervision Zabbix" loading="lazy">
+                        <span class="modal__image-caption mono">Supervision temps réel — graphes mémoire via Zabbix</span>
+                    </div>
+
+                    <h4>Compétences</h4>
+                    <ul>
+                        <li>Administration de serveur Linux</li>
+                        <li>Conteneurisation Docker</li>
+                        <li>Supervision réseau &amp; métrologie</li>
+                        <li>Sécurisation d'un serveur exposé</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal: SAÉ 2.02 Radio Internet ESP32 -->
+    <div class="modal" id="modal-esp32" aria-hidden="true">
+        <div class="modal__overlay"></div>
+        <div class="modal__container glass">
+            <button class="modal__close" aria-label="Fermer">&times;</button>
+            <div class="modal__content">
+                <span class="project-card__tag project-card__tag--dev">Dev</span>
+                <h2 class="modal__title">SAÉ 2.02 — Radio Internet ESP32</h2>
+                <p class="modal__subtitle mono">ESP32 &bull; VS1053 &bull; MQTT &bull; LCD I2C</p>
+                <div class="modal__body">
+                    <p>Conception d'une radio internet embarquée sur microcontrôleur ESP32. L'appareil se connecte au Wi-Fi, lit des flux audio en streaming et se pilote à distance via le protocole MQTT.</p>
+
+                    <div class="modal__image-wrapper">
+                        <img src="esp32-boitier-radio.jpg" alt="Radio internet ESP32 terminée dans son boîtier" loading="lazy">
+                        <span class="modal__image-caption mono">La radio terminée — boîtier, écran OLED et haut-parleur</span>
+                    </div>
+
+                    <h4>Hardware</h4>
+                    <ul>
+                        <li><strong>Carte :</strong> Adafruit HUZZAH32 (ESP32)</li>
+                        <li><strong>Codec audio :</strong> VS1053 (décodage MP3 / AAC)</li>
+                        <li><strong>Sortie :</strong> haut-parleurs</li>
+                        <li><strong>Affichage :</strong> écran LCD I2C</li>
+                    </ul>
+
+                    <div class="modal__image-wrapper">
+                        <img src="esp32-carte-oled.jpg" alt="Carte ESP32 HUZZAH32 et écran OLED" loading="lazy">
+                        <span class="modal__image-caption mono">Carte ESP32 (Adafruit HUZZAH32) et écran OLED I2C</span>
+                    </div>
+
+                    <h4>Ce qui a été fait</h4>
+                    <ul>
+                        <li>Programmation de l'ESP32 en C++ / Arduino</li>
+                        <li>Streaming audio via Wi-Fi</li>
+                        <li>Décodage MP3 / AAC avec le codec VS1053</li>
+                        <li>Interface MQTT pour le contrôle à distance</li>
+                        <li>Ajout d'un écran LCD affichant la station en cours</li>
+                    </ul>
+
+                    <div class="modal__image-wrapper">
+                        <img src="esp32-demarrage-wifi.jpg" alt="Écran OLED au démarrage, connexion WiFi" loading="lazy">
+                        <span class="modal__image-caption mono">Démarrage — ESP32 + VS1053, connexion WiFi en cours</span>
+                    </div>
+
+                    <div class="modal__image-wrapper">
+                        <img src="esp32-wifi-connecte.jpg" alt="Écran OLED, WiFi connecté avec adresse IP" loading="lazy">
+                        <span class="modal__image-caption mono">WiFi connecté — adresse IP obtenue (192.168.1.78)</span>
+                    </div>
+
+                    <div class="modal__image-wrapper">
+                        <img src="esp32-lecture-station.jpg" alt="Écran OLED en lecture, station Skyrock" loading="lazy">
+                        <span class="modal__image-caption mono">Lecture en cours — station Skyrock, volume &amp; égaliseur</span>
+                    </div>
+
+                    <div class="modal__image-wrapper">
+                        <img src="esp32-app-controle.jpg" alt="Application mobile de contrôle de la radio" loading="lazy">
+                        <span class="modal__image-caption mono">Application de contrôle à distance via MQTT</span>
+                    </div>
+
+                    <h4>Compétences</h4>
+                    <ul>
+                        <li>IoT &amp; objets connectés</li>
+                        <li>Programmation embarquée</li>
+                        <li>Protocoles réseau (MQTT, streaming)</li>
+                        <li>Électronique</li>
+                    </ul>
                 </div>
             </div>
         </div>

@@ -95,6 +95,44 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     /* ----------------------------------------------------------
+       4b. APPRENTISSAGES (AC) — FILTRE + COMPTEUR DE STATUTS
+    ---------------------------------------------------------- */
+    const acFilterBtns = document.querySelectorAll('.ac-filter__btn');
+    const acCards      = document.querySelectorAll('.ac-card');
+
+    acFilterBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            const filter = btn.dataset.acFilter;
+
+            acFilterBtns.forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+
+            acCards.forEach(card => {
+                if (filter === 'all' || card.dataset.ac === filter) {
+                    card.classList.remove('hidden');
+                } else {
+                    card.classList.add('hidden');
+                }
+            });
+        });
+    });
+
+    // Compteur de statuts (calculé depuis les cartes)
+    const acCounts = { acquise: 0, encours: 0, ameliorer: 0 };
+    acCards.forEach(card => {
+        const status = card.dataset.status;
+        if (acCounts[status] !== undefined) acCounts[status]++;
+    });
+
+    const setCount = (id, value) => {
+        const el = document.getElementById(id);
+        if (el) el.textContent = value;
+    };
+    setCount('ac-count-acquise', acCounts.acquise);
+    setCount('ac-count-encours', acCounts.encours);
+    setCount('ac-count-ameliorer', acCounts.ameliorer);
+
+    /* ----------------------------------------------------------
        5. MODALS
     ---------------------------------------------------------- */
     const allModals = document.querySelectorAll('.modal');
@@ -187,7 +225,7 @@ document.addEventListener('DOMContentLoaded', () => {
        8. NEON PROXIMITY (OPTIMISÉ)
     ---------------------------------------------------------- */
     if (window.matchMedia("(pointer: fine)").matches) {
-        document.querySelectorAll('.project-card, .skill-card').forEach(card => {
+        document.querySelectorAll('.project-card, .skill-card, .ac-card').forEach(card => {
             card.addEventListener('mousemove', e => {
                 // requestAnimationFrame empêche le lag en synchronisant avec l'écran
                 window.requestAnimationFrame(() => {

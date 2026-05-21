@@ -677,6 +677,212 @@ ul {
     border: 1px solid rgba(0, 240, 255, 0.15);
 }
 
+/* --- APPRENTISSAGES (AC) --- */
+.ac-stats {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-bottom: 32px;
+}
+
+.ac-stat {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    flex: 1 1 96px;
+    min-width: 96px;
+    max-width: 200px;
+    padding: 18px 14px;
+    border-radius: 14px;
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    transition: all 0.35s var(--ease-out);
+}
+
+.ac-stat:hover {
+    transform: translateY(-3px);
+}
+
+.ac-stat__num {
+    font-family: var(--font-display);
+    font-size: 2rem;
+    font-weight: 700;
+    line-height: 1;
+}
+
+.ac-stat__label {
+    font-family: var(--font-mono);
+    font-size: 0.62rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    text-align: center;
+}
+
+.ac-stat--acquise            { border-color: rgba(40, 200, 100, 0.3); }
+.ac-stat--acquise .ac-stat__num   { color: #28C840; }
+.ac-stat--encours            { border-color: rgba(255, 176, 38, 0.3); }
+.ac-stat--encours .ac-stat__num   { color: #FFB026; }
+.ac-stat--ameliorer          { border-color: rgba(255, 95, 87, 0.35); }
+.ac-stat--ameliorer .ac-stat__num { color: #FF5F57; }
+
+/* AC filter buttons (separate handler from project filter) */
+.ac-filter {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 32px;
+}
+
+.ac-filter__btn {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: 8px 20px;
+    border-radius: 20px;
+    border: 1px solid var(--glass-border);
+    background: transparent;
+    color: var(--text-secondary);
+    cursor: pointer;
+    transition: all 0.3s var(--ease-smooth);
+}
+
+.ac-filter__btn:hover {
+    border-color: var(--neon-uv);
+    color: var(--neon-uv);
+}
+
+.ac-filter__btn.active {
+    background: var(--neon-uv);
+    color: var(--void);
+    border-color: var(--neon-uv);
+    box-shadow: 0 0 15px var(--neon-uv-dim);
+}
+
+/* AC grid + cards */
+.ac-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+}
+
+.ac-card {
+    padding: 22px 22px 22px 28px;
+    transition: all 0.35s var(--ease-out);
+    overflow: hidden;
+}
+
+.ac-card::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 3px;
+    background: var(--text-muted);
+}
+
+.ac-card[data-status="acquise"]::before   { background: #28C840; }
+.ac-card[data-status="encours"]::before   { background: #FFB026; }
+.ac-card[data-status="ameliorer"]::before { background: #FF5F57; }
+
+.ac-card:hover {
+    border-color: var(--neon-uv);
+    transform: translateY(-4px);
+    box-shadow: 0 10px 40px rgba(176, 38, 255, 0.15);
+}
+
+.ac-card.hidden {
+    display: none;
+}
+
+.ac-card__top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    margin-bottom: 12px;
+    position: relative;
+    z-index: 1;
+}
+
+.ac-card__code {
+    color: var(--cyber-cyan);
+    font-size: 0.8rem;
+    font-weight: 500;
+}
+
+.ac-card__badge {
+    font-family: var(--font-mono);
+    font-size: 0.6rem;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    padding: 4px 10px;
+    border-radius: 20px;
+    white-space: nowrap;
+}
+
+.ac-card__badge--acquise {
+    color: #28C840;
+    border: 1px solid rgba(40, 200, 100, 0.3);
+    background: rgba(40, 200, 100, 0.08);
+}
+
+.ac-card__badge--encours {
+    color: #FFB026;
+    border: 1px solid rgba(255, 176, 38, 0.3);
+    background: rgba(255, 176, 38, 0.08);
+}
+
+.ac-card__badge--ameliorer {
+    color: #FF5F57;
+    border: 1px solid rgba(255, 95, 87, 0.35);
+    background: rgba(255, 95, 87, 0.08);
+}
+
+.ac-card__title {
+    font-family: var(--font-display);
+    font-size: 0.98rem;
+    font-weight: 600;
+    line-height: 1.4;
+    margin-bottom: 10px;
+    position: relative;
+    z-index: 1;
+}
+
+.ac-card__desc {
+    color: var(--text-muted);
+    font-size: 0.85rem;
+    line-height: 1.6;
+    padding-left: 14px;
+    position: relative;
+    z-index: 1;
+}
+
+.ac-card__desc::before {
+    content: '\203A';
+    position: absolute;
+    left: 0;
+    color: var(--neon-uv);
+    font-family: var(--font-mono);
+}
+
+.ac-card__desc--empty {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    font-style: italic;
+    padding-left: 0;
+    opacity: 0.65;
+}
+
+.ac-card__desc--empty::before {
+    content: '';
+}
+
 /* --- FILTER BUTTONS --- */
 .filter {
     display: flex;
@@ -770,11 +976,29 @@ ul {
     background: rgba(255, 176, 38, 0.05);
 }
 
+.project-card__tag--infra {
+    color: #C792EA;
+    border: 1px solid rgba(157, 78, 221, 0.35);
+    background: rgba(106, 13, 173, 0.18);
+}
+
 .project-card__rank {
     font-family: var(--font-mono);
     font-size: 0.7rem;
     color: var(--cyber-cyan);
     font-weight: 600;
+}
+
+.project-card__status {
+    font-family: var(--font-mono);
+    font-size: 0.6rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #28C840;
+    border: 1px solid rgba(40, 200, 100, 0.3);
+    background: rgba(40, 200, 100, 0.08);
+    padding: 3px 10px;
+    border-radius: 20px;
 }
 
 .project-card__title {
@@ -967,6 +1191,36 @@ ul {
 .modal__download {
     margin-top: 24px;
     text-align: center;
+}
+
+.modal__tag-row {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 4px;
+}
+
+.modal__placeholder {
+    margin: 24px 0 4px;
+    padding: 32px 20px;
+    border: 1px dashed rgba(176, 38, 255, 0.25);
+    border-radius: 12px;
+    text-align: center;
+    background: rgba(0, 0, 0, 0.25);
+}
+
+.modal__placeholder-icon {
+    font-size: 1.7rem;
+    margin-bottom: 8px;
+    opacity: 0.7;
+}
+
+.modal__placeholder .modal__placeholder-text {
+    color: var(--text-muted);
+    font-size: 0.72rem;
+    line-height: 1.6;
+    margin-bottom: 0;
 }
 
 /* Body scroll lock when modal is open */
@@ -1189,6 +1443,10 @@ body.modal-open {
         grid-template-columns: repeat(2, 1fr);
     }
 
+    .ac-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
     .contact__layout {
         flex-direction: row;
         align-items: flex-start;
@@ -1288,6 +1546,10 @@ body.modal-open {
 
     /* 3 columns for project grid */
     .projects-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .ac-grid {
         grid-template-columns: repeat(3, 1fr);
     }
 
