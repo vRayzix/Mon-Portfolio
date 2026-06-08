@@ -903,6 +903,74 @@ details.project-detail[open] > summary::before {
     opacity: 0.8;
 }
 
+.project-detail__body h5 {
+    font-family: var(--font-display);
+    font-size: 0.88rem;
+    font-weight: 600;
+    color: var(--cyber-cyan);
+    margin-top: 16px;
+    margin-bottom: 8px;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+}
+
+.project-detail__table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 12px 0 18px;
+    font-size: 0.85rem;
+}
+
+.project-detail__table th,
+.project-detail__table td {
+    padding: 8px 12px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    vertical-align: top;
+    line-height: 1.5;
+}
+
+.project-detail__table th {
+    background: rgba(176, 38, 255, 0.12);
+    color: var(--text-primary);
+    font-weight: 600;
+    text-align: left;
+}
+
+.project-detail__table td {
+    color: var(--text-secondary);
+}
+
+.project-detail__table td strong {
+    color: var(--text-primary);
+}
+
+.project-detail__note {
+    font-size: 0.82rem;
+    color: var(--text-muted);
+    border-left: 2px solid var(--neon-uv);
+    padding: 6px 12px;
+    margin-bottom: 18px;
+    background: rgba(176, 38, 255, 0.05);
+    border-radius: 0 6px 6px 0;
+}
+
+.project-detail__note a {
+    color: var(--cyber-cyan);
+    text-decoration: underline;
+}
+
+.project-item__github-link {
+    display: inline-block;
+    margin-top: 8px;
+    font-size: 0.82rem;
+    color: var(--cyber-cyan);
+    text-decoration: none;
+    opacity: 0.85;
+    transition: opacity 0.2s;
+}
+
+.project-item__github-link:hover { opacity: 1; }
+
 .project-detail__download {
     margin-top: 20px;
 }

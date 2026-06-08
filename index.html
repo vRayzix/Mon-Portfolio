@@ -700,55 +700,94 @@
                         <span class="project-item__semester mono">SAÉ 2.03 · S2</span>
                     </div>
                     <h3 class="project-item__title">Gestion du Trafic Aérien — Django &amp; MariaDB</h3>
-                    <p class="project-item__desc">Application web de gestion du trafic aérien développée en Django, déployée sur deux VMs Debian (VM-BDD et VM-Django) avec Nginx + Gunicorn et un schéma relationnel 6 entités.</p>
+                    <p class="project-item__desc">Application web de gestion du trafic aérien (CRUD 6 entités, logique métier, import CSV, fiches imprimables) déployée en production sur deux VMs Debian. Rôle : infrastructure, déploiement Nginx/Gunicorn, front-end, import/export. <strong>UE3 – Créer des outils et applications informatiques pour les R&amp;T.</strong></p>
                     <p class="project-item__acs mono">AC13.01 · AC13.02 · AC13.04 · AC13.05 · AC13.06</p>
                 </div>
                 <details class="project-detail">
-                    <summary>Voir les détails techniques</summary>
+                    <summary>Voir le portfolio complet</summary>
                     <div class="project-detail__body">
-                        <h4>Infrastructure (VirtualBox)</h4>
+
+                        <h4>1. Contexte du projet</h4>
+                        <p>Cette SAÉ consistait à développer, en équipe de trois, une application web de <strong>gestion du trafic aérien</strong> : un gestionnaire doit pouvoir administrer des aéroports, des pistes, des compagnies, des types d'avions, des avions et des vols, avec un CRUD complet pour chaque entité. Au-delà de la gestion de données, le sujet imposait une logique métier (vérifier qu'une piste compatible est libre à l'arrivée — occupation de 10 minutes par avion), un import de vols par fichier et la génération de fiches de vols imprimables. L'application devait être déployée « comme en production » sur machine virtuelle avec Nginx et Gunicorn — le cœur de la compétence UE3.</p>
+
+                        <table class="project-detail__table">
+                            <thead><tr><th>Membre</th><th>Périmètre</th></tr></thead>
+                            <tbody>
+                                <tr><td><strong>Moi</strong></td><td>Infrastructure VM, déploiement Nginx/Gunicorn, front-end (templates, CSS, tableau de bord), import CSV, fiches de vols, documentation technique.</td></tr>
+                                <tr><td>Adil</td><td>Back-end Django : modèles, formulaires, vues CRUD et logique des 10 minutes (suggestion de créneau).</td></tr>
+                                <tr><td>Adel</td><td>Schéma SQL (<code>schema.sql</code>), création et alimentation de la base (<code>donnees.sql</code>), tests de robustesse.</td></tr>
+                            </tbody>
+                        </table>
+                        <p>Outils communs : <strong>Git/GitHub</strong> pour le code, <strong>ClickUp</strong> pour le planning (Gantt), <strong>VirtualBox</strong> pour les VMs.</p>
+
+                        <h4>2. Mes tâches personnelles</h4>
+
+                        <h5>2.1 Infrastructure et réseau (deux VM)</h5>
                         <ul>
-                            <li><strong>VM-BDD (Debian) :</strong> serveur MariaDB — bind-address 0.0.0.0, utilisateur <code>django_user@'%'</code> avec les droits sur la base <code>django_db</code></li>
-                            <li><strong>VM-Django (Debian) :</strong> application Django + serveur Nginx en reverse proxy, Gunicorn WSGI en service systemd</li>
-                            <li>Communication entre VMs via réseau interne VirtualBox (NAT + Host-Only)</li>
+                            <li>Mise en place de deux machines virtuelles Debian sous VirtualBox : une VM « BDD » (MariaDB seule) et une VM « Django » (Nginx + Gunicorn + application).</li>
+                            <li>Passage en <strong>mode pont</strong> : chaque VM reçoit une IP du réseau de la salle via DHCP, rendant le site joignable depuis n'importe quel poste.</li>
+                            <li>Configuration de MariaDB pour accepter les connexions distantes (<code>bind-address = 0.0.0.0</code>, utilisateur <code>django_user@'%'</code>).</li>
                         </ul>
 
-                        <h4>Modèle de données — 6 entités</h4>
+                        <h5>2.2 Déploiement Nginx + Gunicorn + systemd</h5>
                         <ul>
-                            <li>Aéroports (code IATA, nom, ville, pays)</li>
-                            <li>Pistes (numéro, longueur, orientation, aéroport FK)</li>
-                            <li>Compagnies aériennes (IATA, nom, pays)</li>
-                            <li>Types d'avions (modèle, capacité, constructeur)</li>
-                            <li>Avions (immatriculation, type FK, compagnie FK)</li>
-                            <li>Vols (numéro, départ FK, arrivée FK, avion FK, horaires, statut)</li>
+                            <li>Mise en place de Gunicorn (WSGI) en remplacement du <code>runserver</code> de développement, et de Nginx en reverse proxy.</li>
+                            <li>Configuration des blocs <code>/static/</code> et <code>/media/</code> dans Nginx, et de <code>collectstatic</code> côté Django (<code>STATIC_ROOT</code>).</li>
+                            <li>Création d'un service systemd avec <code>systemctl enable</code> pour un redémarrage automatique après reboot.</li>
+                            <li>Rédaction de <code>DEPLOIEMENT.md</code> — procédure complète et reproductible de A à Z.</li>
                         </ul>
 
-                        <h4>Application Django</h4>
+                        <h5>2.3 Front-end et expérience utilisateur</h5>
                         <ul>
-                            <li><strong>base.html :</strong> navigation sidebar + barre du haut, thème sombre, hérité par toutes les pages</li>
-                            <li><strong>Pages liste :</strong> une par entité, avec liens vers détail/édition/suppression</li>
-                            <li><strong>Formulaire générique réutilisable :</strong> même template pour create/update sur les 6 entités</li>
-                            <li><strong>Confirmation de suppression :</strong> page dédiée avec retour sécurisé</li>
-                            <li><strong>Dashboard :</strong> compteurs dynamiques (nb vols, avions, compagnies)</li>
-                            <li><strong>Import CSV (<code>import_vols_csv</code>) :</strong> lecture UTF-8, correspondance par nom, collecte d'erreurs par ligne, guide de format affiché sur la page</li>
-                            <li><strong>Fiche vols (<code>fiche_vols</code>) :</strong> filtre aéroport/date/direction + feuille <code>@media print</code></li>
+                            <li>Conception du gabarit commun <code>base.html</code> (barre de navigation + barre latérale) hérité par toutes les pages.</li>
+                            <li>Création des pages de liste (aéroports, pistes, compagnies, types d'avions, avions, vols), d'un formulaire générique réutilisé pour tous les CRUD et de la page de confirmation de suppression.</li>
+                            <li>Tableau de bord d'accueil avec compteurs dynamiques interrogeant la base en temps réel.</li>
+                            <li>Réécriture du style en CSS séparé (<code>style.css</code>, thème sombre à barre latérale), indépendant de Bootstrap.</li>
                         </ul>
 
-                        <h4>Déploiement production</h4>
+                        <h5>2.4 Import CSV et fiches de vols</h5>
                         <ul>
-                            <li>Service systemd <code>gunicorn.service</code> avec <code>systemctl enable</code> pour démarrage automatique</li>
-                            <li>Nginx : bloc <code>location /static/</code> pour servir les fichiers statiques, proxy_pass vers 127.0.0.1:8000</li>
-                            <li><code>python manage.py collectstatic</code> avec <code>STATIC_ROOT</code> configuré</li>
-                            <li>Documentation <code>DEPLOIEMENT.md</code> rédigée par Yassine (procédure reproductible)</li>
+                            <li>Module <code>import_vols_csv</code> : lecture UTF-8, correspondance des avions et aéroports par nom, collecte d'erreurs ligne par ligne sans interrompre l'import.</li>
+                            <li>Mode d'emploi du format CSV intégré directement en préambule de la page d'import.</li>
+                            <li>Page <code>fiche_vols</code> : filtrage par aéroport, date et sens (départs/arrivées) + feuille <code>@media print</code> pour impression propre.</li>
                         </ul>
 
-                        <h4>Débogage documenté</h4>
+                        <h5>2.5 Gestion de version et coordination</h5>
                         <ul>
-                            <li><strong>502 Bad Gateway :</strong> diagnostic via <code>ss -tlnp</code> (port 8000 absent) → <code>curl 127.0.0.1:8000</code> → logs Nginx → Gunicorn non démarré</li>
-                            <li><strong>ModuleNotFoundError: pymysql :</strong> venv non activé avant <code>gunicorn</code></li>
-                            <li><strong>Conflit Git dans settings.py :</strong> marqueurs de fusion non résolus cassant le parse Python</li>
-                            <li><strong>systemctl enable :</strong> unité non enregistrée car chemin absolu manquant dans le service file</li>
+                            <li>Tenue du dépôt GitHub, résolution des conflits de fusion (notamment dans <code>settings.py</code>), synchronisation du code sur les VMs.</li>
+                            <li>Planification via diagramme de Gantt (ClickUp) et intégration des corrections du professeur (base SQL manuelle plutôt que migrations Django).</li>
                         </ul>
+
+                        <h4>3. Preuves d'acquisition de compétences — UE3</h4>
+                        <table class="project-detail__table">
+                            <thead><tr><th>Composante essentielle</th><th>Preuve concrète</th></tr></thead>
+                            <tbody>
+                                <tr><td><strong>Suivre une démarche de développement rigoureuse</strong></td><td>Front-end structuré autour d'un gabarit hérité (<code>base.html</code>) et d'un formulaire générique réutilisé, évitant la duplication entre les six CRUD.</td></tr>
+                                <tr><td><strong>Utiliser des outils et technologies adaptés</strong></td><td>Architecture Nginx + Gunicorn (au lieu de <code>runserver</code>) + service systemd : chaîne serveur conforme aux pratiques de production.</td></tr>
+                                <tr><td><strong>S'appuyer sur une base de données</strong></td><td>Connexion à MariaDB via PyMySQL, interrogation en temps réel (compteurs du tableau de bord, fiches de vols filtrées).</td></tr>
+                                <tr><td><strong>Intégrer les bonnes pratiques (sécurité, robustesse)</strong></td><td>Import CSV tolérant aux erreurs (collecte ligne par ligne), gestion de <code>ALLOWED_HOSTS</code>, séparation application / base sur deux VMs.</td></tr>
+                                <tr><td><strong>Documenter le travail réalisé</strong></td><td>Rédaction de <code>DEPLOIEMENT.md</code>, mode d'emploi CSV intégré en page, procédure reproductible de A à Z.</td></tr>
+                                <tr><td><strong>Travailler en équipe avec des outils adaptés</strong></td><td>Gestion du dépôt GitHub, résolution de conflits de fusion, planification via diagramme de Gantt sur ClickUp.</td></tr>
+                            </tbody>
+                        </table>
+
+                        <h5>Analyse réflexive — difficultés et résolution</h5>
+                        <p>Le déploiement a été la partie la plus formatrice : les problèmes ne venaient pas du code applicatif mais de l'environnement. J'ai appris à diagnostiquer en couches plutôt qu'à essayer au hasard.</p>
+                        <table class="project-detail__table">
+                            <thead><tr><th>Problème</th><th>Diagnostic et solution</th></tr></thead>
+                            <tbody>
+                                <tr><td><strong>Nginx renvoyait 502 Bad Gateway</strong></td><td>Nginx ne joignait pas Gunicorn. Diagnostic couche par couche : <code>ss -tlnp</code> (port 8000 absent) → <code>curl 127.0.0.1:8000</code> → logs Nginx → Gunicorn non démarré.</td></tr>
+                                <tr><td><strong>ModuleNotFoundError: pymysql</strong></td><td>Gunicorn lancé hors du virtualenv. Solution : activer le venv avant de démarrer Gunicorn.</td></tr>
+                                <tr><td><strong>Conflit de fusion dans settings.py</strong></td><td>Marqueurs de conflit non résolus cassant le parse Python (<code>ALLOWED_HOSTS</code>, <code>HOST</code> de la base). Résolution propre des conflits Git apprise.</td></tr>
+                                <tr><td><strong>Gunicorn ne survivait pas au reboot</strong></td><td>Unité systemd non enregistrée. Mise en place de <code>systemctl enable</code> avec chemin absolu dans le service file.</td></tr>
+                            </tbody>
+                        </table>
+                        <p><em>Ce que je retiens : un service web ne se résume pas au code. Sa valeur tient aussi à sa capacité à être déployé, reproduit et maintenu — d'où l'importance de la documentation et d'une méthode de diagnostic ordonnée.</em></p>
+
+                        <h4>4. English summary</h4>
+                        <p>As part of the SAÉ 2.03 project, my team of three built an air-traffic management web application using Django and a MariaDB database. The application offers full CRUD operations for six entities (airports, runways, airlines, aircraft types, aircraft and flights), enforces a business rule that checks whether a suitable runway is free on arrival (a runway stays busy for ten minutes after a landing) and suggests a later slot otherwise, supports bulk flight import from a CSV file, and generates printable flight sheets.</p>
+                        <p>My personal responsibility was the infrastructure, deployment and user-facing side of the project. I set up two Debian virtual machines in bridged networking mode — one running MariaDB, the other running the Django application behind Gunicorn and Nginx — and configured a systemd service so the application restarts automatically after a reboot. I designed the front-end (shared template, sidebar layout, separate CSS theme and a dynamic dashboard), implemented the CSV import and the printable flight sheets, and wrote the deployment documentation so that the whole environment can be reproduced from scratch.</p>
+                        <p>The most valuable part of the project was deployment troubleshooting (502 errors, virtual-environment issues, merge conflicts), which taught me to diagnose problems layer by layer and reinforced how important clear documentation and a clean Git workflow are when working as a team.</p>
 
                         <h4>Captures d'écran</h4>
                         <div class="project-detail__images">
@@ -786,31 +825,49 @@
                 <div class="project-item__header">
                     <div class="project-item__tags">
                         <span class="project-card__tag project-card__tag--infra">Infra</span>
+                        <span class="project-card__tag project-card__tag--cyber">Cyber</span>
                         <span class="project-card__status">En production</span>
                     </div>
-                    <h3 class="project-item__title">VPS DigitalOcean — Infra &amp; Supervision</h3>
-                    <p class="project-item__desc">Déploiement d'un serveur VPS Debian, hébergement Nginx et supervision temps réel avec Zabbix 7 via Docker.</p>
-                    <p class="project-item__acs mono">AC11.04 · AC13.01</p>
+                    <h3 class="project-item__title">Homelab Cyber — VPS &amp; SIEM distribué</h3>
+                    <p class="project-item__desc">Infrastructure de sécurité distribuée : VPS DigitalOcean (Caddy, CrowdSec, Prometheus/Grafana, Vaultwarden) relié via tunnel WireGuard à une VM locale hébergeant un SIEM Wazuh complet (OpenSearch + Dashboard).</p>
+                    <p class="project-item__acs mono">AC11.04 · AC11.05 · AC13.01</p>
+                    <a class="project-item__github-link" href="https://github.com/vRayzix/projet-cyber-homelab" target="_blank" rel="noopener">→ Documentation complète &amp; à jour sur GitHub</a>
                 </div>
                 <details class="project-detail">
                     <summary>Voir les détails techniques</summary>
                     <div class="project-detail__body">
-                        <h4>Stack technique</h4>
+                        <p class="project-detail__note">Cette page présente un aperçu — la stack a évolué depuis les captures ci-dessous. La documentation complète et la configuration actuelle sont disponibles sur <a href="https://github.com/vRayzix/projet-cyber-homelab" target="_blank" rel="noopener">GitHub → projet-cyber-homelab</a>.</p>
+
+                        <h4>Architecture distribuée</h4>
+                        <table class="project-detail__table">
+                            <thead><tr><th>Composant</th><th>Rôle</th><th>Statut</th></tr></thead>
+                            <tbody>
+                                <tr><td><strong>VPS DigitalOcean FRA1</strong></td><td>Debian 12 — 2 vCPU / 4 Go RAM — point d'entrée public</td><td>✅ Actif</td></tr>
+                                <tr><td><strong>Caddy</strong></td><td>Reverse proxy HTTPS automatique (DNS-01), 3 sous-domaines exposés</td><td>✅ Actif</td></tr>
+                                <tr><td><strong>WireGuard</strong></td><td>Tunnel chiffré VPS ↔ VM locale (10.0.0.1 ↔ 10.0.0.2)</td><td>✅ Actif</td></tr>
+                                <tr><td><strong>CrowdSec</strong></td><td>IDS comportemental + bouncer iptables (blocage IP automatique)</td><td>✅ Actif</td></tr>
+                                <tr><td><strong>Prometheus + Grafana</strong></td><td>Monitoring temps réel CPU/RAM/disque via Node Exporter</td><td>✅ Actif</td></tr>
+                                <tr><td><strong>Vaultwarden</strong></td><td>Gestionnaire de secrets auto-hébergé (compatible Bitwarden)</td><td>✅ Actif</td></tr>
+                                <tr><td><strong>Wazuh SIEM (VM locale)</strong></td><td>Manager + OpenSearch + Dashboard — logs agrégés via tunnel chiffré</td><td>✅ Actif</td></tr>
+                            </tbody>
+                        </table>
+
+                        <h4>Sécurité et durcissement</h4>
                         <ul>
-                            <li><strong>OS :</strong> Debian 13</li>
-                            <li><strong>Serveur web :</strong> Nginx (site statique)</li>
-                            <li><strong>Conteneurs :</strong> Docker &amp; docker-compose</li>
-                            <li><strong>Supervision :</strong> Zabbix 7.4 + PostgreSQL</li>
-                            <li><strong>Sécurité :</strong> UFW, durcissement SSH (port custom, auth par clé)</li>
+                            <li>SSH sur port 2222, authentification par clé uniquement (mots de passe désactivés)</li>
+                            <li>Score Lynis : 68/100 après durcissement Linux</li>
+                            <li>Defense-in-depth : Caddy (HTTPS obligatoire) → CrowdSec (analyse comportementale) → Wazuh (corrélation d'événements)</li>
+                            <li>Isolation SIEM : le Wazuh Manager n'est jamais exposé directement sur Internet — il reçoit les logs via le tunnel WireGuard</li>
                         </ul>
 
-                        <h4>Ce qui a été fait</h4>
+                        <h4>Services exposés</h4>
                         <ul>
-                            <li>Provisioning d'un Droplet DigitalOcean (FRA1, 1 Go RAM, 25 Go SSD)</li>
-                            <li>Stack Zabbix complète via docker-compose (server + web + agent + PostgreSQL)</li>
-                            <li>Monitoring CPU / RAM / disque en temps réel avec alertes configurées</li>
+                            <li>Portfolio : <code>projet-cyber.duckdns.org</code></li>
+                            <li>Grafana : <code>grafana-projet-cyber.duckdns.org</code></li>
+                            <li>Vaultwarden : <code>vault-projet-cyber.duckdns.org</code></li>
                         </ul>
 
+                        <h4>Captures d'écran (version initiale)</h4>
                         <div class="project-detail__images">
                             <div class="project-detail__img-wrap">
                                 <img src="vps-droplet-digitalocean.png" alt="Droplet DigitalOcean" loading="lazy">
@@ -818,11 +875,11 @@
                             </div>
                             <div class="project-detail__img-wrap">
                                 <img src="vps-nginx-status.png" alt="Service Nginx actif" loading="lazy">
-                                <span class="project-detail__caption mono">systemctl status nginx — actif</span>
+                                <span class="project-detail__caption mono">systemctl status nginx (version initiale)</span>
                             </div>
                             <div class="project-detail__img-wrap">
                                 <img src="zabbix-supervision.png" alt="Dashboard Zabbix" loading="lazy">
-                                <span class="project-detail__caption mono">Supervision temps réel — graphes mémoire Zabbix</span>
+                                <span class="project-detail__caption mono">Supervision Zabbix (remplacé par Grafana)</span>
                             </div>
                         </div>
                     </div>
