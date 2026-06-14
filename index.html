@@ -4,1049 +4,954 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="author" content="Lucas Carriat">
-    <meta name="description" content="Portfolio académique de Lucas Carriat — B.U.T. Réseaux &amp; Télécommunications, IUT de Colmar. Attestation des compétences UE1, UE2, UE3.">
+    <meta name="description" content="Portfolio d'apprentissage et d'évaluation de Lucas Carriat — B.U.T. Réseaux & Télécommunications, IUT de Colmar. Attestation des compétences UE1, UE2, UE3 par les apprentissages critiques, les situations professionnelles et les composantes essentielles.">
     <title>Lucas Carriat — Portfolio B.U.T. R&amp;T</title>
-
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <div class="grid-overlay"></div>
+    <!-- ===================== NAVIGATION ===================== -->
+    <header class="nav" id="top">
+        <nav class="nav__inner" aria-label="Navigation principale">
+            <a href="#top" class="nav__logo">Lucas&nbsp;Carriat</a>
+            <ul class="nav__links">
+                <li><a href="#apropos" class="nav__link">À propos</a></li>
+                <li><a href="#competences" class="nav__link">Compétences</a></li>
+                <li><a href="#ue1" class="nav__link">UE1</a></li>
+                <li><a href="#ue2" class="nav__link">UE2</a></li>
+                <li><a href="#ue3" class="nav__link">UE3</a></li>
+                <li><a href="#projets" class="nav__link">Projets</a></li>
+                <li><a href="#synthese" class="nav__link">Synthèse</a></li>
+                <li><a href="#contact" class="nav__link">Contact</a></li>
+            </ul>
+            <label class="theme-toggle" title="Basculer le thème clair / sombre">
+                <input type="checkbox" id="theme-switch" class="theme-switch" aria-label="Basculer le thème clair / sombre">
+                <svg class="theme-toggle__moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+                <svg class="theme-toggle__sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
+            </label>
+            <a href="cv_lucas_carriat.pdf" target="_blank" rel="noopener" class="nav__cta">CV&nbsp;PDF</a>
+        </nav>
+    </header>
 
-    <!-- ===== NAVIGATION ===== -->
-    <nav class="nav" id="nav">
-        <a href="#hero" class="nav__logo">
-            <span class="nav__logo-bracket">[</span>LC<span class="nav__logo-bracket">]</span>
-        </a>
-        <ul class="nav__links">
-            <li><a href="#parcours" class="nav__link">Parcours</a></li>
-            <li><a href="#ue1" class="nav__link">UE1</a></li>
-            <li><a href="#ue2" class="nav__link">UE2</a></li>
-            <li><a href="#3" class="nav__link">UE3</a></li>
-            <li><a href="#projets" class="nav__link">Projets</a></li>
-            <li><a href="#contact" class="nav__link">Contact</a></li>
-            <li><a href="cv_lucas_carriat.pdf" target="_blank" class="nav__cta">CV PDF</a></li>
-        </ul>
-    </nav>
+    <main>
 
-    <!-- ===== HERO ===== -->
+    <!-- ===================== HERO ===================== -->
     <section class="hero" id="hero">
-        <div class="hero__content">
-            <p class="hero__tag mono">// portfolio_academique · BUT_RT · IUT_Colmar</p>
-            <h1 class="hero__title">Lucas Carriat</h1>
-            <p class="hero__subtitle">B.U.T. Réseaux &amp; Télécommunications <span class="hero__separator">|</span> IUT de Colmar</p>
-            <p class="hero__desc">
-                Étudiant en première année de B.U.T. R&amp;T, passionné par la cybersécurité, les infrastructures réseau
-                et le développement de solutions embarquées. Ce portfolio atteste mes trois compétences du référentiel national.
+        <div class="hero__inner">
+            <p class="hero__badge"><span class="hero__dot" aria-hidden="true"></span> Étudiant B.U.T. R&amp;T · IUT de Colmar · Objectif analyste SOC</p>
+            <h1 class="hero__title">Lucas&nbsp;Carriat</h1>
+            <p class="hero__subtitle">Réseaux, systèmes &amp; <span class="hero__accent">cybersécurité</span></p>
+            <p class="hero__lead">
+                Portfolio d'apprentissage et d'évaluation — 1<sup>re</sup>&nbsp;année (S1 &amp; S2).
+                J'y atteste mes trois compétences du référentiel national, preuves à l'appui&nbsp;:
+                apprentissages critiques, situations professionnelles et composantes essentielles.
             </p>
+            <div class="hero__pills">
+                <span class="hero__pill">Cybersécurité</span>
+                <span class="hero__pill">Administration réseau</span>
+                <span class="hero__pill">Cloud &amp; Infra</span>
+                <span class="hero__pill">Développement</span>
+            </div>
             <div class="hero__actions">
-                <a href="#ue1" class="btn btn--primary">
-                    <span class="btn__text">Voir les compétences</span>
-                    <span class="btn__arrow">&darr;</span>
+                <a href="#competences" class="btn btn--primary">Voir les compétences</a>
+                <a href="#projets" class="btn btn--ghost">Voir les projets</a>
+            </div>
+            <ul class="hero__stats">
+                <li class="hero__stat"><span class="hero__stat-num">3</span><span class="hero__stat-label">Compétences<br>UE1 · UE2 · UE3</span></li>
+                <li class="hero__stat"><span class="hero__stat-num">10</span><span class="hero__stat-label">Projets<br>&amp; SAÉ</span></li>
+                <li class="hero__stat"><span class="hero__stat-num">17</span><span class="hero__stat-label">Apprentissages<br>critiques</span></li>
+            </ul>
+        </div>
+        <a href="#apropos" class="hero__scroll" aria-label="Défiler vers le contenu">
+            <span class="hero__scroll-text">Défiler</span>
+            <span class="hero__scroll-line"></span>
+        </a>
+    </section>
+
+    <!-- ===================== À PROPOS ===================== -->
+    <section class="section section--alt" id="apropos">
+        <div class="container">
+            <div class="section__head">
+                <p class="eyebrow">À propos</p>
+                <h2 class="section__title">Parcours &amp; objectif professionnel</h2>
+                <p class="section__sub">Qui je suis, d'où je viens, et où je veux aller.</p>
+            </div>
+
+            <div class="about">
+                <div class="about__text">
+                    <p>
+                        Je m'appelle <strong>Lucas Carriat</strong>, étudiant en première année de
+                        B.U.T. Réseaux &amp; Télécommunications à l'IUT de Colmar (Université de Haute-Alsace).
+                        Je me passionne pour la <strong>cybersécurité</strong>, l'administration des
+                        infrastructures réseau et le développement d'outils au service de ces infrastructures.
+                    </p>
+                    <p>
+                        La formation est structurée autour des <strong>SAÉ</strong> (Situations d'Apprentissage
+                        et d'Évaluation), qui placent l'apprentissage en contexte professionnel. Mon objectif
+                        à terme est de m'orienter vers le métier d'<strong>analyste SOC</strong> : surveiller,
+                        détecter et répondre aux incidents de sécurité. Je m'y prépare déjà via des
+                        plateformes d'entraînement (TryHackMe, HackTheBox, Root-Me, LetDefend) et un
+                        homelab de supervision auto-hébergé.
+                    </p>
+                </div>
+
+                <ul class="timeline">
+                    <li class="timeline__item">
+                        <span class="timeline__date">2025 — 2028</span>
+                        <h3 class="timeline__title">B.U.T. Réseaux &amp; Télécommunications</h3>
+                        <p class="timeline__org">IUT de Colmar — Université de Haute-Alsace</p>
+                        <p class="timeline__desc">Architecture réseau, services (DNS, DHCP, web), administration Linux/Windows, télécommunications &amp; signaux. Orientation visée&nbsp;: cybersécurité.</p>
+                    </li>
+                    <li class="timeline__item">
+                        <span class="timeline__date">2025</span>
+                        <h3 class="timeline__title">Baccalauréat STI2D — option SIN</h3>
+                        <p class="timeline__org">Lycée Camille Claudel, Blois — Mention Assez Bien</p>
+                        <p class="timeline__desc">Systèmes d'Information et Numérique. Bases de la programmation et des réseaux (Cisco Packet Tracer).</p>
+                    </li>
+                    <li class="timeline__item">
+                        <span class="timeline__date">2022 — présent</span>
+                        <h3 class="timeline__title">Production musicale (freelance)</h3>
+                        <p class="timeline__org">Beatstars — en pause</p>
+                        <p class="timeline__desc">Gestion d'un catalogue en ligne, collaboration en studio. Compétences en gestion de projet et travail collaboratif.</p>
+                    </li>
+                    <li class="timeline__item">
+                        <span class="timeline__date">2021</span>
+                        <h3 class="timeline__title">Stage maintenance — Laboratoires Servier</h3>
+                        <p class="timeline__org">Suresnes</p>
+                        <p class="timeline__desc">Observation en maintenance industrielle : entretien préventif et normes de sécurité.</p>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===================== LES 3 COMPÉTENCES ===================== -->
+    <section class="section" id="competences">
+        <div class="container">
+            <div class="section__head">
+                <p class="eyebrow">Référentiel national B.U.T. R&amp;T</p>
+                <h2 class="section__title">Les trois compétences</h2>
+                <p class="section__sub">
+                    Chaque compétence est attestée par ses <strong>apprentissages critiques (AC)</strong>,
+                    sa <strong>situation professionnelle</strong> et ses <strong>composantes essentielles (CE)</strong>,
+                    avec une preuve issue d'un projet pour chaque acquis.
+                </p>
+            </div>
+
+            <!-- ========== UE1 ========== -->
+            <article class="comp" id="ue1">
+                <header class="comp__head">
+                    <span class="comp__code">UE1</span>
+                    <div>
+                        <h3 class="comp__title">Administrer les réseaux et l'Internet</h3>
+                        <p class="comp__situation">Situation professionnelle&nbsp;: <strong>assister l'administrateur du réseau</strong></p>
+                    </div>
+                </header>
+
+                <div class="stat-bar">
+                    <span class="stat stat--ok">6 acquis</span>
+                    <span class="stat stat--warn">0 en cours</span>
+                    <span class="stat stat--bad">0 à améliorer</span>
+                </div>
+
+                <div class="comp__grid">
+                    <!-- Composantes essentielles -->
+                    <div class="comp__block">
+                        <h4 class="comp__block-title">Composantes essentielles</h4>
+                        <ul class="ce-list">
+                            <li class="ce"><span class="ce__code">CE1.01</span><span class="ce__text">En choisissant les solutions et technologies réseaux adaptées. <em>Choix Cisco / EVE-NG / GNS3, topologies VLAN et routage (SAÉ 1.02, 2.01).</em></span></li>
+                            <li class="ce"><span class="ce__code">CE1.02</span><span class="ce__text">En respectant les principes fondamentaux de la sécurité informatique. <em>Segmentation VLAN, port-security, ACL, SSH durci (SAÉ 2.01, VPS, SOC).</em></span></li>
+                            <li class="ce"><span class="ce__code">CE1.03</span><span class="ce__text">En utilisant une approche rigoureuse pour la résolution des dysfonctionnements. <em>Diagnostic en couches du 502, dépannage ACL/NAT (SAÉ 2.03, 2.01).</em></span></li>
+                            <li class="ce"><span class="ce__code">CE1.04</span><span class="ce__text">En respectant les règles métiers. <em>Respect des plans d'adressage et des consignes du sujet (SAÉ 1.02, 2.01).</em></span></li>
+                            <li class="ce"><span class="ce__code">CE1.05</span><span class="ce__text">En assurant une veille technologique. <em>Veille cybersécurité (THM, HTB, Root-Me, LetDefend), stack Wazuh/CrowdSec.</em></span></li>
+                        </ul>
+                    </div>
+
+                    <!-- AC -->
+                    <div class="comp__block">
+                        <h4 class="comp__block-title">Apprentissages critiques</h4>
+                        <ul class="ac-list">
+                            <li class="ac">
+                                <div class="ac__head"><span class="ac__code">AC11.01</span><span class="badge badge--ok">Acquis</span></div>
+                                <p class="ac__label">Maîtriser les lois fondamentales de l'électricité afin d'intervenir sur des équipements de réseaux et de télécommunications.</p>
+                                <p class="ac__just">TP R1.04 (lois de Kirchhoff, mesures courant/tension) et SAÉ 2.02 : câblage ESP32 + VS1053, dimensionnement de la batterie 18650 2P. <span class="ac__ce">→ CE1.01</span></p>
+                            </li>
+                            <li class="ac">
+                                <div class="ac__head"><span class="ac__code">AC11.02</span><span class="badge badge--ok">Acquis</span></div>
+                                <p class="ac__label">Comprendre l'architecture et les fondements des systèmes numériques, des communications et de l'Internet.</p>
+                                <p class="ac__just">Modèles OSI/TCP-IP (R1.01) appliqués en SAÉ 2.02 : streaming audio HTTP vers le codec VS1053, décodage MP3/AAC, flux MQTT. <span class="ac__ce">→ CE1.01</span></p>
+                            </li>
+                            <li class="ac">
+                                <div class="ac__head"><span class="ac__code">AC11.03</span><span class="badge badge--ok">Acquis</span></div>
+                                <p class="ac__label">Configurer les fonctions de base d'un réseau local.</p>
+                                <p class="ac__just">SAÉ 1.02 (EVE-NG) et SAÉ 2.01 (GNS3) : VLANs, inter-VLAN router-on-a-stick, DHCP relay, VTP, RIPv2, port-security, ACL, NAT. <span class="ac__ce">→ CE1.01 · CE1.04</span></p>
+                            </li>
+                            <li class="ac">
+                                <div class="ac__head"><span class="ac__code">AC11.04</span><span class="badge badge--ok">Acquis</span></div>
+                                <p class="ac__label">Maîtriser les rôles et principes fondamentaux des systèmes d'exploitation pour la configuration et l'administration des réseaux et services.</p>
+                                <p class="ac__just">SAÉ 2.01 : FTP, Apache, rsync ; SAÉ 2.03 : Nginx, Gunicorn, systemd, virtualenv, journalctl sur Debian. <span class="ac__ce">→ CE1.01</span></p>
+                            </li>
+                            <li class="ac">
+                                <div class="ac__head"><span class="ac__code">AC11.05</span><span class="badge badge--ok">Acquis</span></div>
+                                <p class="ac__label">Identifier les dysfonctionnements d'un réseau local et savoir les signaler.</p>
+                                <p class="ac__just">SAÉ 2.03 : diagnostic en couches du 502 Bad Gateway (ss -tlnp → curl 127.0.0.1:8000 → logs Nginx) ; projet SOC : analyse d'alertes Suricata. <span class="ac__ce">→ CE1.03</span></p>
+                            </li>
+                            <li class="ac">
+                                <div class="ac__head"><span class="ac__code">AC11.06</span><span class="badge badge--ok">Acquis</span></div>
+                                <p class="ac__label">Installer un poste client et expliquer la procédure mise en place.</p>
+                                <p class="ac__just">TP R2.04 : installation d'OS, configuration de postes clients et intégration au domaine, procédure documentée en compte-rendu. <span class="ac__ce">→ CE1.04</span></p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <p class="comp__links">Projets-preuves&nbsp;:
+                    <a href="#p-sae102">SAÉ 1.02</a> ·
+                    <a href="#p-sae201">SAÉ 2.01</a> ·
+                    <a href="#p-soc">Projet SOC</a> ·
+                    <a href="#p-vps">Homelab VPS</a>
+                </p>
+            </article>
+
+            <!-- ========== UE2 ========== -->
+            <article class="comp" id="ue2">
+                <header class="comp__head">
+                    <span class="comp__code">UE2</span>
+                    <div>
+                        <h3 class="comp__title">Connecter les entreprises et les usagers</h3>
+                        <p class="comp__situation">Situation professionnelle&nbsp;: <strong>découvrir les transmissions</strong></p>
+                    </div>
+                </header>
+
+                <div class="stat-bar">
+                    <span class="stat stat--ok">5 acquis</span>
+                    <span class="stat stat--warn">0 en cours</span>
+                    <span class="stat stat--bad">0 à améliorer</span>
+                </div>
+
+                <div class="comp__grid">
+                    <div class="comp__block">
+                        <h4 class="comp__block-title">Composantes essentielles</h4>
+                        <ul class="ce-list">
+                            <li class="ce"><span class="ce__code">CE2.01</span><span class="ce__text">En communiquant avec le client et les différents acteurs impliqués, parfois en anglais. <em>Oral SAÉ 1.03 devant jury ; résumés techniques en anglais (SAÉ 2.03).</em></span></li>
+                            <li class="ce"><span class="ce__code">CE2.02</span><span class="ce__text">En faisant preuve d'une démarche scientifique. <em>Protocole de mesure Wi-Fi et PoE, heatmaps, analyse d'atténuation (SAÉ 1.03).</em></span></li>
+                            <li class="ce"><span class="ce__code">CE2.03</span><span class="ce__text">En choisissant les solutions et technologies adaptées. <em>Choix Cat 7 / TIA-568B, point d'accès Cisco, codec VS1053 (SAÉ 1.03, 2.02).</em></span></li>
+                            <li class="ce"><span class="ce__code">CE2.04</span><span class="ce__text">En proposant des solutions respectueuses de l'environnement. <em>Concours DYLO (micro-hydrolienne) ; boîtier bois et batterie réutilisable (SAÉ 2.02).</em></span></li>
+                        </ul>
+                    </div>
+
+                    <div class="comp__block">
+                        <h4 class="comp__block-title">Apprentissages critiques</h4>
+                        <ul class="ac-list">
+                            <li class="ac">
+                                <div class="ac__head"><span class="ac__code">AC12.01</span><span class="badge badge--ok">Acquis</span></div>
+                                <p class="ac__label">Mesurer, analyser et commenter des signaux.</p>
+                                <p class="ac__just">SAÉ 1.03 : mesures Wi-Fi (RSSI, atténuation par matériau) avec Acrylic Wi-Fi et analyse PoE (54 V / 13 W / 0,24 A), commentées dans le rapport. <span class="ac__ce">→ CE2.02</span></p>
+                            </li>
+                            <li class="ac">
+                                <div class="ac__head"><span class="ac__code">AC12.02</span><span class="badge badge--ok">Acquis</span></div>
+                                <p class="ac__label">Caractériser des systèmes de transmissions élémentaires et comprendre leur modélisation mathématique.</p>
+                                <p class="ac__just">Caractérisation de systèmes de transmission élémentaires (modulation, théorème de Shannon, bande passante) étudiée et modélisée en R1.06 / R2.06. <span class="ac__ce">→ CE2.02</span></p>
+                            </li>
+                            <li class="ac">
+                                <div class="ac__head"><span class="ac__code">AC12.03</span><span class="badge badge--ok">Acquis</span></div>
+                                <p class="ac__label">Déployer des supports de transmission.</p>
+                                <p class="ac__just">SAÉ 1.03 : sertissage Cat 7 (norme TIA-568B), montage de noyaux keystone, installation d'un point d'accès Cisco AIR-AP1231G. <span class="ac__ce">→ CE2.03</span></p>
+                            </li>
+                            <li class="ac">
+                                <div class="ac__head"><span class="ac__code">AC12.04</span><span class="badge badge--ok">Acquis</span></div>
+                                <p class="ac__label">Connecter les systèmes de ToIP.</p>
+                                <p class="ac__just">Mise en œuvre des systèmes de ToIP en R2.07 : configuration et raccordement de postes de téléphonie sur IP. <span class="ac__ce">→ CE2.03</span></p>
+                            </li>
+                            <li class="ac">
+                                <div class="ac__head"><span class="ac__code">AC12.05</span><span class="badge badge--ok">Acquis</span></div>
+                                <p class="ac__label">Communiquer avec un tiers et adapter son discours et sa langue.</p>
+                                <p class="ac__just">Oral SAÉ 1.03 devant jury : présentation des heatmaps et des mesures à un public mixte (technique et non technique), argumentation des choix méthodologiques. <span class="ac__ce">→ CE2.01</span></p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <p class="comp__links">Projets-preuves&nbsp;:
+                    <a href="#p-sae103">SAÉ 1.03</a> ·
+                    <a href="#p-sae202">SAÉ 2.02</a> ·
+                    <a href="#p-dylo">Concours DYLO</a>
+                </p>
+            </article>
+
+            <!-- ========== UE3 ========== -->
+            <article class="comp" id="ue3">
+                <header class="comp__head">
+                    <span class="comp__code">UE3</span>
+                    <div>
+                        <h3 class="comp__title">Créer des outils et applications pour les R&amp;T</h3>
+                        <p class="comp__situation">Situation professionnelle&nbsp;: <strong>s'intégrer dans un service informatique</strong></p>
+                    </div>
+                </header>
+
+                <div class="stat-bar">
+                    <span class="stat stat--ok">6 acquis</span>
+                    <span class="stat stat--warn">0 en cours</span>
+                    <span class="stat stat--bad">0 à améliorer</span>
+                </div>
+
+                <div class="comp__grid">
+                    <div class="comp__block">
+                        <h4 class="comp__block-title">Composantes essentielles</h4>
+                        <ul class="ce-list">
+                            <li class="ce"><span class="ce__code">CE3.01</span><span class="ce__text">En étant à l'écoute des besoins du client. <em>Prise en compte de la logique métier imposée (règle des 10 min) et des corrections du professeur (SAÉ 2.03).</em></span></li>
+                            <li class="ce"><span class="ce__code">CE3.02</span><span class="ce__text">En documentant le travail réalisé. <em>DEPLOIEMENT.md reproductible, mode d'emploi CSV intégré, README GitHub (SAÉ 2.03, VPS).</em></span></li>
+                            <li class="ce"><span class="ce__code">CE3.03</span><span class="ce__text">En utilisant les outils numériques à bon escient. <em>Nginx/Gunicorn/systemd, Docker, Git, ClickUp (SAÉ 2.03, VPS, SOC).</em></span></li>
+                            <li class="ce"><span class="ce__code">CE3.04</span><span class="ce__text">En choisissant les outils de développement adaptés. <em>Django + MariaDB, architecture 2 VM séparées, PySide6 (SAÉ 2.03, 1.05).</em></span></li>
+                            <li class="ce"><span class="ce__code">CE3.05</span><span class="ce__text">En intégrant les problématiques de sécurité. <em>ALLOWED_HOSTS, séparation app/BDD, import CSV robuste, IDS Suricata (SAÉ 2.03, SOC).</em></span></li>
+                        </ul>
+                    </div>
+
+                    <div class="comp__block">
+                        <h4 class="comp__block-title">Apprentissages critiques</h4>
+                        <ul class="ac-list">
+                            <li class="ac">
+                                <div class="ac__head"><span class="ac__code">AC13.01</span><span class="badge badge--ok">Acquis</span></div>
+                                <p class="ac__label">Utiliser un système informatique et ses outils.</p>
+                                <p class="ac__just">SAÉ 2.03 : Debian, services systemd, Nginx, virtualenv Python, journalctl ; VPS DigitalOcean &amp; projet SOC (Docker). <span class="ac__ce">→ CE3.03</span></p>
+                            </li>
+                            <li class="ac">
+                                <div class="ac__head"><span class="ac__code">AC13.02</span><span class="badge badge--ok">Acquis</span></div>
+                                <p class="ac__label">Lire, exécuter, corriger et modifier un programme.</p>
+                                <p class="ac__just">SAÉ 2.03 : lecture, exécution et débogage autonome de code Django (ModuleNotFoundError pymysql → venv, conflit Git dans settings.py). <span class="ac__ce">→ CE3.04</span></p>
+                            </li>
+                            <li class="ac">
+                                <div class="ac__head"><span class="ac__code">AC13.03</span><span class="badge badge--ok">Acquis</span></div>
+                                <p class="ac__label">Traduire un algorithme dans un langage et pour un environnement donné.</p>
+                                <p class="ac__just">SAÉ 1.05 (Python / PowerShell) et SAÉ 2.02 : traduction d'algorithmes en code — courbe logarithmique de volume f(x)=50+√(x/100)×50 et égaliseur 5 bandes en C++ Arduino. <span class="ac__ce">→ CE3.04</span></p>
+                            </li>
+                            <li class="ac">
+                                <div class="ac__head"><span class="ac__code">AC13.04</span><span class="badge badge--ok">Acquis</span></div>
+                                <p class="ac__label">Connaître l'architecture et les technologies d'un site Web.</p>
+                                <p class="ac__just">SAÉ 1.01 (CV HTML/CSS) et SAÉ 2.03 : architecture Django MVC, reverse proxy Nginx + Gunicorn (WSGI), collectstatic / STATIC_ROOT. <span class="ac__ce">→ CE3.04</span></p>
+                            </li>
+                            <li class="ac">
+                                <div class="ac__head"><span class="ac__code">AC13.05</span><span class="badge badge--ok">Acquis</span></div>
+                                <p class="ac__label">Choisir les mécanismes de gestion de données adaptés et argumenter ses choix.</p>
+                                <p class="ac__just">SAÉ 2.03 : modélisation relationnelle de 6 entités, choix MariaDB/PyMySQL argumenté, import CSV tolérant aux erreurs. <span class="ac__ce">→ CE3.04 · CE3.05</span></p>
+                            </li>
+                            <li class="ac">
+                                <div class="ac__head"><span class="ac__code">AC13.06</span><span class="badge badge--ok">Acquis</span></div>
+                                <p class="ac__label">S'intégrer dans un environnement propice au développement et au travail collaboratif.</p>
+                                <p class="ac__just">SAÉ 2.03 : Git/GitHub (commits, résolution de conflits), Gantt ClickUp, coordination d'une équipe de 3 ; SAÉ 1.03 : oral collectif. <span class="ac__ce">→ CE3.02</span></p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <p class="comp__links">Projets-preuves&nbsp;:
+                    <a href="#p-sae203">SAÉ 2.03</a> ·
+                    <a href="#p-sae105">SAÉ 1.05</a> ·
+                    <a href="#p-vps">Homelab VPS</a> ·
+                    <a href="#p-soc">Projet SOC</a>
+                </p>
+            </article>
+        </div>
+    </section>
+
+    <!-- ===================== PROJETS / SAÉ ===================== -->
+    <section class="section section--alt" id="projets">
+        <div class="container">
+            <div class="section__head">
+                <p class="eyebrow">Situations d'Apprentissage &amp; d'Évaluation</p>
+                <h2 class="section__title">Projets &amp; SAÉ</h2>
+                <p class="section__sub">
+                    Pour chaque SAÉ&nbsp;: le contexte, mes tâches réalisées personnellement, les preuves
+                    d'acquisition des compétences (composantes essentielles) et un résumé en anglais.
+                </p>
+            </div>
+
+            <div class="projects">
+
+                <!-- ===== SAÉ 2.03 (preuve principale) ===== -->
+                <article class="project project--featured" id="p-sae203">
+                    <div class="project__head">
+                        <div class="tags">
+                            <span class="tag tag--dev">UE3 · Dev</span>
+                            <span class="tag tag--infra">Infra</span>
+                            <span class="tag tag--sem">SAÉ 2.03 · S2</span>
+                            <span class="tag tag--star">Preuve principale</span>
+                            <span class="tag tag--prog">En cours</span>
+                        </div>
+                        <h3 class="project__title">Gestion du Trafic Aérien — Django &amp; MariaDB</h3>
+                        <p class="project__desc">Application web de gestion du trafic aérien (CRUD de 6 entités, logique métier, import CSV, fiches imprimables) déployée « comme en production » sur deux VM Debian (Nginx + Gunicorn + systemd).</p>
+                        <p class="chips">AC13.01 · AC13.02 · AC13.04 · AC13.05 · AC13.06 — CE3.01 → CE3.05</p>
+                        <a class="project__gh" href="https://github.com/Patpat200/Gestion-Trafic-Aerien-Django" target="_blank" rel="noopener" aria-label="Code source de la SAÉ 2.03 sur GitHub">
+                            <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden="true"><path d="M12 .5C5.73.5.5 5.73.5 12c0 5.08 3.29 9.39 7.86 10.91.58.11.79-.25.79-.56 0-.27-.01-1-.02-1.96-3.2.7-3.88-1.54-3.88-1.54-.52-1.33-1.28-1.69-1.28-1.69-1.05-.72.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.77 2.7 1.26 3.36.96.1-.75.4-1.26.73-1.55-2.55-.29-5.24-1.28-5.24-5.69 0-1.26.45-2.29 1.19-3.1-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.18 1.18a11.1 11.1 0 0 1 5.8 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.11 3.05.74.81 1.19 1.84 1.19 3.1 0 4.42-2.69 5.39-5.25 5.68.41.36.78 1.05.78 2.12 0 1.53-.01 2.77-.01 3.15 0 .31.21.68.8.56A11.51 11.51 0 0 0 23.5 12C23.5 5.73 18.27.5 12 .5Z"/></svg>
+                            <span>Code source sur GitHub</span>
+                        </a>
+                    </div>
+                    <details class="proj">
+                        <summary>Voir le portfolio complet de la SAÉ</summary>
+                        <div class="proj__body">
+
+                            <h4>1. Contexte du projet</h4>
+                            <p>En <strong>équipe de trois</strong>, nous devions développer une application web de <strong>gestion du trafic aérien</strong> : un gestionnaire administre des aéroports, des pistes, des compagnies, des types d'avions, des avions et des vols, avec un CRUD complet pour chaque entité. Le sujet imposait une <strong>logique métier</strong> (vérifier qu'une piste compatible est libre à l'arrivée — occupation de 10 minutes par avion, avec suggestion d'un créneau sinon), un <strong>import de vols par CSV</strong> et la génération de <strong>fiches de vols imprimables</strong>. L'application devait être déployée en production sur machine virtuelle avec Nginx et Gunicorn — le cœur de la compétence UE3.</p>
+
+                            <table class="table">
+                                <thead><tr><th>Membre</th><th>Périmètre</th></tr></thead>
+                                <tbody>
+                                    <tr><td><strong>Moi (Lucas)</strong></td><td>Infrastructure VM, déploiement Nginx/Gunicorn/systemd, front-end (templates, CSS, tableau de bord), import CSV, fiches de vols, documentation technique.</td></tr>
+                                    <tr><td>Adil</td><td>Back-end Django : modèles, formulaires, vues CRUD et logique des 10 minutes (suggestion de créneau).</td></tr>
+                                    <tr><td>Adel</td><td>Schéma SQL (<code>schema.sql</code>), création et alimentation de la base (<code>donnees.sql</code>), tests de robustesse.</td></tr>
+                                </tbody>
+                            </table>
+                            <p>Outils communs&nbsp;: <strong>Git/GitHub</strong> (code), <strong>ClickUp</strong> (planning Gantt), <strong>VirtualBox</strong> (VM).</p>
+
+                            <h4>2. Mes tâches réalisées personnellement</h4>
+
+                            <h5>2.1 Infrastructure &amp; réseau (deux VM)</h5>
+                            <ul>
+                                <li>Deux VM Debian sous VirtualBox : une VM « BDD » (MariaDB seule) et une VM « Django » (Nginx + Gunicorn + application).</li>
+                                <li>Passage en <strong>mode pont</strong> : chaque VM reçoit une IP du réseau de la salle via DHCP, rendant le site joignable depuis n'importe quel poste.</li>
+                                <li>MariaDB configurée pour les connexions distantes (<code>bind-address = 0.0.0.0</code>, utilisateur <code>django_user@'%'</code>).</li>
+                            </ul>
+
+                            <h5>2.2 Déploiement Nginx + Gunicorn + systemd</h5>
+                            <ul>
+                                <li>Gunicorn (WSGI) en remplacement du <code>runserver</code> de développement, Nginx en reverse proxy.</li>
+                                <li>Blocs <code>/static/</code> et <code>/media/</code> dans Nginx, <code>collectstatic</code> côté Django (<code>STATIC_ROOT</code>).</li>
+                                <li>Service systemd avec <code>systemctl enable</code> pour un redémarrage automatique après reboot.</li>
+                                <li>Rédaction de <code>DEPLOIEMENT.md</code> — procédure complète et reproductible de A à Z.</li>
+                            </ul>
+
+                            <h5>2.3 Front-end &amp; expérience utilisateur</h5>
+                            <ul>
+                                <li>Gabarit commun <code>base.html</code> (navigation + barre latérale) hérité par toutes les pages.</li>
+                                <li>Pages de liste des 6 entités, <strong>formulaire générique réutilisé</strong> pour tous les CRUD, page de confirmation de suppression.</li>
+                                <li>Tableau de bord à <strong>compteurs dynamiques</strong> interrogeant la base en temps réel.</li>
+                                <li>CSS séparé (thème sombre à barre latérale), indépendant de Bootstrap.</li>
+                            </ul>
+
+                            <h5>2.4 Import CSV &amp; fiches de vols</h5>
+                            <ul>
+                                <li>Module <code>import_vols_csv</code> : lecture UTF-8, correspondance par nom, <strong>collecte d'erreurs ligne par ligne</strong> sans interrompre l'import, mode d'emploi en préambule.</li>
+                                <li>Page <code>fiche_vols</code> : filtrage par aéroport, date et sens (départs/arrivées) + feuille <code>@media print</code> pour une impression propre.</li>
+                            </ul>
+
+                            <h5>2.5 Gestion de version &amp; coordination</h5>
+                            <ul>
+                                <li>Tenue du dépôt GitHub, résolution des conflits de fusion (notamment dans <code>settings.py</code>), synchronisation du code sur les VM.</li>
+                                <li>Planification via diagramme de Gantt (ClickUp) et intégration des corrections du professeur (base SQL manuelle plutôt que migrations Django).</li>
+                            </ul>
+
+                            <h4>3. Preuves d'acquisition des compétences — composantes essentielles (UE3)</h4>
+                            <table class="table">
+                                <thead><tr><th>CE</th><th>Preuve concrète</th></tr></thead>
+                                <tbody>
+                                    <tr><td><strong>CE3.01</strong> — écoute des besoins</td><td>Prise en compte de la logique métier imposée (règle des 10 min) et intégration des corrections du professeur.</td></tr>
+                                    <tr><td><strong>CE3.02</strong> — documenter</td><td>Rédaction de <code>DEPLOIEMENT.md</code>, mode d'emploi CSV intégré en page, procédure reproductible de A à Z.</td></tr>
+                                    <tr><td><strong>CE3.03</strong> — outils numériques à bon escient</td><td>Chaîne Nginx + Gunicorn + service systemd, conforme aux pratiques de production.</td></tr>
+                                    <tr><td><strong>CE3.04</strong> — outils de développement adaptés</td><td>Django + MariaDB (PyMySQL) et architecture à deux VM séparées (application / base).</td></tr>
+                                    <tr><td><strong>CE3.05</strong> — sécurité</td><td>Import CSV tolérant aux erreurs, gestion de <code>ALLOWED_HOSTS</code>, séparation application / base sur deux VM.</td></tr>
+                                </tbody>
+                            </table>
+
+                            <h5>Analyse réflexive — difficultés &amp; résolution</h5>
+                            <p>Le déploiement a été la partie la plus formatrice : les problèmes ne venaient pas du code applicatif mais de l'environnement. J'ai appris à diagnostiquer <strong>en couches</strong> plutôt qu'à essayer au hasard.</p>
+                            <table class="table">
+                                <thead><tr><th>Problème</th><th>Diagnostic</th><th>Solution</th></tr></thead>
+                                <tbody>
+                                    <tr><td><strong>502 Bad Gateway</strong></td><td>Gunicorn injoignable par Nginx.</td><td>Diagnostic couche par couche : <code>ss -tlnp</code> → <code>curl 127.0.0.1:8000</code> → logs Nginx.</td></tr>
+                                    <tr><td><strong>ModuleNotFoundError: pymysql</strong></td><td>Gunicorn lancé hors du virtualenv.</td><td>Toujours activer le venv avant de démarrer Gunicorn.</td></tr>
+                                    <tr><td><strong>Conflit dans settings.py</strong></td><td>Marqueurs de conflit Git non résolus cassant le parse Python.</td><td>Résolution manuelle (<code>ALLOWED_HOSTS</code>, <code>HOST</code> de la base).</td></tr>
+                                    <tr><td><strong>Gunicorn ne survit pas au reboot</strong></td><td>Unité systemd non enregistrée.</td><td><code>systemctl enable gunicorn</code> avec chemin absolu.</td></tr>
+                                </tbody>
+                            </table>
+                            <p class="takeaway">Ce que je retiens&nbsp;: un service web ne se résume pas à son code. Sa valeur tient aussi à sa capacité à être déployé, reproduit et maintenu — d'où l'importance de la documentation et d'une méthode de diagnostic ordonnée.</p>
+
+                            <h4>4. English summary</h4>
+                            <p>As part of SAÉ 2.03, our team of three built an air-traffic management web application using Django and MariaDB. The app provides full CRUD operations for six entities (airports, runways, airlines, aircraft types, aircraft and flights), enforces a runway-availability business rule (a runway stays busy for ten minutes after a landing, otherwise a later slot is suggested), supports bulk flight imports via CSV, and generates printable flight sheets.</p>
+                            <p>My personal scope covered infrastructure setup (two Debian VMs in bridged networking — one for MariaDB, one for the Django app behind Gunicorn and Nginx), a systemd service for automatic restarts, the front-end (shared template, sidebar layout, dynamic dashboard), the CSV import module and the deployment documentation. The most valuable learning came from deployment troubleshooting: diagnosing a 502 error layer by layer taught me that a web service is more than its code — reproducibility, documentation and a structured diagnostic approach are equally critical skills.</p>
+
+                            <h4>Captures d'écran</h4>
+                            <div class="shots">
+                                <figure class="shot"><img src="sae203-dashboard.png" alt="Tableau de bord Django avec compteurs dynamiques" loading="lazy"><figcaption>Tableau de bord — compteurs dynamiques (base interrogée en temps réel)</figcaption></figure>
+                                <figure class="shot"><img src="sae203-vols.png" alt="Liste des vols dans l'application" loading="lazy"><figcaption>Liste des vols — CRUD (ajout / édition / suppression)</figcaption></figure>
+                                <figure class="shot"><img src="sae203-formulaire.png" alt="Formulaire d'ajout d'un vol" loading="lazy"><figcaption>Formulaire générique réutilisé — ajout d'un vol</figcaption></figure>
+                                <figure class="shot"><img src="sae203-import-csv.png" alt="Page d'import CSV avec guide de format" loading="lazy"><figcaption>Import CSV — mode d'emploi du format intégré en préambule</figcaption></figure>
+                                <figure class="shot"><img src="sae203-architecture-vm.png" alt="Architecture à deux VM Debian" loading="lazy"><figcaption>Architecture 2 VM — applicative (Nginx/Gunicorn) + base MariaDB</figcaption></figure>
+                                <figure class="shot"><img src="sae203-gunicorn.png" alt="systemctl status gunicorn, service actif" loading="lazy"><figcaption>systemctl status gunicorn — service actif &amp; <code>enabled</code></figcaption></figure>
+                            </div>
+                        </div>
+                    </details>
+                </article>
+
+                <!-- ===== SAÉ 1.02 ===== -->
+                <article class="project" id="p-sae102">
+                    <div class="project__head">
+                        <div class="tags">
+                            <span class="tag tag--net">UE1 · Réseaux</span>
+                            <span class="tag tag--sem">SAÉ 1.02 · S1</span>
+                        </div>
+                        <h3 class="project__title">Architecture Réseau Succursale — EVE-NG</h3>
+                        <p class="project__desc">Conception et déploiement sous EVE-NG d'un réseau d'entreprise complet (Cisco) : segmentation VLAN, routage inter-VLAN, DHCP relayé et VTP.</p>
+                        <p class="chips">AC11.03 · AC11.04 · AC11.05 — CE1.01 · CE1.02 · CE1.03</p>
+                    </div>
+                    <details class="proj">
+                        <summary>Voir le détail de la SAÉ</summary>
+                        <div class="proj__body">
+                            <h4>Contexte</h4>
+                            <p>Simulation sous <strong>EVE-NG</strong> (équipements Cisco 2960 + 2800) d'une succursale d'entreprise connectée à un siège (sujet R1.02).</p>
+
+                            <h4>Mes tâches</h4>
+                            <ul>
+                                <li><strong>Segmentation :</strong> 4 VLANs (Directeurs, Utilisateurs, Serveurs, Administration) isolés par politique de sécurité.</li>
+                                <li><strong>Inter-VLAN :</strong> Router-on-a-Stick (sous-interfaces 802.1Q sur le routeur).</li>
+                                <li><strong>Services :</strong> DHCP déployé sur le commutateur puis migré sur serveur Linux avec relai <code>ip helper-address</code> ; VTP serveur/client entre les deux commutateurs ; spanning-tree contre les boucles.</li>
+                                <li><strong>Dépannage :</strong> validation par <code>ping</code> / <code>traceroute</code>, vérification de l'attribution DHCP côté postes VPC.</li>
+                            </ul>
+
+                            <h4>Preuves — composantes essentielles (UE1)</h4>
+                            <ul>
+                                <li><strong>CE1.01</strong> — choix d'une topologie Cisco et d'un adressage adaptés.</li>
+                                <li><strong>CE1.02</strong> — segmentation VLAN comme mesure de sécurité.</li>
+                                <li><strong>CE1.03</strong> — diagnostic rigoureux par <code>ping</code>/<code>traceroute</code>.</li>
+                            </ul>
+
+                            <h4>English summary</h4>
+                            <p>Using EVE-NG, I deployed a complete corporate branch network on Cisco devices: four security-segmented VLANs, inter-VLAN routing (router-on-a-stick), DHCP first on the switch then relayed to a Linux server via <code>ip helper-address</code>, and VTP between switches. I validated connectivity layer by layer with <code>ping</code> and <code>traceroute</code>.</p>
+
+                            <div class="shots">
+                                <figure class="shot"><img src="SAE102LAB.PNG" alt="Topologie EVE-NG de la succursale" loading="lazy"><figcaption>Topologie logique EVE-NG — routeurs &amp; switchs Cisco</figcaption></figure>
+                                <figure class="shot"><img src="SAE102DHCP.PNG" alt="Preuve DHCP sur poste VPC" loading="lazy"><figcaption>Preuve DHCP — attribution dynamique vers les postes VPC</figcaption></figure>
+                            </div>
+                        </div>
+                    </details>
+                </article>
+
+                <!-- ===== SAÉ 2.01 ===== -->
+                <article class="project" id="p-sae201">
+                    <div class="project__head">
+                        <div class="tags">
+                            <span class="tag tag--net">UE1 · Réseaux</span>
+                            <span class="tag tag--sem">SAÉ 2.01 · S2</span>
+                        </div>
+                        <h3 class="project__title">Réseau Multi-Services Avancé — GNS3</h3>
+                        <p class="project__desc">Architecture réseau avancée sous GNS3 : routage dynamique RIPv2, load-balancing spanning-tree, services FTP/Apache, port-security et ACL.</p>
+                        <p class="chips">AC11.03 · AC11.04 · AC11.05 — CE1.01 · CE1.02 · CE1.03</p>
+                    </div>
+                    <details class="proj">
+                        <summary>Voir le détail de la SAÉ</summary>
+                        <div class="proj__body">
+                            <h4>Contexte</h4>
+                            <p>Infrastructure réseau multi-sites sous <strong>GNS3</strong> avec services d'entreprise avancés (sujet RT11).</p>
+
+                            <h4>Mes tâches</h4>
+                            <ul>
+                                <li><strong>VLANs :</strong> 100 / 200 / 300 + VLAN natif 999 tagué ; routage inter-VLAN sur <code>commutateur-fed</code> (L3).</li>
+                                <li><strong>Load balancing :</strong> 3 liens trunk, équilibrage de charge via coûts spanning-tree.</li>
+                                <li><strong>Routage :</strong> RIPv2 (résumé automatique désactivé), interconnexions /30, NAT/cloud sur R3.</li>
+                                <li><strong>Services :</strong> DHCP par VLAN, FTP (anonyme + utilisateurs nommés), Apache dev+prod déployé par rsync.</li>
+                                <li><strong>Sécurité :</strong> port-security (violation en shutdown), ACL sur R2 (HTTP/22/873), ACL de bordure (ICMP/HTTP).</li>
+                            </ul>
+
+                            <h4>Preuves — composantes essentielles (UE1)</h4>
+                            <ul>
+                                <li><strong>CE1.01</strong> — choix des protocoles (RIPv2, 802.1Q) et services adaptés.</li>
+                                <li><strong>CE1.02</strong> — port-security et ACL comme défense en profondeur.</li>
+                                <li><strong>CE1.03</strong> — isolation de VLANs, dépannage ACL/NAT méthodique.</li>
+                            </ul>
+
+                            <h4>English summary</h4>
+                            <p>On GNS3 I built an advanced multi-service network: tagged VLANs (100/200/300 + native 999), L3 inter-VLAN routing, spanning-tree load-balancing over three trunks, RIPv2 dynamic routing, and enterprise services (DHCP, FTP, Apache with rsync deployment). Security relied on port-security and layered ACLs on R2 and the border router.</p>
+                        </div>
+                    </details>
+                </article>
+
+                <!-- ===== SAÉ 1.03 ===== -->
+                <article class="project" id="p-sae103">
+                    <div class="project__head">
+                        <div class="tags">
+                            <span class="tag tag--net">UE2 · Transmissions</span>
+                            <span class="tag tag--sem">SAÉ 1.03 · S1</span>
+                        </div>
+                        <h3 class="project__title">Câblage Structuré &amp; Audit Wi-Fi</h3>
+                        <p class="project__desc">Audit Wi-Fi terrain (heatmaps Acrylic, 2,4 / 5 GHz), câblage structuré Cat 7 (TIA-568B), mesures PoE et simulation Packet Tracer de l'infrastructure de l'IUT.</p>
+                        <p class="chips">AC12.01 · AC12.03 · AC12.05 — CE2.01 · CE2.02 · CE2.03</p>
+                    </div>
+                    <details class="proj">
+                        <summary>Voir le détail de la SAÉ</summary>
+                        <div class="proj__body">
+                            <h4>Contexte</h4>
+                            <p>Déploiement physique et audit de couverture d'un réseau, avec restitution orale devant jury.</p>
+
+                            <h4>Mes tâches</h4>
+                            <ul>
+                                <li><strong>Câblage :</strong> sertissage de câbles Cat 7 (norme TIA-568B), montage de noyaux femelles keystone.</li>
+                                <li><strong>Mesures PoE :</strong> Cisco Catalyst WS-C2960 — 54 V, 13 W, 0,24 A ; configuration du point d'accès Cisco AIR-AP1231G.</li>
+                                <li><strong>Audit Wi-Fi :</strong> heatmaps 2,4 / 5 GHz (Acrylic Wi-Fi), mesures d'atténuation (Placo vs béton armé), analyse co-canal et zones blanches.</li>
+                                <li><strong>Simulation :</strong> reconstitution de l'infrastructure IUT sous Packet Tracer (accès au site uha1.fr).</li>
+                            </ul>
+
+                            <h4>Preuves — composantes essentielles (UE2)</h4>
+                            <ul>
+                                <li><strong>CE2.02</strong> — démarche scientifique : protocole de mesure et commentaire des résultats.</li>
+                                <li><strong>CE2.03</strong> — choix du Cat 7 et du matériel d'AP adaptés.</li>
+                                <li><strong>CE2.01</strong> — restitution orale devant un public mixte.</li>
+                            </ul>
+
+                            <h4>English summary</h4>
+                            <p>This project combined structured cabling and a Wi-Fi survey. I crimped Cat 7 cables (TIA-568B), mounted keystone jacks, measured PoE on a Cisco Catalyst 2960 (54 V / 13 W / 0.24 A) and produced 2.4/5 GHz heatmaps with Acrylic Wi-Fi to analyse material attenuation and dead zones. I presented the methodology and results orally to a mixed technical/non-technical jury.</p>
+
+                            <div class="shots">
+                                <figure class="shot"><img src="SAE103PKT.PNG" alt="Topologie Packet Tracer de l'IUT" loading="lazy"><figcaption>Simulation de l'infrastructure réseau de l'IUT</figcaption></figure>
+                                <figure class="shot"><img src="SAE103UHA.PNG" alt="Accès au site UHA via Packet Tracer" loading="lazy"><figcaption>Accès réussi au site uha1.fr via Packet Tracer</figcaption></figure>
+                            </div>
+                            <p class="proj__dl"><a href="Rapport projet SAE13 2025.pdf" target="_blank" rel="noopener" class="btn btn--ghost btn--sm">Télécharger le rapport PDF</a></p>
+                        </div>
+                    </details>
+                </article>
+
+                <!-- ===== SAÉ 2.02 ===== -->
+                <article class="project" id="p-sae202">
+                    <div class="project__head">
+                        <div class="tags">
+                            <span class="tag tag--dev">UE2 · Embarqué</span>
+                            <span class="tag tag--sem">SAÉ 2.02 · S2</span>
+                        </div>
+                        <h3 class="project__title">Radio Internet ESP32 — MURA</h3>
+                        <p class="project__desc">Radio internet embarquée sur ESP32 (HUZZAH32) + codec VS1053 : streaming Wi-Fi, décodage MP3/AAC, écran OLED, contrôle MQTT et application Flutter Android.</p>
+                        <p class="chips">AC11.01 · AC11.02 · AC12.03 · AC12.04 · AC13.03 — CE2.02 · CE2.03 · CE2.04</p>
+                    </div>
+                    <details class="proj">
+                        <summary>Voir le détail de la SAÉ</summary>
+                        <div class="proj__body">
+                            <h4>Contexte</h4>
+                            <p>Conception complète d'une radio internet autonome : matériel, firmware et application de contrôle.</p>
+
+                            <h4>Hardware</h4>
+                            <ul>
+                                <li>Adafruit <strong>HUZZAH32</strong> (ESP32 — Wi-Fi + Bluetooth) ; codec audio <strong>VS1053</strong> (décodage MP3/AAC matériel, SPI).</li>
+                                <li>Écran OLED SSD1306 128×32 en I²C (SDA → GPIO23, SCL → GPIO22) ; haut-parleurs LS110 4 Ω 5 W × 2.</li>
+                                <li>Boîtier bois custom, alimentation batterie 18650 Li-ion 2P (montage parallèle) sur port LiPo.</li>
+                            </ul>
+
+                            <h4>Firmware &amp; application</h4>
+                            <ul>
+                                <li>Streaming Wi-Fi HTTP vers le VS1053 (35 000+ stations via Radio Browser API).</li>
+                                <li>Correction logarithmique du volume <code>f(x) = 50 + √(x/100) × 50</code> ; égaliseur 5 bandes (registres VS1053), 6 présets en EEPROM.</li>
+                                <li>Contrôle complet via <strong>MQTT</strong> (pub/sub) ; affichage OLED (station, IP, état, volume).</li>
+                                <li>Application <strong>Flutter Android</strong> : catalogue 35 000 stations, provider MQTT temps réel, favoris persistés (shared_preferences), thème Material 3.</li>
+                            </ul>
+
+                            <h4>Preuves — composantes essentielles (UE2)</h4>
+                            <ul>
+                                <li><strong>CE2.02</strong> — démarche scientifique : correction perceptive du volume, réglage de l'égaliseur.</li>
+                                <li><strong>CE2.03</strong> — choix d'un codec matériel et d'une liaison MQTT adaptés.</li>
+                                <li><strong>CE2.04</strong> — boîtier bois et batterie réutilisable (sobriété matérielle).</li>
+                            </ul>
+
+                            <h4>English summary</h4>
+                            <p>MURA is a self-contained internet radio built on an ESP32 (HUZZAH32) with a VS1053 hardware codec. It streams over Wi-Fi from 35,000+ stations, decodes MP3/AAC, shows status on an OLED display and is fully controllable over MQTT, including a 5-band equaliser and a logarithmic volume curve. A companion Flutter Android app provides real-time control and persisted favourites.</p>
+
+                            <div class="shots">
+                                <figure class="shot"><img src="esp32-boitier-radio.jpg" alt="Radio terminée dans son boîtier bois" loading="lazy"><figcaption>Radio terminée — boîtier bois, OLED, haut-parleurs LS110</figcaption></figure>
+                                <figure class="shot"><img src="esp32-carte-oled.jpg" alt="Carte ESP32 HUZZAH32 et écran OLED" loading="lazy"><figcaption>HUZZAH32 + OLED SSD1306 (I²C)</figcaption></figure>
+                                <figure class="shot"><img src="esp32-demarrage-wifi.jpg" alt="Démarrage connexion Wi-Fi sur OLED" loading="lazy"><figcaption>Démarrage — connexion Wi-Fi en cours</figcaption></figure>
+                                <figure class="shot"><img src="esp32-wifi-connecte.jpg" alt="Wi-Fi connecté, IP affichée sur OLED" loading="lazy"><figcaption>Wi-Fi connecté — IP 192.168.1.78</figcaption></figure>
+                                <figure class="shot"><img src="esp32-lecture-station.jpg" alt="Lecture d'une station sur OLED" loading="lazy"><figcaption>Lecture en cours — station, volume &amp; EQ affichés</figcaption></figure>
+                                <figure class="shot"><img src="esp32-app-controle.jpg" alt="Application Flutter de contrôle" loading="lazy"><figcaption>App Flutter Android — contrôle MQTT en temps réel</figcaption></figure>
+                            </div>
+                        </div>
+                    </details>
+                </article>
+
+                <!-- ===== SAÉ 1.05 (bonus) ===== -->
+                <article class="project" id="p-sae105">
+                    <div class="project__head">
+                        <div class="tags">
+                            <span class="tag tag--dev">UE3 · Dev</span>
+                            <span class="tag tag--sem">SAÉ 1.05 · S1</span>
+                        </div>
+                        <h3 class="project__title">Automation &amp; Scripting — Analyse de disque</h3>
+                        <p class="project__desc">Outil hybride PowerShell / Python (PySide6) d'analyse et de nettoyage de disque avec interface graphique sécurisée.</p>
+                        <p class="chips">AC13.01 · AC13.02 · AC13.03 — CE3.03 · CE3.04</p>
+                    </div>
+                    <details class="proj">
+                        <summary>Voir le détail de la SAÉ</summary>
+                        <div class="proj__body">
+                            <h4>Contexte &amp; tâches</h4>
+                            <ul>
+                                <li><strong>Orchestrateur (sae.ps1) :</strong> PowerShell — préparation de l'environnement, vérification des dépendances, sécurisation des chemins UNC (<code>New-PSDrive</code>).</li>
+                                <li><strong>Moteur (analyse.py) :</strong> parcours récursif <code>os.walk</code>, tri par taille, export JSON.</li>
+                                <li><strong>Interface (main_gui.py) :</strong> PySide6 (Qt) — camembert interactif, tableau trié, suppression sécurisée.</li>
+                            </ul>
+                            <h4>Preuves — composantes essentielles (UE3)</h4>
+                            <ul>
+                                <li><strong>CE3.04</strong> — choix d'outils adaptés (PowerShell pour l'orchestration, Python/PySide6 pour l'IHM).</li>
+                                <li><strong>CE3.03</strong> — usage raisonné des outils numériques (export JSON intermédiaire).</li>
+                            </ul>
+                            <h4>English summary</h4>
+                            <p>A hybrid PowerShell/Python disk-analysis tool: a PowerShell orchestrator prepares the environment and secures UNC paths, a Python engine walks the filesystem and exports JSON, and a PySide6 GUI shows an interactive pie chart with safe deletion.</p>
+                            <div class="shots">
+                                <figure class="shot"><img src="SAE105FILES.PNG" alt="Structure modulaire du projet" loading="lazy"><figcaption>Structure modulaire du projet</figcaption></figure>
+                                <figure class="shot"><img src="SAE105CAM.PNG" alt="Interface PySide6 camembert" loading="lazy"><figcaption>Interface graphique — répartition de l'espace disque</figcaption></figure>
+                            </div>
+                        </div>
+                    </details>
+                </article>
+
+                <!-- ===== Projet SOC ===== -->
+                <article class="project" id="p-soc">
+                    <div class="project__head">
+                        <div class="tags">
+                            <span class="tag tag--cyber">UE1 · UE3 · Cyber</span>
+                        </div>
+                        <h3 class="project__title">Projet SOC — Suricata &amp; Docker</h3>
+                        <p class="project__desc">Service WordPress conteneurisé (Docker) supervisé par l'IDS Suricata : détection d'intrusion, règles personnalisées et analyse d'alertes (approche Blue Team).</p>
+                        <p class="chips">AC11.04 · AC11.05 · AC13.01 — CE1.02 · CE1.05 · CE3.05</p>
+                    </div>
+                    <details class="proj">
+                        <summary>Voir le détail</summary>
+                        <div class="proj__body">
+                            <h4>Contexte &amp; tâches</h4>
+                            <ul>
+                                <li>WordPress conteneurisé avec Docker, exposé sur le réseau local.</li>
+                                <li>Règles Suricata personnalisées (détection d'intrusion, scan de ports).</li>
+                                <li>Analyse des alertes <code>eve.json</code> et catégorisation des menaces (corrélation d'événements).</li>
+                            </ul>
+                            <h4>Preuves — composantes essentielles</h4>
+                            <ul>
+                                <li><strong>CE1.02 / CE3.05</strong> — détection d'intrusion et durcissement.</li>
+                                <li><strong>CE1.05</strong> — veille : règles à jour, posture Blue Team.</li>
+                            </ul>
+                            <h4>English summary</h4>
+                            <p>A containerised WordPress service monitored by the Suricata IDS, with custom detection rules and analysis of <code>eve.json</code> alerts — a hands-on introduction to SOC/Blue-Team event correlation.</p>
+                        </div>
+                    </details>
+                </article>
+
+                <!-- ===== VPS / Homelab ===== -->
+                <article class="project" id="p-vps">
+                    <div class="project__head">
+                        <div class="tags">
+                            <span class="tag tag--infra">UE1 · UE3 · Infra</span>
+                            <span class="tag tag--live">En production</span>
+                        </div>
+                        <h3 class="project__title">Homelab Cyber — VPS Debian, Nginx &amp; Supervision</h3>
+                        <p class="project__desc">VPS Debian (DigitalOcean) durci : Nginx, Docker, supervision (Zabbix puis Grafana), pare-feu UFW et SSH renforcé. Évolué depuis en SIEM distribué (Wazuh) — documentation à jour sur GitHub.</p>
+                        <p class="chips">AC11.04 · AC11.05 · AC13.01 · AC13.06 — CE1.02 · CE1.05 · CE3.02 · CE3.03</p>
+                        <a class="project__gh" href="https://github.com/vRayzix/projet-cyber-homelab" target="_blank" rel="noopener">→ Documentation complète &amp; à jour sur GitHub</a>
+                    </div>
+                    <details class="proj">
+                        <summary>Voir le détail</summary>
+                        <div class="proj__body">
+                            <p class="note">Cette page présente un aperçu — la stack a évolué depuis les captures ci-dessous. La configuration actuelle (Wazuh, CrowdSec, WireGuard, Caddy, Grafana) est documentée sur <a href="https://github.com/vRayzix/projet-cyber-homelab" target="_blank" rel="noopener">GitHub → projet-cyber-homelab</a>.</p>
+
+                            <h4>Contexte &amp; tâches</h4>
+                            <ul>
+                                <li>Provisionnement d'un VPS <strong>Debian 12</strong> (DigitalOcean FRA1), Nginx en reverse proxy, Docker.</li>
+                                <li>Supervision <strong>Zabbix 7.4 + PostgreSQL</strong> (puis migration vers Prometheus/Grafana).</li>
+                                <li>Durcissement : <strong>UFW</strong>, SSH par clé uniquement (port non standard, mots de passe désactivés).</li>
+                                <li>Évolution en architecture distribuée : SIEM <strong>Wazuh</strong> sur VM locale relié au VPS par tunnel <strong>WireGuard</strong>, IDS comportemental <strong>CrowdSec</strong>.</li>
+                            </ul>
+
+                            <h4>Preuves — composantes essentielles</h4>
+                            <ul>
+                                <li><strong>CE1.02 / CE3.05</strong> — durcissement Linux, défense en profondeur.</li>
+                                <li><strong>CE1.05</strong> — veille active (évolution de la stack de supervision).</li>
+                                <li><strong>CE3.02</strong> — documentation reproductible sur GitHub.</li>
+                            </ul>
+
+                            <h4>English summary</h4>
+                            <p>A hardened Debian VPS (DigitalOcean) running Nginx, Docker and monitoring (Zabbix, later Grafana), secured with UFW and key-only SSH. It has since grown into a distributed SOC homelab: a local Wazuh SIEM linked to the VPS over a WireGuard tunnel, with CrowdSec behavioural detection. Full, up-to-date documentation lives on GitHub.</p>
+
+                            <div class="shots">
+                                <figure class="shot"><img src="vps-droplet-digitalocean.png" alt="Droplet DigitalOcean" loading="lazy"><figcaption>Droplet Debian — FRA1</figcaption></figure>
+                                <figure class="shot"><img src="vps-nginx-status.png" alt="Service Nginx actif" loading="lazy"><figcaption>systemctl status nginx</figcaption></figure>
+                                <figure class="shot"><img src="zabbix-supervision.png" alt="Dashboard Zabbix" loading="lazy"><figcaption>Supervision Zabbix (depuis remplacée par Grafana)</figcaption></figure>
+                            </div>
+                        </div>
+                    </details>
+                </article>
+
+                <!-- ===== RhineTech CTF (bonus) ===== -->
+                <article class="project" id="p-ctf">
+                    <div class="project__head">
+                        <div class="tags">
+                            <span class="tag tag--cyber">Cyber</span>
+                            <span class="tag tag--rank">12ᵉ place</span>
+                        </div>
+                        <h3 class="project__title">RhineTech CTF physique 2025</h3>
+                        <p class="project__desc">Challenge de cybersécurité physique à Mulhouse — crochetage, énigmes logiques et intrusion numérique en temps limité. 12ᵉ place au classement général.</p>
+                    </div>
+                    <details class="proj">
+                        <summary>Voir le détail</summary>
+                        <div class="proj__body">
+                            <div class="shots shots--solo">
+                                <figure class="shot shot--logo"><img src="Logo_clean.Cxb_HDzr.png" alt="Logo RhineTech CTF" loading="lazy"></figure>
+                            </div>
+                            <ul>
+                                <li>Crochetage et bypass de mécanismes physiques.</li>
+                                <li>Résolution d'énigmes de logique sous pression temporelle.</li>
+                                <li>Intrusion numérique en temps limité.</li>
+                                <li><strong>12ᵉ place au classement général.</strong></li>
+                            </ul>
+                            <p class="platforms-label">Plateformes d'entraînement actives</p>
+                            <div class="platforms">
+                                <span class="platform">TryHackMe</span>
+                                <span class="platform">HackTheBox</span>
+                                <span class="platform">Root-Me</span>
+                                <span class="platform">LetDefend</span>
+                            </div>
+                        </div>
+                    </details>
+                </article>
+
+                <!-- ===== Concours DYLO (bonus) ===== -->
+                <article class="project" id="p-dylo">
+                    <div class="project__head">
+                        <div class="tags">
+                            <span class="tag tag--dev">UE2 · Dev</span>
+                        </div>
+                        <h3 class="project__title">Concours OSI — Projet DYLO</h3>
+                        <p class="project__desc">Micro-hydrolienne (vis d'Archimède) avec monitoring Arduino, présentée devant le jury INSA dans le cadre du concours OSI.</p>
+                        <p class="chips">AC11.01 · AC13.03 — CE2.04</p>
+                    </div>
+                    <details class="proj">
+                        <summary>Voir le détail</summary>
+                        <div class="proj__body">
+                            <div class="shots shots--solo">
+                                <figure class="shot shot--logo"><img src="DYLO.PNG" alt="Logo DYLO" loading="lazy"></figure>
+                            </div>
+                            <p>Conception d'une micro-hydrolienne pour réduire la facture énergétique du village de Monthou-sur-Cher, en respectant la faune et la flore.</p>
+                            <h4>Mon rôle — Électronique</h4>
+                            <ul>
+                                <li>Intégration moteur et calculs de rendement énergétique.</li>
+                                <li>Programmation Arduino : capteurs tension/courant, affichage LCD, monitoring temps réel.</li>
+                            </ul>
+                        </div>
+                    </details>
+                </article>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ===================== SYNTHÈSE ===================== -->
+    <section class="section" id="synthese">
+        <div class="container">
+            <div class="section__head">
+                <p class="eyebrow">Vue d'ensemble</p>
+                <h2 class="section__title">Synthèse des compétences</h2>
+                <p class="section__sub">Niveau atteint et preuves clés pour chacune des trois compétences.</p>
+            </div>
+
+            <div class="synth">
+                <table class="synth__table">
+                    <thead>
+                        <tr>
+                            <th scope="col"></th>
+                            <th scope="col"><span class="synth__code">UE1</span> Administrer les réseaux et l'Internet</th>
+                            <th scope="col"><span class="synth__code">UE2</span> Connecter les entreprises et les usagers</th>
+                            <th scope="col"><span class="synth__code">UE3</span> Créer des outils et applications</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th scope="row">Situation professionnelle</th>
+                            <td>Assister l'administrateur du réseau</td>
+                            <td>Découvrir les transmissions</td>
+                            <td>S'intégrer dans un service informatique</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">AC acquis</th>
+                            <td><span class="badge badge--ok">6 / 6</span></td>
+                            <td><span class="badge badge--ok">5 / 5</span></td>
+                            <td><span class="badge badge--ok">6 / 6</span></td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Niveau atteint</th>
+                            <td><strong>Très bon</strong></td>
+                            <td><strong>Très bon</strong></td>
+                            <td><strong>Très bon</strong></td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Preuves clés</th>
+                            <td>SAÉ 1.02, SAÉ 2.01, Projet SOC, Homelab VPS</td>
+                            <td>SAÉ 1.03, SAÉ 2.02, Concours DYLO</td>
+                            <td>SAÉ 2.03, SAÉ 1.05, Homelab VPS</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="grades">
+                <h3 class="grades__title">Relevé de notes — Semestre 2</h3>
+                <p class="grades__lead">
+                    Moyenne générale&nbsp;: <strong>13,41&nbsp;/&nbsp;20</strong>
+                    — moyenne de la promotion&nbsp;: 09,39 · meilleure moyenne&nbsp;: 13,52.
+                    <span class="grades__pill">≥ 10 / 20 dans chaque UE</span>
+                </p>
+                <table class="table grades__table">
+                    <thead>
+                        <tr><th>UE</th><th>Compétence</th><th>Moyenne&nbsp;/20</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td><strong>UE1</strong></td><td>Administrer les réseaux et l'Internet</td><td><span class="badge badge--ok">14,96</span></td></tr>
+                        <tr><td><strong>UE2</strong></td><td>Connecter les entreprises et les usagers</td><td><span class="badge badge--ok">11,34</span></td></tr>
+                        <tr><td><strong>UE3</strong></td><td>Créer des outils et applications pour les R&amp;T</td><td><span class="badge badge--ok">13,41</span></td></tr>
+                        <tr class="grades__total"><td colspan="2"><strong>Moyenne générale — Semestre 2</strong></td><td><span class="badge badge--ok">13,41</span></td></tr>
+                    </tbody>
+                </table>
+                <p class="grades__note">
+                    Résultats marquants&nbsp;: R2.03 Bases des services réseaux <strong>20/20</strong> ·
+                    R2.04 Téléphonie d'entreprise <strong>18/20</strong> ·
+                    SAÉ 2.05 Portfolio <strong>16,50/20</strong> ·
+                    R2.01 Technologie de l'Internet <strong>15,98/20</strong> ·
+                    R2.10 Anglais technique <strong>15,11/20</strong>.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===================== CONTACT ===================== -->
+    <section class="section section--alt" id="contact">
+        <div class="container">
+            <div class="section__head">
+                <p class="eyebrow">Contact</p>
+                <h2 class="section__title">Me contacter</h2>
+                <p class="section__sub">Une question, un projet ou une opportunité&nbsp;? N'hésitez pas.</p>
+            </div>
+
+            <div class="contact">
+                <a href="mailto:lucalexandrecrr@gmail.com" class="ccard">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                    <span class="ccard__label">Email</span>
+                    <span class="ccard__value">lucalexandrecrr@gmail.com</span>
                 </a>
-                <a href="#projets" class="btn btn--outline">
-                    <span class="btn__text">Voir les projets</span>
+                <a href="https://www.linkedin.com/in/lucas-c-961610396/" target="_blank" rel="noopener" class="ccard">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+                    <span class="ccard__label">LinkedIn</span>
+                    <span class="ccard__value">Lucas Carriat</span>
+                </a>
+                <a href="https://github.com/vRayzix" target="_blank" rel="noopener" class="ccard">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+                    <span class="ccard__label">GitHub</span>
+                    <span class="ccard__value">vRayzix</span>
+                </a>
+                <a href="cv_lucas_carriat.pdf" target="_blank" rel="noopener" class="ccard ccard--cta">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="12" y1="18" x2="12" y2="12"/><polyline points="9 15 12 18 15 15"/></svg>
+                    <span class="ccard__label">Curriculum Vitæ</span>
+                    <span class="ccard__value">Télécharger le CV (PDF)</span>
                 </a>
             </div>
-        </div>
-        <div class="hero__scroll-indicator">
-            <span class="mono">scroll</span>
-            <div class="hero__scroll-line"></div>
+            <p class="contact__loc">Mulhouse, France — 68200</p>
         </div>
     </section>
 
-    <!-- ===== PARCOURS ===== -->
-    <section class="section" id="parcours">
-        <div class="section__header">
-            <p class="section__tag mono">// parcours</p>
-            <h2 class="section__title">Mon Parcours</h2>
-            <p class="section__subtitle">Formation, diplômes et expériences</p>
-        </div>
+    </main>
 
-        <div class="timeline">
-            <div class="timeline__line"></div>
-
-            <div class="timeline__item" data-side="right">
-                <div class="timeline__dot"></div>
-                <div class="timeline__card glass">
-                    <span class="timeline__date mono">2025 — 2028</span>
-                    <h3 class="timeline__title">B.U.T. Réseaux &amp; Télécommunications</h3>
-                    <p class="timeline__location">IUT de Colmar (Université de Haute-Alsace)</p>
-                    <p class="timeline__desc">
-                        Cursus axé sur le déploiement et la sécurisation des infrastructures numériques.
-                        Formation structurée autour de SAÉ (Situations d'Apprentissage et d'Évaluation).
-                    </p>
-                    <ul class="timeline__details">
-                        <li>Architecture des Réseaux (OSI/TCP-IP, commutation, routage)</li>
-                        <li>Services Réseaux (DNS, DHCP, serveurs Web)</li>
-                        <li>Administration Linux &amp; Windows Server</li>
-                        <li>Télécommunications &amp; signaux</li>
-                    </ul>
-                    <span class="timeline__badge timeline__badge--cyber">Objectif : Spé Cybersécurité</span>
-                </div>
-            </div>
-
-            <div class="timeline__item" data-side="left">
-                <div class="timeline__dot"></div>
-                <div class="timeline__card glass">
-                    <span class="timeline__date mono">2025</span>
-                    <h3 class="timeline__title">Baccalauréat STI2D (SIN)</h3>
-                    <p class="timeline__location">Lycée Camille Claudel, Blois — Mention Assez Bien</p>
-                    <p class="timeline__desc">
-                        Spécialité Systèmes d'Information et Numérique. Bases de la programmation,
-                        réseaux avec Cisco Packet Tracer, mise en pratique de compétences techniques.
-                    </p>
-                </div>
-            </div>
-
-            <div class="timeline__item" data-side="right">
-                <div class="timeline__dot"></div>
-                <div class="timeline__card glass">
-                    <span class="timeline__date mono">2022 — Présent</span>
-                    <h3 class="timeline__title">Production Musicale (Freelance)</h3>
-                    <p class="timeline__location">Beatstars — En pause</p>
-                    <p class="timeline__desc">
-                        Gestion d'un catalogue en ligne, collaboration avec des artistes en studio,
-                        immersion dans un studio professionnel (ingénierie sonore).
-                        Compétences en gestion de projet et travail collaboratif.
-                    </p>
-                </div>
-            </div>
-
-            <div class="timeline__item" data-side="left">
-                <div class="timeline__dot"></div>
-                <div class="timeline__card glass">
-                    <span class="timeline__date mono">2021</span>
-                    <h3 class="timeline__title">Stage Maintenance — Labo Servier</h3>
-                    <p class="timeline__location">Laboratoires Servier, Suresnes</p>
-                    <p class="timeline__desc">
-                        Stage d'observation en maintenance industrielle. Découverte de l'entretien
-                        préventif des équipements et des normes de sécurité en milieu pharmaceutique.
-                    </p>
-                </div>
-            </div>
-
-            <div class="timeline__item" data-side="right">
-                <div class="timeline__dot"></div>
-                <div class="timeline__card glass">
-                    <span class="timeline__date mono">2021</span>
-                    <h3 class="timeline__title">Brevet des Collèges</h3>
-                    <p class="timeline__location">Collège SIS de Sèvres — Mention Assez Bien</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- =====================================================================
-         COMPÉTENCE UE1 — Administrer les réseaux et l'Internet
-         ===================================================================== -->
-    <section class="section" id="ue1">
-        <div class="section__header">
-            <p class="section__tag mono">// compétence_UE1</p>
-            <h2 class="section__title">UE1 — Administrer les réseaux et l'Internet</h2>
-            <p class="section__subtitle">Déployer, configurer et dépanner des infrastructures réseau</p>
-        </div>
-
-        <div class="competence-meta glass">
-            <div class="competence-col">
-                <h3 class="competence-col__title">Définition</h3>
-                <p class="competence-col__text">
-                    En se basant sur les fondamentaux des réseaux, de l'électronique et des systèmes d'exploitation,
-                    l'étudiant est capable d'administrer les équipements d'une infrastructure réseau locale et
-                    d'assurer la connectivité avec l'Internet.
-                </p>
-            </div>
-            <div class="competence-col">
-                <h3 class="competence-col__title">Composantes essentielles</h3>
-                <ul class="competence-list">
-                    <li>Choisir les outils et méthodes adaptés au contexte (OS, protocoles, topologie)</li>
-                    <li>Documenter les configurations et procédures mises en place</li>
-                    <li>Respecter les contraintes et règles de l'organisation</li>
-                    <li>Garantir le fonctionnement et la disponibilité du réseau</li>
-                </ul>
-            </div>
-            <div class="competence-col">
-                <h3 class="competence-col__title">Situations professionnelles visées</h3>
-                <ul class="competence-list">
-                    <li>Déploiement d'un réseau local d'entreprise (VLANs, routage, services)</li>
-                    <li>Dépannage et diagnostic de pannes réseau</li>
-                    <li>Administration de systèmes Linux/Windows en production</li>
-                    <li>Configuration et supervision de services réseau (DHCP, DNS, NAT)</li>
-                </ul>
-            </div>
-        </div>
-
-        <div class="ac-summary-bar">
-            <span class="ac-summary-badge ac-summary-badge--acquise">6 Acquises</span>
-            <span class="ac-summary-badge ac-summary-badge--encours">0 En cours</span>
-            <span class="ac-summary-badge ac-summary-badge--ameliorer">0 À améliorer</span>
-        </div>
-
-        <div class="ac-grid">
-            <article class="ac-card glass" data-status="acquise">
-                <div class="ac-card__top">
-                    <span class="ac-card__code mono">AC11.01</span>
-                    <span class="ac-card__badge ac-card__badge--acquise">Acquise</span>
-                </div>
-                <h3 class="ac-card__title">Maîtriser les lois fondamentales de l'électricité afin d'intervenir sur des équipements de réseaux et de télécommunications.</h3>
-                <p class="ac-card__desc">TP R1.04 électronique (lois de Kirchhoff, mesures courant/tension). SAÉ 2.02 : câblage ESP32 + VS1053, calcul de la batterie 18650 2P (autonomie, courant de charge).</p>
-            </article>
-
-            <article class="ac-card glass" data-status="acquise">
-                <div class="ac-card__top">
-                    <span class="ac-card__code mono">AC11.02</span>
-                    <span class="ac-card__badge ac-card__badge--acquise">Acquise</span>
-                </div>
-                <h3 class="ac-card__title">Comprendre l'architecture et les fondements des systèmes numériques, des communications et de l'Internet.</h3>
-                <p class="ac-card__desc">Modèles OSI/TCP-IP étudiés en R1.01. TP Python R1.07. SAÉ 2.02 : streaming audio HTTP vers codec VS1053, décodage MP3/AAC matériel, gestion des flux MQTT.</p>
-            </article>
-
-            <article class="ac-card glass" data-status="acquise">
-                <div class="ac-card__top">
-                    <span class="ac-card__code mono">AC11.03</span>
-                    <span class="ac-card__badge ac-card__badge--acquise">Acquise</span>
-                </div>
-                <h3 class="ac-card__title">Configurer les fonctions de base d'un réseau local.</h3>
-                <p class="ac-card__desc">SAÉ 1.02 (EVE-NG) : VLANs Directeurs/Utilisateurs/Serveurs/Administration, inter-VLAN router-on-a-stick, DHCP relay (ip helper-address), VTP, spanning-tree. SAÉ 2.01 (GNS3) : VLANs 100/200/300, native VLAN 999, port-security, RIPv2, NAT, ACL.</p>
-            </article>
-
-            <article class="ac-card glass" data-status="acquise">
-                <div class="ac-card__top">
-                    <span class="ac-card__code mono">AC11.04</span>
-                    <span class="ac-card__badge ac-card__badge--acquise">Acquise</span>
-                </div>
-                <h3 class="ac-card__title">Interagir avec les systèmes d'exploitation pour la configuration et l'administration des réseaux et services.</h3>
-                <p class="ac-card__desc">Administration Linux en R1.02, R1.08, R2.01, R2.02. SAÉ 2.01 : configuration FTP (anonymous + utilisateurs nommés), Apache (dev+prod), rsync. SAÉ 2.03 : Nginx, Gunicorn, systemd, virtualenv, collectstatic, journalctl.</p>
-            </article>
-
-            <article class="ac-card glass" data-status="acquise">
-                <div class="ac-card__top">
-                    <span class="ac-card__code mono">AC11.05</span>
-                    <span class="ac-card__badge ac-card__badge--acquise">Acquise</span>
-                </div>
-                <h3 class="ac-card__title">Identifier les dysfonctionnements d'un réseau local et savoir les signaler.</h3>
-                <p class="ac-card__desc">Diagnostic de pannes réseau en TP R1.05, R2.01. SAÉ 2.01 : isolation de VLANs, dépannage ACL/NAT. SAÉ 2.03 : debug 502 Bad Gateway (ss -tlnp, curl 127.0.0.1:8000, logs Nginx), ModuleNotFoundError pymysql (venv non activé), conflit Git dans settings.py.</p>
-            </article>
-
-            <article class="ac-card glass" data-status="acquise">
-                <div class="ac-card__top">
-                    <span class="ac-card__code mono">AC11.06</span>
-                    <span class="ac-card__badge ac-card__badge--acquise">Acquise</span>
-                </div>
-                <h3 class="ac-card__title">Installer un poste client et expliquer la procédure mise en place.</h3>
-                <p class="ac-card__desc">Cours et TP R2.04 : installation d'OS, configuration postes clients, intégration domaine. Documenté dans les comptes-rendus de TP.</p>
-            </article>
-        </div>
-    </section>
-
-    <!-- =====================================================================
-         COMPÉTENCE UE2 — Connecter les entreprises et les usagers
-         ===================================================================== -->
-    <section class="section" id="ue2">
-        <div class="section__header">
-            <p class="section__tag mono">// compétence_UE2</p>
-            <h2 class="section__title">UE2 — Connecter les entreprises et les usagers</h2>
-            <p class="section__subtitle">Déployer et mesurer des supports de transmission filaires et sans fil</p>
-        </div>
-
-        <div class="competence-meta glass">
-            <div class="competence-col">
-                <h3 class="competence-col__title">Définition</h3>
-                <p class="competence-col__text">
-                    L'étudiant est capable de déployer, mesurer et caractériser des supports et systèmes de
-                    transmission filaires et sans fil pour assurer la connectivité des entreprises et des usagers,
-                    en respectant les normes et standards en vigueur.
-                </p>
-            </div>
-            <div class="competence-col">
-                <h3 class="competence-col__title">Composantes essentielles</h3>
-                <ul class="competence-list">
-                    <li>Analyser les besoins de connectivité et de couverture</li>
-                    <li>Maîtriser les techniques de mesure et d'audit des transmissions</li>
-                    <li>Respecter les normes et standards (TIA-568B, IEEE 802.11)</li>
-                    <li>Communiquer les résultats à un public technique et non technique</li>
-                </ul>
-            </div>
-            <div class="competence-col">
-                <h3 class="competence-col__title">Situations professionnelles visées</h3>
-                <ul class="competence-list">
-                    <li>Audit Wi-Fi terrain avec production de heatmaps</li>
-                    <li>Câblage structuré et installation physique (Cat 7, RJ45, PoE)</li>
-                    <li>Mesures de performances et analyse de signaux (RSSI, atténuation)</li>
-                    <li>Présentation orale des résultats à un jury</li>
-                </ul>
-            </div>
-        </div>
-
-        <div class="ac-summary-bar">
-            <span class="ac-summary-badge ac-summary-badge--acquise">3 Acquises</span>
-            <span class="ac-summary-badge ac-summary-badge--encours">2 En cours</span>
-            <span class="ac-summary-badge ac-summary-badge--ameliorer">0 À améliorer</span>
-        </div>
-
-        <div class="ac-grid">
-            <article class="ac-card glass" data-status="acquise">
-                <div class="ac-card__top">
-                    <span class="ac-card__code mono">AC12.01</span>
-                    <span class="ac-card__badge ac-card__badge--acquise">Acquise</span>
-                </div>
-                <h3 class="ac-card__title">Mesurer, analyser et commenter des signaux.</h3>
-                <p class="ac-card__desc">SAÉ 1.03 : mesures Wi-Fi (RSSI, atténuation par matériau) avec Acrylic Wi-Fi, analyse PoE (54 V, 13 W, 0,24 A sur Cisco Catalyst 2960). Rapport écrit commentant les résultats.</p>
-            </article>
-
-            <article class="ac-card glass" data-status="encours">
-                <div class="ac-card__top">
-                    <span class="ac-card__code mono">AC12.02</span>
-                    <span class="ac-card__badge ac-card__badge--encours">En cours</span>
-                </div>
-                <h3 class="ac-card__title">Caractériser des systèmes de transmission élémentaires et comprendre leur modélisation mathématique.</h3>
-                <p class="ac-card__desc">Notions abordées en R1.06 et R2.06 (modulation, théorème de Shannon, bandes passantes). Acquisition en cours, approfondissement prévu en S2/S3.</p>
-            </article>
-
-            <article class="ac-card glass" data-status="acquise">
-                <div class="ac-card__top">
-                    <span class="ac-card__code mono">AC12.03</span>
-                    <span class="ac-card__badge ac-card__badge--acquise">Acquise</span>
-                </div>
-                <h3 class="ac-card__title">Déployer des supports de transmission.</h3>
-                <p class="ac-card__desc">SAÉ 1.03 : sertissage câbles Cat 7 (norme TIA-568B), câblage RJ45, montage noyaux femelles keystone. Installation et configuration d'un point d'accès Cisco AIR-AP1231G.</p>
-            </article>
-
-            <article class="ac-card glass" data-status="encours">
-                <div class="ac-card__top">
-                    <span class="ac-card__code mono">AC12.04</span>
-                    <span class="ac-card__badge ac-card__badge--encours">En cours</span>
-                </div>
-                <h3 class="ac-card__title">Connecter les systèmes de ToIP.</h3>
-                <p class="ac-card__desc">Notions abordées en cours R2.07. Compétence à approfondir lors des TP dédiés en S2.</p>
-            </article>
-
-            <article class="ac-card glass" data-status="acquise">
-                <div class="ac-card__top">
-                    <span class="ac-card__code mono">AC12.05</span>
-                    <span class="ac-card__badge ac-card__badge--acquise">Acquise</span>
-                </div>
-                <h3 class="ac-card__title">Communiquer avec un interlocuteur et adapter son discours.</h3>
-                <p class="ac-card__desc">Oral SAÉ 1.03 devant jury : présentation des mesures Wi-Fi, heatmaps et analyse des résultats devant un public mixte (enseignants techniques et non techniques). Argumentation des choix méthodologiques.</p>
-            </article>
-        </div>
-    </section>
-
-    <!-- =====================================================================
-         COMPÉTENCE UE3 — Créer des outils et applications informatiques
-         ===================================================================== -->
-    <section class="section" id="ue3">
-        <div class="section__header">
-            <p class="section__tag mono">// compétence_UE3</p>
-            <h2 class="section__title">UE3 — Créer des outils et des applications pour les R&amp;T</h2>
-            <p class="section__subtitle">Concevoir, développer et déployer des solutions logicielles au service des réseaux</p>
-        </div>
-
-        <div class="competence-meta glass">
-            <div class="competence-col">
-                <h3 class="competence-col__title">Définition</h3>
-                <p class="competence-col__text">
-                    L'étudiant est capable de concevoir, développer et déployer des outils et applications
-                    informatiques au service des infrastructures de réseaux et télécommunications,
-                    en mobilisant les langages et frameworks appropriés.
-                </p>
-            </div>
-            <div class="competence-col">
-                <h3 class="competence-col__title">Composantes essentielles</h3>
-                <ul class="competence-list">
-                    <li>Mobiliser les langages et frameworks adaptés (Python, Django, HTML/CSS, Flutter)</li>
-                    <li>Gérer des bases de données relationnelles (SQL, MariaDB)</li>
-                    <li>Déployer et documenter les solutions sur des infrastructures réelles</li>
-                    <li>Travailler en mode collaboratif (Git, répartition des tâches)</li>
-                </ul>
-            </div>
-            <div class="competence-col">
-                <h3 class="competence-col__title">Situations professionnelles visées</h3>
-                <ul class="competence-list">
-                    <li>Développement d'applications web à destination des équipes réseau</li>
-                    <li>Automatisation de tâches d'administration système</li>
-                    <li>Intégration de systèmes embarqués dans une infrastructure réseau</li>
-                    <li>Déploiement et mise en production sur serveur Linux</li>
-                </ul>
-            </div>
-        </div>
-
-        <div class="ac-summary-bar">
-            <span class="ac-summary-badge ac-summary-badge--acquise">4 Acquises</span>
-            <span class="ac-summary-badge ac-summary-badge--encours">1 En cours</span>
-            <span class="ac-summary-badge ac-summary-badge--ameliorer">1 À améliorer</span>
-        </div>
-
-        <div class="ac-grid">
-            <article class="ac-card glass" data-status="acquise">
-                <div class="ac-card__top">
-                    <span class="ac-card__code mono">AC13.01</span>
-                    <span class="ac-card__badge ac-card__badge--acquise">Acquise</span>
-                </div>
-                <h3 class="ac-card__title">Utiliser un système informatique et ses outils.</h3>
-                <p class="ac-card__desc">Maîtrise Linux/Windows (R1.08, R1.02, R2.01). SAÉ 2.03 : déploiement Debian VMs, gestion des services systemd (enable/start/status), Nginx, virtualenv Python, journalctl pour les logs.</p>
-            </article>
-
-            <article class="ac-card glass" data-status="encours">
-                <div class="ac-card__top">
-                    <span class="ac-card__code mono">AC13.02</span>
-                    <span class="ac-card__badge ac-card__badge--encours">En cours</span>
-                </div>
-                <h3 class="ac-card__title">Lire, exécuter, corriger et modifier un programme.</h3>
-                <p class="ac-card__desc">Lecture et exécution maîtrisées (R1.07, SAÉ 1.05). Correction autonome en progression : débogage Django (ModuleNotFoundError pymysql → venv non activé, conflit Git dans settings.py, systemctl enable). AC en consolidation active.</p>
-            </article>
-
-            <article class="ac-card glass" data-status="ameliorer">
-                <div class="ac-card__top">
-                    <span class="ac-card__code mono">AC13.03</span>
-                    <span class="ac-card__badge ac-card__badge--ameliorer">À améliorer</span>
-                </div>
-                <h3 class="ac-card__title">Traduire un algorithme dans un langage de programmation adapté.</h3>
-                <p class="ac-card__desc">Difficultés en R1.07. Progression en SAÉ 1.05 (Python/PowerShell). SAÉ 2.02 : implémentation de la courbe logarithmique de volume (f(x) = 50 + √(x/100) × 50) et de l'égaliseur 5 bandes en C++ Arduino.</p>
-            </article>
-
-            <article class="ac-card glass" data-status="acquise">
-                <div class="ac-card__top">
-                    <span class="ac-card__code mono">AC13.04</span>
-                    <span class="ac-card__badge ac-card__badge--acquise">Acquise</span>
-                </div>
-                <h3 class="ac-card__title">Connaître l'architecture et les technologies d'un site web.</h3>
-                <p class="ac-card__desc">SAÉ 1.01 (CV HTML/CSS), R1.09, R2.09. SAÉ 2.03 : architecture Django MVC (modèles ORM, vues, templates Jinja2), déploiement Nginx (reverse proxy) + Gunicorn (WSGI), configuration STATIC_ROOT et collectstatic.</p>
-            </article>
-
-            <article class="ac-card glass" data-status="acquise">
-                <div class="ac-card__top">
-                    <span class="ac-card__code mono">AC13.05</span>
-                    <span class="ac-card__badge ac-card__badge--acquise">Acquise</span>
-                </div>
-                <h3 class="ac-card__title">Choisir les mécanismes de gestion de données adaptés et argumenter ses choix.</h3>
-                <p class="ac-card__desc">SAÉ 2.03 : modélisation relationnelle 6 entités (aéroports, pistes, compagnies, types avions, avions, vols), MariaDB pour sa fiabilité transactionnelle. Import CSV avec gestion d'erreurs par ligne et guide de format intégré.</p>
-            </article>
-
-            <article class="ac-card glass" data-status="acquise">
-                <div class="ac-card__top">
-                    <span class="ac-card__code mono">AC13.06</span>
-                    <span class="ac-card__badge ac-card__badge--acquise">Acquise</span>
-                </div>
-                <h3 class="ac-card__title">S'intégrer dans un environnement de travail collaboratif.</h3>
-                <p class="ac-card__desc">SAÉ 2.03 : Git/GitHub, répartition des rôles (Yassine → DEPLOIEMENT.md + débogage, Lucas → modèles Django + vues), ClickUp Gantt pour le suivi. SAÉ 1.03 : travail en groupe, présentation orale collective devant jury.</p>
-            </article>
-        </div>
-    </section>
-
-    <!-- =====================================================================
-         PROJETS & SAÉ
-         ===================================================================== -->
-    <section class="section" id="projets">
-        <div class="section__header">
-            <p class="section__tag mono">// projets_SAE</p>
-            <h2 class="section__title">Projets &amp; SAÉ</h2>
-            <p class="section__subtitle">Situations d'Apprentissage et d'Évaluation — preuves de compétences</p>
-        </div>
-
-        <div class="projects-list">
-
-            <!-- ===== SAÉ 1.02 ===== -->
-            <article class="project-item glass">
-                <div class="project-item__header">
-                    <div class="project-item__tags">
-                        <span class="project-card__tag project-card__tag--reseaux">Réseaux</span>
-                        <span class="project-item__semester mono">SAÉ 1.02 · S1</span>
-                    </div>
-                    <h3 class="project-item__title">Architecture Réseau Succursale</h3>
-                    <p class="project-item__desc">Conception et déploiement d'une infrastructure réseau d'entreprise complète sous EVE-NG avec segmentation VLAN, DHCP relayé et inter-VLAN routing.</p>
-                    <p class="project-item__acs mono">AC11.03 · AC11.04 · AC11.05</p>
-                </div>
-                <details class="project-detail">
-                    <summary>Voir les détails techniques</summary>
-                    <div class="project-detail__body">
-                        <p>Simulateur : <strong>EVE-NG</strong> avec équipements Cisco (routeurs + switches IOS). Sujet R1.02 — mise en place d'une succursale d'entreprise connectée à un siège.</p>
-
-                        <h4>Architecture réseau</h4>
-                        <ul>
-                            <li><strong>Segmentation VLAN :</strong> VLAN Directeurs, VLAN Utilisateurs, VLAN Serveurs, VLAN Administration — isolés par politique de sécurité</li>
-                            <li><strong>Adressage :</strong> masques variables selon VLAN, interconnexions routeurs en /30</li>
-                            <li><strong>Inter-VLAN routing :</strong> Router-on-a-Stick (sous-interfaces sur le routeur avec encapsulation 802.1Q)</li>
-                            <li><strong>VTP :</strong> configuration serveur/client pour propagation des VLANs entre switches</li>
-                            <li><strong>Spanning-Tree :</strong> STP activé pour éviter les boucles de commutation</li>
-                        </ul>
-
-                        <h4>Services réseau</h4>
-                        <ul>
-                            <li><strong>DHCP :</strong> déployé initialement sur le switch, puis migré vers un serveur Linux avec relai <code>ip helper-address</code> sur l'interface de chaque VLAN</li>
-                            <li><strong>NAT :</strong> translation d'adresses sur le routeur border pour l'accès Internet</li>
-                        </ul>
-
-                        <div class="project-detail__images">
-                            <div class="project-detail__img-wrap">
-                                <img src="SAE102LAB.PNG" alt="Topologie EVE-NG de la succursale" loading="lazy">
-                                <span class="project-detail__caption mono">Topologie logique EVE-NG — Routeurs &amp; Switchs Cisco</span>
-                            </div>
-                            <div class="project-detail__img-wrap">
-                                <img src="SAE102DHCP.PNG" alt="Preuve DHCP sur VPC" loading="lazy">
-                                <span class="project-detail__caption mono">Preuve DHCP — attribution dynamique vers postes VPC</span>
-                            </div>
-                        </div>
-                    </div>
-                </details>
-            </article>
-
-            <!-- ===== SAÉ 2.01 ===== -->
-            <article class="project-item glass">
-                <div class="project-item__header">
-                    <div class="project-item__tags">
-                        <span class="project-card__tag project-card__tag--reseaux">Réseaux</span>
-                        <span class="project-item__semester mono">SAÉ 2.01 · S2</span>
-                    </div>
-                    <h3 class="project-item__title">Réseau Multi-Services Avancé</h3>
-                    <p class="project-item__desc">Architecture réseau avancée sous GNS3 avec routage dynamique RIPv2, load-balancing spanning-tree, services FTP/Apache, port-security et ACL.</p>
-                    <p class="project-item__acs mono">AC11.03 · AC11.04 · AC11.05</p>
-                </div>
-                <details class="project-detail">
-                    <summary>Voir les détails techniques</summary>
-                    <div class="project-detail__body">
-                        <p>Simulateur : <strong>GNS3</strong>. Sujet RT11 — infrastructure réseau multi-sites avec services d'entreprise avancés.</p>
-
-                        <h4>Architecture réseau</h4>
-                        <ul>
-                            <li><strong>VLANs :</strong> VLAN 100, VLAN 200, VLAN 300, VLAN natif 999 (tagué)</li>
-                            <li><strong>Inter-VLAN routing :</strong> routage sur <code>commutateur-fed</code> (L3 switching)</li>
-                            <li><strong>Load balancing :</strong> 3 liens trunk entre switches, équilibrage de charge via spanning-tree (coûts configurés)</li>
-                            <li><strong>Routage dynamique :</strong> RIP v2 entre routeurs (résumé automatique désactivé)</li>
-                            <li><strong>Adressage :</strong> interconnexions en /30</li>
-                        </ul>
-
-                        <h4>Services réseau</h4>
-                        <ul>
-                            <li><strong>DHCP :</strong> serveur dédié avec plages par VLAN</li>
-                            <li><strong>FTP :</strong> accès anonyme (lecture seule) + utilisateurs nommés Antoine et Élise avec permissions distinctes</li>
-                            <li><strong>Apache :</strong> deux environnements (développement et production) avec déploiement par rsync</li>
-                            <li><strong>NAT/cloud :</strong> translation sur R3 pour accès Internet</li>
-                        </ul>
-
-                        <h4>Sécurité</h4>
-                        <ul>
-                            <li><strong>Port-security :</strong> limitation du nombre d'adresses MAC par port, violation en shutdown</li>
-                            <li><strong>ACL sur R2 :</strong> filtre autorisant HTTP (80), SSH (22), rsync (873) ; reste refusé</li>
-                            <li><strong>ACL border :</strong> filtre ICMP et HTTP entrant</li>
-                        </ul>
-                    </div>
-                </details>
-            </article>
-
-            <!-- ===== SAÉ 1.03 ===== -->
-            <article class="project-item glass">
-                <div class="project-item__header">
-                    <div class="project-item__tags">
-                        <span class="project-card__tag project-card__tag--reseaux">Réseaux</span>
-                        <span class="project-item__semester mono">SAÉ 1.03 · S1</span>
-                    </div>
-                    <h3 class="project-item__title">Heatmap IUT &amp; Câblage Structuré</h3>
-                    <p class="project-item__desc">Audit Wi-Fi terrain avec production de heatmaps, câblage structuré Cat 7, mesures PoE et simulation Packet Tracer de l'infrastructure de l'IUT.</p>
-                    <p class="project-item__acs mono">AC12.01 · AC12.03 · AC12.05</p>
-                </div>
-                <details class="project-detail">
-                    <summary>Voir les détails techniques</summary>
-                    <div class="project-detail__body">
-                        <h4>Infrastructure physique</h4>
-                        <ul>
-                            <li><strong>Câblage structuré :</strong> câbles Cat 7, sertissage RJ45 (norme TIA-568B), montage noyaux femelles keystone</li>
-                            <li><strong>Analyse PoE :</strong> Switch Cisco Catalyst WS-C2960 — Tension : 54 V, Puissance AP : 13 W, Intensité : 0,24 A</li>
-                            <li><strong>Matériel AP :</strong> Cisco AIR-AP1231G — configuration canal et puissance</li>
-                        </ul>
-
-                        <h4>Audit Wi-Fi (Heatmaps)</h4>
-                        <ul>
-                            <li>Cartographie de la couverture Wi-Fi 2,4 GHz/5 GHz via Acrylic Wi-Fi Heatmaps</li>
-                            <li>Mesures d'atténuation des matériaux (Placo vs Béton armé) et analyse des zones blanches</li>
-                            <li>Analyse de la co-canal et des interférences</li>
-                        </ul>
-
-                        <div class="project-detail__images">
-                            <div class="project-detail__img-wrap">
-                                <img src="SAE103PKT.PNG" alt="Topologie Packet Tracer IUT" loading="lazy">
-                                <span class="project-detail__caption mono">Simulation complète de l'infrastructure réseau IUT</span>
-                            </div>
-                            <div class="project-detail__img-wrap">
-                                <img src="SAE103UHA.PNG" alt="Accès site UHA via Packet Tracer" loading="lazy">
-                                <span class="project-detail__caption mono">Accès réussi au site uha1.fr via Packet Tracer</span>
-                            </div>
-                        </div>
-
-                        <div class="project-detail__download">
-                            <a href="Rapport projet SAE13 2025.pdf" target="_blank" class="btn btn--outline">
-                                Télécharger le rapport PDF
-                            </a>
-                        </div>
-                    </div>
-                </details>
-            </article>
-
-            <!-- ===== SAÉ 1.05 ===== -->
-            <article class="project-item glass">
-                <div class="project-item__header">
-                    <div class="project-item__tags">
-                        <span class="project-card__tag project-card__tag--dev">Dev</span>
-                        <span class="project-item__semester mono">SAÉ 1.05 · S1</span>
-                    </div>
-                    <h3 class="project-item__title">Automation &amp; Scripting — Analyse disque</h3>
-                    <p class="project-item__desc">Outil hybride PowerShell/Python (PySide6) d'analyse et nettoyage de disque avec interface graphique sécurisée.</p>
-                    <p class="project-item__acs mono">AC13.01 · AC13.02 · AC13.03</p>
-                </div>
-                <details class="project-detail">
-                    <summary>Voir les détails techniques</summary>
-                    <div class="project-detail__body">
-                        <h4>Architecture modulaire</h4>
-                        <ul>
-                            <li><strong>Orchestrateur (sae.ps1) :</strong> script PowerShell — préparation environnement, vérification dépendances, sécurité des chemins UNC (New-PSDrive)</li>
-                            <li><strong>Moteur (analyse.py) :</strong> parcours récursif os.walk, tri par taille, export JSON avec division flottante + round() pour les fichiers &lt; 1 Mo</li>
-                            <li><strong>Interface (main_gui.py) :</strong> PySide6 (Qt) — camembert interactif, tableau trié, bouton suppression sécurisé</li>
-                        </ul>
-
-                        <div class="project-detail__images">
-                            <div class="project-detail__img-wrap">
-                                <img src="SAE105FILES.PNG" alt="Structure du projet SAÉ 1.05" loading="lazy">
-                                <span class="project-detail__caption mono">Structure modulaire du projet</span>
-                            </div>
-                            <div class="project-detail__img-wrap">
-                                <img src="SAE105CAM.PNG" alt="Interface PySide6 camembert" loading="lazy">
-                                <span class="project-detail__caption mono">Interface graphique — répartition de l'espace disque</span>
-                            </div>
-                        </div>
-                    </div>
-                </details>
-            </article>
-
-            <!-- ===== SAÉ 2.02 ===== -->
-            <article class="project-item glass">
-                <div class="project-item__header">
-                    <div class="project-item__tags">
-                        <span class="project-card__tag project-card__tag--dev">Dev</span>
-                        <span class="project-item__semester mono">SAÉ 2.02 · S2</span>
-                    </div>
-                    <h3 class="project-item__title">Radio Internet ESP32 — MURA</h3>
-                    <p class="project-item__desc">Radio internet embarquée sur ESP32 avec codec VS1053, MQTT, écran OLED, application Flutter Android, égaliseur 5 bandes et boîtier bois avec batterie 18650.</p>
-                    <p class="project-item__acs mono">AC11.01 · AC11.02 · AC13.01 · AC13.02 · AC13.03</p>
-                </div>
-                <details class="project-detail">
-                    <summary>Voir les détails techniques</summary>
-                    <div class="project-detail__body">
-                        <h4>Hardware</h4>
-                        <ul>
-                            <li><strong>Carte principale :</strong> Adafruit HUZZAH32 (ESP32 — Wi-Fi + Bluetooth)</li>
-                            <li><strong>Codec audio :</strong> VS1053 VS FeatherWing — décodage MP3/AAC matériel, SPI</li>
-                            <li><strong>Affichage :</strong> écran OLED SSD1306 128×32 en I²C (SDA → GPIO23, SCL → GPIO22)</li>
-                            <li><strong>Haut-parleurs :</strong> LS110 4Ω 5W × 2, boîtier bois custom (dimensions calculées)</li>
-                            <li><strong>Alimentation :</strong> batterie 18650 Li-ion 2P (montage parallèle), connecteur JST sur port LiPo HUZZAH32</li>
-                        </ul>
-
-                        <h4>Firmware V_PGM_9</h4>
-                        <ul>
-                            <li>Streaming Wi-Fi HTTP vers codec VS1053 (35 000+ stations via Radio Browser API)</li>
-                            <li><strong>Correction logarithmique du volume :</strong> courbe √x — <code>f(x) = 50 + √(x/100) × 50</code> pour une perception linéaire</li>
-                            <li><strong>Égaliseur 5 bandes :</strong> Bass, Mid-Bass, Mid, Presence, Treble via registres VS1053 (AC11.01–AC11.05), 6 présets mémorisés en EEPROM</li>
-                            <li>Contrôle complet via MQTT (topic pub/sub) : changement de station, volume, EQ, présets</li>
-                            <li>Affichage OLED : station en cours, IP Wi-Fi, état connexion, volume</li>
-                        </ul>
-
-                        <h4>Application Flutter Android</h4>
-                        <ul>
-                            <li>Catalogue de 35 000 stations (Radio Browser API REST + parsing JSON)</li>
-                            <li>Provider MQTT pour l'état en temps réel (station, volume, EQ)</li>
-                            <li>shared_preferences pour la persistance des favoris et du dernier état</li>
-                            <li>Sliders volume, bass, treble ; 5 sliders EQ avec 6 présets (Pop, Rock, Jazz, Classical, Flat, Custom)</li>
-                            <li>Thème sombre Material Design 3</li>
-                        </ul>
-
-                        <div class="project-detail__images">
-                            <div class="project-detail__img-wrap">
-                                <img src="esp32-boitier-radio.jpg" alt="Radio terminée dans son boîtier bois" loading="lazy">
-                                <span class="project-detail__caption mono">Radio terminée — boîtier bois, OLED, haut-parleurs LS110</span>
-                            </div>
-                            <div class="project-detail__img-wrap">
-                                <img src="esp32-carte-oled.jpg" alt="Carte ESP32 HUZZAH32 et écran OLED" loading="lazy">
-                                <span class="project-detail__caption mono">HUZZAH32 + OLED SSD1306 (I²C)</span>
-                            </div>
-                            <div class="project-detail__img-wrap">
-                                <img src="esp32-demarrage-wifi.jpg" alt="Démarrage connexion Wi-Fi sur OLED" loading="lazy">
-                                <span class="project-detail__caption mono">Démarrage — connexion Wi-Fi en cours</span>
-                            </div>
-                            <div class="project-detail__img-wrap">
-                                <img src="esp32-wifi-connecte.jpg" alt="Wi-Fi connecté, IP sur OLED" loading="lazy">
-                                <span class="project-detail__caption mono">Wi-Fi connecté — IP 192.168.1.78</span>
-                            </div>
-                            <div class="project-detail__img-wrap">
-                                <img src="esp32-lecture-station.jpg" alt="Lecture station Skyrock sur OLED" loading="lazy">
-                                <span class="project-detail__caption mono">Lecture en cours — station Skyrock, volume &amp; EQ affiché</span>
-                            </div>
-                            <div class="project-detail__img-wrap">
-                                <img src="esp32-app-controle.jpg" alt="Application Flutter de contrôle" loading="lazy">
-                                <span class="project-detail__caption mono">App Flutter Android — contrôle MQTT en temps réel</span>
-                            </div>
-                        </div>
-                    </div>
-                </details>
-            </article>
-
-            <!-- ===== SAÉ 2.03 ===== -->
-            <article class="project-item glass project-item--featured">
-                <div class="project-item__header">
-                    <div class="project-item__tags">
-                        <span class="project-card__tag project-card__tag--dev">Dev</span>
-                        <span class="project-card__tag project-card__tag--infra">Infra</span>
-                        <span class="project-item__semester mono">SAÉ 2.03 · S2</span>
-                    </div>
-                    <h3 class="project-item__title">Gestion du Trafic Aérien — Django &amp; MariaDB</h3>
-                    <p class="project-item__desc">Application web de gestion du trafic aérien (CRUD 6 entités, logique métier, import CSV, fiches imprimables) déployée en production sur deux VMs Debian. Rôle : infrastructure, déploiement Nginx/Gunicorn, front-end, import/export. <strong>UE3 – Créer des outils et applications informatiques pour les R&amp;T.</strong></p>
-                    <p class="project-item__acs mono">AC13.01 · AC13.02 · AC13.04 · AC13.05 · AC13.06</p>
-                </div>
-                <details class="project-detail">
-                    <summary>Voir le portfolio complet</summary>
-                    <div class="project-detail__body">
-
-                        <h4>1. Contexte du projet</h4>
-                        <p>Cette SAÉ consistait à développer, en équipe de trois, une application web de <strong>gestion du trafic aérien</strong> : un gestionnaire doit pouvoir administrer des aéroports, des pistes, des compagnies, des types d'avions, des avions et des vols, avec un CRUD complet pour chaque entité. Au-delà de la gestion de données, le sujet imposait une logique métier (vérifier qu'une piste compatible est libre à l'arrivée — occupation de 10 minutes par avion), un import de vols par fichier et la génération de fiches de vols imprimables. L'application devait être déployée « comme en production » sur machine virtuelle avec Nginx et Gunicorn — le cœur de la compétence UE3.</p>
-
-                        <table class="project-detail__table">
-                            <thead><tr><th>Membre</th><th>Périmètre</th></tr></thead>
-                            <tbody>
-                                <tr><td><strong>Moi</strong></td><td>Infrastructure VM, déploiement Nginx/Gunicorn, front-end (templates, CSS, tableau de bord), import CSV, fiches de vols, documentation technique.</td></tr>
-                                <tr><td>Adil</td><td>Back-end Django : modèles, formulaires, vues CRUD et logique des 10 minutes (suggestion de créneau).</td></tr>
-                                <tr><td>Adel</td><td>Schéma SQL (<code>schema.sql</code>), création et alimentation de la base (<code>donnees.sql</code>), tests de robustesse.</td></tr>
-                            </tbody>
-                        </table>
-                        <p>Outils communs : <strong>Git/GitHub</strong> pour le code, <strong>ClickUp</strong> pour le planning (Gantt), <strong>VirtualBox</strong> pour les VMs.</p>
-
-                        <h4>2. Mes tâches personnelles</h4>
-
-                        <h5>2.1 Infrastructure et réseau (deux VM)</h5>
-                        <ul>
-                            <li>Mise en place de deux machines virtuelles Debian sous VirtualBox : une VM « BDD » (MariaDB seule) et une VM « Django » (Nginx + Gunicorn + application).</li>
-                            <li>Passage en <strong>mode pont</strong> : chaque VM reçoit une IP du réseau de la salle via DHCP, rendant le site joignable depuis n'importe quel poste.</li>
-                            <li>Configuration de MariaDB pour accepter les connexions distantes (<code>bind-address = 0.0.0.0</code>, utilisateur <code>django_user@'%'</code>).</li>
-                        </ul>
-
-                        <h5>2.2 Déploiement Nginx + Gunicorn + systemd</h5>
-                        <ul>
-                            <li>Mise en place de Gunicorn (WSGI) en remplacement du <code>runserver</code> de développement, et de Nginx en reverse proxy.</li>
-                            <li>Configuration des blocs <code>/static/</code> et <code>/media/</code> dans Nginx, et de <code>collectstatic</code> côté Django (<code>STATIC_ROOT</code>).</li>
-                            <li>Création d'un service systemd avec <code>systemctl enable</code> pour un redémarrage automatique après reboot.</li>
-                            <li>Rédaction de <code>DEPLOIEMENT.md</code> — procédure complète et reproductible de A à Z.</li>
-                        </ul>
-
-                        <h5>2.3 Front-end et expérience utilisateur</h5>
-                        <ul>
-                            <li>Conception du gabarit commun <code>base.html</code> (barre de navigation + barre latérale) hérité par toutes les pages.</li>
-                            <li>Création des pages de liste (aéroports, pistes, compagnies, types d'avions, avions, vols), d'un formulaire générique réutilisé pour tous les CRUD et de la page de confirmation de suppression.</li>
-                            <li>Tableau de bord d'accueil avec compteurs dynamiques interrogeant la base en temps réel.</li>
-                            <li>Réécriture du style en CSS séparé (<code>style.css</code>, thème sombre à barre latérale), indépendant de Bootstrap.</li>
-                        </ul>
-
-                        <h5>2.4 Import CSV et fiches de vols</h5>
-                        <ul>
-                            <li>Module <code>import_vols_csv</code> : lecture UTF-8, correspondance des avions et aéroports par nom, collecte d'erreurs ligne par ligne sans interrompre l'import.</li>
-                            <li>Mode d'emploi du format CSV intégré directement en préambule de la page d'import.</li>
-                            <li>Page <code>fiche_vols</code> : filtrage par aéroport, date et sens (départs/arrivées) + feuille <code>@media print</code> pour impression propre.</li>
-                        </ul>
-
-                        <h5>2.5 Gestion de version et coordination</h5>
-                        <ul>
-                            <li>Tenue du dépôt GitHub, résolution des conflits de fusion (notamment dans <code>settings.py</code>), synchronisation du code sur les VMs.</li>
-                            <li>Planification via diagramme de Gantt (ClickUp) et intégration des corrections du professeur (base SQL manuelle plutôt que migrations Django).</li>
-                        </ul>
-
-                        <h4>3. Preuves d'acquisition de compétences — UE3</h4>
-                        <table class="project-detail__table">
-                            <thead><tr><th>Composante essentielle</th><th>Preuve concrète</th></tr></thead>
-                            <tbody>
-                                <tr><td><strong>Suivre une démarche de développement rigoureuse</strong></td><td>Front-end structuré autour d'un gabarit hérité (<code>base.html</code>) et d'un formulaire générique réutilisé, évitant la duplication entre les six CRUD.</td></tr>
-                                <tr><td><strong>Utiliser des outils et technologies adaptés</strong></td><td>Architecture Nginx + Gunicorn (au lieu de <code>runserver</code>) + service systemd : chaîne serveur conforme aux pratiques de production.</td></tr>
-                                <tr><td><strong>S'appuyer sur une base de données</strong></td><td>Connexion à MariaDB via PyMySQL, interrogation en temps réel (compteurs du tableau de bord, fiches de vols filtrées).</td></tr>
-                                <tr><td><strong>Intégrer les bonnes pratiques (sécurité, robustesse)</strong></td><td>Import CSV tolérant aux erreurs (collecte ligne par ligne), gestion de <code>ALLOWED_HOSTS</code>, séparation application / base sur deux VMs.</td></tr>
-                                <tr><td><strong>Documenter le travail réalisé</strong></td><td>Rédaction de <code>DEPLOIEMENT.md</code>, mode d'emploi CSV intégré en page, procédure reproductible de A à Z.</td></tr>
-                                <tr><td><strong>Travailler en équipe avec des outils adaptés</strong></td><td>Gestion du dépôt GitHub, résolution de conflits de fusion, planification via diagramme de Gantt sur ClickUp.</td></tr>
-                            </tbody>
-                        </table>
-
-                        <h5>Analyse réflexive — difficultés et résolution</h5>
-                        <p>Le déploiement a été la partie la plus formatrice : les problèmes ne venaient pas du code applicatif mais de l'environnement. J'ai appris à diagnostiquer en couches plutôt qu'à essayer au hasard.</p>
-                        <table class="project-detail__table">
-                            <thead><tr><th>Problème</th><th>Diagnostic et solution</th></tr></thead>
-                            <tbody>
-                                <tr><td><strong>Nginx renvoyait 502 Bad Gateway</strong></td><td>Nginx ne joignait pas Gunicorn. Diagnostic couche par couche : <code>ss -tlnp</code> (port 8000 absent) → <code>curl 127.0.0.1:8000</code> → logs Nginx → Gunicorn non démarré.</td></tr>
-                                <tr><td><strong>ModuleNotFoundError: pymysql</strong></td><td>Gunicorn lancé hors du virtualenv. Solution : activer le venv avant de démarrer Gunicorn.</td></tr>
-                                <tr><td><strong>Conflit de fusion dans settings.py</strong></td><td>Marqueurs de conflit non résolus cassant le parse Python (<code>ALLOWED_HOSTS</code>, <code>HOST</code> de la base). Résolution propre des conflits Git apprise.</td></tr>
-                                <tr><td><strong>Gunicorn ne survivait pas au reboot</strong></td><td>Unité systemd non enregistrée. Mise en place de <code>systemctl enable</code> avec chemin absolu dans le service file.</td></tr>
-                            </tbody>
-                        </table>
-                        <p><em>Ce que je retiens : un service web ne se résume pas au code. Sa valeur tient aussi à sa capacité à être déployé, reproduit et maintenu — d'où l'importance de la documentation et d'une méthode de diagnostic ordonnée.</em></p>
-
-                        <h4>4. English summary</h4>
-                        <p>As part of the SAÉ 2.03 project, my team of three built an air-traffic management web application using Django and a MariaDB database. The application offers full CRUD operations for six entities (airports, runways, airlines, aircraft types, aircraft and flights), enforces a business rule that checks whether a suitable runway is free on arrival (a runway stays busy for ten minutes after a landing) and suggests a later slot otherwise, supports bulk flight import from a CSV file, and generates printable flight sheets.</p>
-                        <p>My personal responsibility was the infrastructure, deployment and user-facing side of the project. I set up two Debian virtual machines in bridged networking mode — one running MariaDB, the other running the Django application behind Gunicorn and Nginx — and configured a systemd service so the application restarts automatically after a reboot. I designed the front-end (shared template, sidebar layout, separate CSS theme and a dynamic dashboard), implemented the CSV import and the printable flight sheets, and wrote the deployment documentation so that the whole environment can be reproduced from scratch.</p>
-                        <p>The most valuable part of the project was deployment troubleshooting (502 errors, virtual-environment issues, merge conflicts), which taught me to diagnose problems layer by layer and reinforced how important clear documentation and a clean Git workflow are when working as a team.</p>
-
-                        <h4>Captures d'écran</h4>
-                        <div class="project-detail__images">
-                            <div class="project-detail__img-placeholder">
-                                <p class="project-detail__placeholder-label mono">[ image à insérer ]</p>
-                                <p class="project-detail__placeholder-desc">Dashboard Django — compteurs dynamiques</p>
-                            </div>
-                            <div class="project-detail__img-placeholder">
-                                <p class="project-detail__placeholder-label mono">[ image à insérer ]</p>
-                                <p class="project-detail__placeholder-desc">Page liste des vols avec filtres</p>
-                            </div>
-                            <div class="project-detail__img-placeholder">
-                                <p class="project-detail__placeholder-label mono">[ image à insérer ]</p>
-                                <p class="project-detail__placeholder-desc">Formulaire générique (create/update)</p>
-                            </div>
-                            <div class="project-detail__img-placeholder">
-                                <p class="project-detail__placeholder-label mono">[ image à insérer ]</p>
-                                <p class="project-detail__placeholder-desc">Import CSV — guide de format + erreurs par ligne</p>
-                            </div>
-                            <div class="project-detail__img-placeholder">
-                                <p class="project-detail__placeholder-label mono">[ image à insérer ]</p>
-                                <p class="project-detail__placeholder-desc">Topologie VMs (VM-BDD + VM-Django)</p>
-                            </div>
-                            <div class="project-detail__img-placeholder">
-                                <p class="project-detail__placeholder-label mono">[ image à insérer ]</p>
-                                <p class="project-detail__placeholder-desc">systemctl status gunicorn.service</p>
-                            </div>
-                        </div>
-                    </div>
-                </details>
-            </article>
-
-            <!-- ===== VPS DigitalOcean ===== -->
-            <article class="project-item glass">
-                <div class="project-item__header">
-                    <div class="project-item__tags">
-                        <span class="project-card__tag project-card__tag--infra">Infra</span>
-                        <span class="project-card__tag project-card__tag--cyber">Cyber</span>
-                        <span class="project-card__status">En production</span>
-                    </div>
-                    <h3 class="project-item__title">Homelab Cyber — VPS &amp; SIEM distribué</h3>
-                    <p class="project-item__desc">Infrastructure de sécurité distribuée : VPS DigitalOcean (Caddy, CrowdSec, Prometheus/Grafana, Vaultwarden) relié via tunnel WireGuard à une VM locale hébergeant un SIEM Wazuh complet (OpenSearch + Dashboard).</p>
-                    <p class="project-item__acs mono">AC11.04 · AC11.05 · AC13.01</p>
-                    <a class="project-item__github-link" href="https://github.com/vRayzix/projet-cyber-homelab" target="_blank" rel="noopener">→ Documentation complète &amp; à jour sur GitHub</a>
-                </div>
-                <details class="project-detail">
-                    <summary>Voir les détails techniques</summary>
-                    <div class="project-detail__body">
-                        <p class="project-detail__note">Cette page présente un aperçu — la stack a évolué depuis les captures ci-dessous. La documentation complète et la configuration actuelle sont disponibles sur <a href="https://github.com/vRayzix/projet-cyber-homelab" target="_blank" rel="noopener">GitHub → projet-cyber-homelab</a>.</p>
-
-                        <h4>Architecture distribuée</h4>
-                        <table class="project-detail__table">
-                            <thead><tr><th>Composant</th><th>Rôle</th><th>Statut</th></tr></thead>
-                            <tbody>
-                                <tr><td><strong>VPS DigitalOcean FRA1</strong></td><td>Debian 12 — 2 vCPU / 4 Go RAM — point d'entrée public</td><td>✅ Actif</td></tr>
-                                <tr><td><strong>Caddy</strong></td><td>Reverse proxy HTTPS automatique (DNS-01), 3 sous-domaines exposés</td><td>✅ Actif</td></tr>
-                                <tr><td><strong>WireGuard</strong></td><td>Tunnel chiffré VPS ↔ VM locale (10.0.0.1 ↔ 10.0.0.2)</td><td>✅ Actif</td></tr>
-                                <tr><td><strong>CrowdSec</strong></td><td>IDS comportemental + bouncer iptables (blocage IP automatique)</td><td>✅ Actif</td></tr>
-                                <tr><td><strong>Prometheus + Grafana</strong></td><td>Monitoring temps réel CPU/RAM/disque via Node Exporter</td><td>✅ Actif</td></tr>
-                                <tr><td><strong>Vaultwarden</strong></td><td>Gestionnaire de secrets auto-hébergé (compatible Bitwarden)</td><td>✅ Actif</td></tr>
-                                <tr><td><strong>Wazuh SIEM (VM locale)</strong></td><td>Manager + OpenSearch + Dashboard — logs agrégés via tunnel chiffré</td><td>✅ Actif</td></tr>
-                            </tbody>
-                        </table>
-
-                        <h4>Sécurité et durcissement</h4>
-                        <ul>
-                            <li>SSH sur port 2222, authentification par clé uniquement (mots de passe désactivés)</li>
-                            <li>Score Lynis : 68/100 après durcissement Linux</li>
-                            <li>Defense-in-depth : Caddy (HTTPS obligatoire) → CrowdSec (analyse comportementale) → Wazuh (corrélation d'événements)</li>
-                            <li>Isolation SIEM : le Wazuh Manager n'est jamais exposé directement sur Internet — il reçoit les logs via le tunnel WireGuard</li>
-                        </ul>
-
-                        <h4>Services exposés</h4>
-                        <ul>
-                            <li>Portfolio : <code>projet-cyber.duckdns.org</code></li>
-                            <li>Grafana : <code>grafana-projet-cyber.duckdns.org</code></li>
-                            <li>Vaultwarden : <code>vault-projet-cyber.duckdns.org</code></li>
-                        </ul>
-
-                        <h4>Captures d'écran (version initiale)</h4>
-                        <div class="project-detail__images">
-                            <div class="project-detail__img-wrap">
-                                <img src="vps-droplet-digitalocean.png" alt="Droplet DigitalOcean" loading="lazy">
-                                <span class="project-detail__caption mono">Droplet Debian — FRA1</span>
-                            </div>
-                            <div class="project-detail__img-wrap">
-                                <img src="vps-nginx-status.png" alt="Service Nginx actif" loading="lazy">
-                                <span class="project-detail__caption mono">systemctl status nginx (version initiale)</span>
-                            </div>
-                            <div class="project-detail__img-wrap">
-                                <img src="zabbix-supervision.png" alt="Dashboard Zabbix" loading="lazy">
-                                <span class="project-detail__caption mono">Supervision Zabbix (remplacé par Grafana)</span>
-                            </div>
-                        </div>
-                    </div>
-                </details>
-            </article>
-
-            <!-- ===== Projet SOC ===== -->
-            <article class="project-item glass">
-                <div class="project-item__header">
-                    <div class="project-item__tags">
-                        <span class="project-card__tag project-card__tag--cyber">Cyber</span>
-                    </div>
-                    <h3 class="project-item__title">Projet SOC — Analyse de Menaces</h3>
-                    <p class="project-item__desc">Déploiement d'un service WordPress conteneurisé (Docker) et mise en place de l'IDS Suricata pour l'analyse de menaces en temps réel.</p>
-                    <p class="project-item__acs mono">AC11.04 · AC11.05</p>
-                </div>
-                <details class="project-detail">
-                    <summary>Voir les détails techniques</summary>
-                    <div class="project-detail__body">
-                        <ul>
-                            <li>WordPress conteneurisé avec Docker, exposition sur le réseau local</li>
-                            <li>Règles Suricata personnalisées pour la détection d'intrusion et le scan de ports</li>
-                            <li>Analyse des alertes et catégorisation des menaces (analyse logs eve.json)</li>
-                            <li>Approche Blue Team / Analyste SOC : corrélation d'événements</li>
-                        </ul>
-                    </div>
-                </details>
-            </article>
-
-            <!-- ===== RhineTech CTF ===== -->
-            <article class="project-item glass">
-                <div class="project-item__header">
-                    <div class="project-item__tags">
-                        <span class="project-card__tag project-card__tag--cyber">Cyber</span>
-                        <span class="project-card__rank">12e place</span>
-                    </div>
-                    <h3 class="project-item__title">RhineTech CTF physique 2025</h3>
-                    <p class="project-item__desc">Challenge de cybersécurité physique à Mulhouse — crochetage, énigmes logiques et intrusion numérique en temps limité. 12e place au classement général.</p>
-                </div>
-                <details class="project-detail">
-                    <summary>Voir les détails</summary>
-                    <div class="project-detail__body">
-                        <div class="project-detail__images">
-                            <div class="project-detail__img-wrap" style="max-width: 200px; margin: 0 auto;">
-                                <img src="Logo_clean.Cxb_HDzr.png" alt="Logo RhineTech CTF" loading="lazy">
-                            </div>
-                        </div>
-                        <ul>
-                            <li>Crochetage et bypass de mécanismes physiques</li>
-                            <li>Résolution d'énigmes de logique sous pression temporelle</li>
-                            <li>Intrusion numérique en temps limité</li>
-                            <li><strong>12e place au classement général</strong></li>
-                        </ul>
-                        <div class="platforms" style="margin-top: 16px;">
-                            <p class="platforms__label mono">// plateformes_actives</p>
-                            <div class="platforms__grid">
-                                <div class="platform-badge glass">TryHackMe</div>
-                                <div class="platform-badge glass">HackTheBox</div>
-                                <div class="platform-badge glass">Root-Me</div>
-                                <div class="platform-badge glass">LetDefend</div>
-                            </div>
-                        </div>
-                    </div>
-                </details>
-            </article>
-
-            <!-- ===== Concours DYLO ===== -->
-            <article class="project-item glass">
-                <div class="project-item__header">
-                    <div class="project-item__tags">
-                        <span class="project-card__tag project-card__tag--dev">Dev</span>
-                    </div>
-                    <h3 class="project-item__title">Concours OSI — Projet DYLO</h3>
-                    <p class="project-item__desc">Micro-hydrolienne (Vis d'Archimède) avec monitoring Arduino, présentée devant le jury INSA dans le cadre du concours OSI.</p>
-                    <p class="project-item__acs mono">AC11.01 · AC13.03</p>
-                </div>
-                <details class="project-detail">
-                    <summary>Voir les détails</summary>
-                    <div class="project-detail__body">
-                        <div class="project-detail__images">
-                            <div class="project-detail__img-wrap" style="max-width: 150px; margin: 0 auto;">
-                                <img src="DYLO.PNG" alt="Logo DYLO" loading="lazy">
-                            </div>
-                        </div>
-                        <p>Conception d'une micro-hydrolienne pour réduire la facture énergétique du village de Monthou-sur-Cher, en respectant la faune et la flore.</p>
-                        <h4>Mon rôle — Électronique</h4>
-                        <ul>
-                            <li>Intégration moteur et calculs de rendement énergétique</li>
-                            <li>Programmation Arduino : capteurs tension/courant, affichage LCD, monitoring temps réel</li>
-                        </ul>
-                    </div>
-                </details>
-            </article>
-
-        </div>
-    </section>
-
-    <!-- ===== CONTACT ===== -->
-    <section class="section section--contact" id="contact">
-        <div class="section__header">
-            <p class="section__tag mono">// contact</p>
-            <h2 class="section__title">Contact</h2>
-            <p class="section__subtitle">Un projet, une question, une opportunité ?</p>
-        </div>
-
-        <div class="contact">
-            <div class="contact__layout">
-
-                <form class="contact__form glass" action="https://api.web3forms.com/submit" method="POST">
-                    <input type="hidden" name="access_key" value="718de4b2-4beb-4a88-9d24-f23cced01ebe">
-                    <input type="hidden" name="subject" value="Nouveau message — Portfolio Lucas Carriat">
-                    <input type="hidden" name="redirect" value="">
-
-                    <div class="form__group">
-                        <label for="contact-name" class="form__label mono">Nom</label>
-                        <input type="text" id="contact-name" name="name" class="form__input" placeholder="John Doe" required>
-                    </div>
-                    <div class="form__group">
-                        <label for="contact-email" class="form__label mono">Email</label>
-                        <input type="email" id="contact-email" name="email" class="form__input" placeholder="john@example.com" required>
-                    </div>
-                    <div class="form__group">
-                        <label for="contact-message" class="form__label mono">Message</label>
-                        <textarea id="contact-message" name="message" class="form__input form__textarea" placeholder="Votre message..." rows="5" required></textarea>
-                    </div>
-                    <button type="submit" class="btn btn--primary contact__submit">
-                        <span class="btn__text">Envoyer le message</span>
-                    </button>
-                </form>
-
-                <aside class="contact__sidebar">
-                    <a href="mailto:lucalexandrecrr@gmail.com" class="contact__card glass">
-                        <svg class="contact__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-                        <span class="contact__label">Email</span>
-                        <span class="contact__value mono">lucalexandrecrr@gmail.com</span>
-                    </a>
-
-                    <a href="https://www.linkedin.com/in/lucas-c-961610396/" target="_blank" rel="noopener" class="contact__card glass">
-                        <svg class="contact__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
-                        <span class="contact__label">LinkedIn</span>
-                        <span class="contact__value mono">Lucas Carriat</span>
-                    </a>
-
-                    <a href="https://github.com/vRayzix" target="_blank" rel="noopener" class="contact__card glass">
-                        <svg class="contact__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
-                        <span class="contact__label">GitHub</span>
-                        <span class="contact__value mono">vRayzix</span>
-                    </a>
-
-                    <div class="contact__location">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" width="18" height="18"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-                        <span>Mulhouse, France — 68200</span>
-                    </div>
-
-                    <a href="cv_lucas_carriat.pdf" target="_blank" class="btn btn--primary contact__cv-btn">
-                        <span class="btn__text">Télécharger mon CV</span>
-                    </a>
-                </aside>
-
-            </div>
-        </div>
-    </section>
-
-    <!-- ===== FOOTER ===== -->
+    <!-- ===================== FOOTER ===================== -->
     <footer class="footer">
-        <div class="footer__inner">
-            <p class="footer__copy mono">&copy; 2025 — Lucas Carriat · B.U.T. R&amp;T · IUT de Colmar</p>
+        <div class="container footer__inner">
+            <p class="footer__copy">© 2025 Lucas Carriat · B.U.T. R&amp;T · IUT de Colmar</p>
             <div class="footer__links">
                 <a href="mailto:lucalexandrecrr@gmail.com">Email</a>
                 <a href="https://github.com/vRayzix" target="_blank" rel="noopener">GitHub</a>
