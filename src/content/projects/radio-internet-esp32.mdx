@@ -1,12 +1,13 @@
 ---
 title: 'Radio internet sur ESP32, pilotée en MQTT'
-summary: 'Un objet connecté complet, du câblage au firmware jusqu’à l’application mobile, qui diffuse des flux audio en Wi-Fi et se commande à distance.'
+summary: 'Une radio connectée qui lit des flux audio en Wi-Fi et se pilote à distance : j’en ai écrit le firmware et l’application mobile de commande.'
 description: 'Étude de cas : radio internet sur ESP32 avec décodeur audio VS1053, écran OLED, commande MQTT et application Android Flutter.'
 order: 4
 kind: secondaire
 tags: [Embarqué, MQTT, Wi-Fi]
-role: 'Conception et réalisation'
-context: 'Projet embarqué'
+role: 'Firmware C++ Arduino et application Flutter'
+context: 'Projet en binôme'
+period: 'Début 2026, 1 mois'
 stack: [ESP32, VS1053, C++ Arduino, MQTT, HTTP, I²C, SPI, Flutter]
 cover: ../../assets/projects/radio-internet-esp32/boitier.jpg
 coverAlt: 'La radio terminée dans son boîtier en bois peint en bleu, avec le haut-parleur éclairé en façade et l’écran OLED sur le dessus.'
@@ -19,9 +20,11 @@ import app from '../../assets/projects/radio-internet-esp32/app-controle.jpg';
 
 ## Contexte
 
-Une radio internet autonome : elle se connecte en Wi-Fi, lit des flux audio en continu et se pilote depuis un téléphone. Le projet couvre toute la chaîne : choix des composants, câblage, firmware et application de commande.
+Une radio internet autonome : elle se connecte en Wi-Fi, lit des flux audio en continu et se pilote depuis un téléphone. Nous étions deux : mon coéquipier s’est chargé de la partie matérielle (montage, câblage, alimentation, boîtier) et j’ai pris en charge tout le logiciel, du firmware de l’ESP32 à l’application de commande.
 
 ## Matériel
+
+Le montage a été réalisé par mon coéquipier. Le firmware s’appuie sur :
 
 - Carte **Adafruit HUZZAH32** (ESP32, Wi-Fi et Bluetooth).
 - Décodeur audio **VS1053** relié en **SPI** : le décodage MP3 et AAC est fait par le composant, ce qui laisse l’ESP32 libre pour le réseau.
@@ -49,12 +52,14 @@ Une radio internet autonome : elle se connecte en Wi-Fi, lit des flux audio en c
 
 ## Firmware
 
+Écrit en C++ avec le framework Arduino : connexion Wi-Fi, lecture des flux, pilotage du VS1053, affichage OLED et client MQTT.
+
 - Courbe de volume logarithmique, `f(x) = 50 + √(x/100) × 50`, pour une progression perçue régulière.
 - Égaliseur 5 bandes réglé directement dans les registres du VS1053, avec 6 préréglages enregistrés en EEPROM.
 
 ## Application de commande
 
-Une application **Flutter** pour Android parcourt l’annuaire des stations, pilote la radio en temps réel via MQTT et garde les favoris en mémoire sur le téléphone.
+J’ai développé une application **Flutter** pour Android qui parcourt l’annuaire des stations, pilote la radio en temps réel via MQTT et garde les favoris en mémoire sur le téléphone.
 
 <Figure
   src={app}
