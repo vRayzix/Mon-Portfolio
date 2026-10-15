@@ -1,0 +1,164 @@
+---
+import { Picture } from 'astro:assets';
+import HomelabArchitecture from './diagram/HomelabArchitecture.astro';
+import Tags from './Tags.astro';
+import { projectHref, type Project } from '../lib/projects';
+
+interface Props {
+  project: Project;
+  featured?: boolean | undefined;
+  headingLevel?: 'h2' | 'h3' | undefined;
+  eager?: boolean | undefined;
+}
+
+const { project, featured = false, headingLevel = 'h3', eager = false } = Astro.props;
+const { data } = project;
+const Heading = headingLevel;
+const url = projectHref(project);
+const titleId = `card-${project.id}`;
+const widths = data.cover ? [480, 800, 1200].filter((w) => w <= (data.cover?.width ?? 0)) : [];
+---
+
+<article
+  class:list={[
+    'card',
+    { 'card--featured': featured, 'card--secondary': data.kind === 'secondaire' },
+  ]}
+  aria-labelledby={titleId}
+>
+  <div class:list={['card__visual', { 'card__visual--diagram': project.id === 'homelab' }]}>
+    {project.id === 'homelab' ? (
+      <HomelabArchitecture id="hl-card" caption={false} wideOnly />
+    ) : data.cover && data.coverAlt ? (
+      <Picture
+        src={data.cover}
+        alt={data.coverAlt}
+        formats={['avif', 'webp']}
+        widths={widths.length > 0 ? widths : [data.cover.width]}
+        sizes="(min-width: 1280px) 40rem, (min-width: 810px) 50vw, 100vw"
+        loading={eager ? 'eager' : 'lazy'}
+        decoding="async"
+      />
+    ) : data.snippet ? (
+      <pre class="card__snippet" aria-hidden="true"><code>{data.snippet.trimEnd()}</code></pre>
+    ) : null}
+  </div>
+  <div class="card__body">
+    <Heading class="card__title" id={titleId}>
+      <a href={url}>{data.title}</a>
+    </Heading>
+    <p class="card__summary">{data.summary}</p>
+    <Tags items={data.tags} label="Thèmes" />
+  </div>
+</article>
+
+<style>
+  .card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-5);
+  }
+
+  .card__visual {
+    position: relative;
+    overflow: hidden;
+    aspect-ratio: 4 / 3;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    background: var(--bg-subtle);
+  }
+
+  .card__visual :global(picture) {
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+
+  .card__visual :global(img) {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top left;
+    transition: transform var(--dur) var(--ease);
+  }
+
+  .card--secondary .card__visual :global(img) {
+    object-position: 50% 78%;
+  }
+
+  .card__visual--diagram {
+    aspect-ratio: auto;
+    padding: clamp(var(--space-5), 4vw, var(--space-8));
+  }
+
+  .card__snippet {
+    height: 100%;
+    margin: 0;
+    padding: clamp(var(--space-5), 4vw, var(--space-7));
+    overflow: hidden;
+    font-size: clamp(0.8125rem, 0.75rem + 0.3vw, 0.9375rem);
+    line-height: 1.7;
+    color: var(--fg-body);
+    transition: transform var(--dur) var(--ease);
+  }
+
+  .card__body {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+  }
+
+  .card__title {
+    font-size: var(--step-1);
+    line-height: var(--leading-snug);
+    max-width: 32ch;
+  }
+
+  .card--featured .card__title {
+    font-size: var(--step-2);
+    max-width: 28ch;
+  }
+
+  .card__title a {
+    text-decoration: none;
+  }
+
+  .card__title a::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: var(--radius);
+  }
+
+  .card__title a:focus-visible {
+    outline: none;
+  }
+
+  .card__title a:focus-visible::after {
+    outline: 2px solid var(--accent);
+    outline-offset: 6px;
+  }
+
+  .card__summary {
+    max-width: 60ch;
+    color: var(--fg-muted);
+  }
+
+  .card :global(.tags) {
+    margin-block-start: var(--space-2);
+  }
+
+  @media (hover: hover) {
+    .card:hover .card__title a {
+      text-decoration: underline;
+      text-decoration-thickness: 1px;
+      text-decoration-color: var(--accent);
+    }
+
+    .card:hover .card__visual :global(img),
+    .card:hover .card__snippet {
+      transform: scale(1.015);
+    }
+  }
+</style>

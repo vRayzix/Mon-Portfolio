@@ -1,9 +1,124 @@
 ---
+import ApproachList from '../components/ApproachList.astro';
+import ContactLinks from '../components/ContactLinks.astro';
+import ProjectGrid from '../components/ProjectGrid.astro';
 import BaseLayout from '../layouts/BaseLayout.astro';
+import { getProjects } from '../lib/projects';
+import { href, site } from '../lib/site';
+
+const projects = await getProjects();
 ---
 
 <BaseLayout>
-  <div class="wrap">
-    <h1>Administration systèmes et réseaux</h1>
-  </div>
+  <section class="wrap hero" aria-labelledby="hero-title">
+    <p class="hero__status rise">
+      <span class="hero__dot" aria-hidden="true"></span>
+      Stage recherché · avril à juin 2027
+    </p>
+    <h1 class="hero__title rise rise-delay-1" id="hero-title">
+      J’installe, je supervise et je sécurise des infrastructures Linux, Windows et réseau.
+    </h1>
+    <p class="hero__lede rise rise-delay-2">
+      Je suis {site.name}, étudiant en réseaux et télécommunications et futur administrateur
+      systèmes et réseaux. Mon terrain d’entraînement principal : un homelab en service, exposé à
+      Internet, durci, supervisé et relié à un SIEM.
+    </p>
+  </section>
+
+  <section class="wrap section" aria-labelledby="projets-title">
+    <div class="section-head">
+      <h2 class="section-title" id="projets-title">
+        Projets
+      </h2>
+      <a class="section-link" href={href('projets/')}>
+        Tous les projets
+      </a>
+    </div>
+    <ProjectGrid projects={projects} />
+  </section>
+
+  <section class="wrap section" aria-labelledby="approche-title">
+    <div class="section-head">
+      <h2 class="section-title" id="approche-title">
+        Ma façon de travailler
+      </h2>
+    </div>
+    <ApproachList />
+  </section>
+
+  <section class="wrap section" aria-labelledby="apropos-title">
+    <div class="section-head">
+      <h2 class="section-title" id="apropos-title">
+        À propos
+      </h2>
+      <a class="section-link" href={href('a-propos/')}>
+        Parcours et compétences
+      </a>
+    </div>
+    <div class="about">
+      <p>
+        Je viens des systèmes numériques et je me suis spécialisé dans les réseaux et
+        l’administration de systèmes Linux et Windows. Ce qui me plaît : comprendre comment les
+        briques s’assemblent, rendre un service fiable et savoir l’expliquer.
+      </p>
+      <p>
+        En dehors des projets, je pratique la sécurité en compétition (CTF RhineTech, 12ᵉ sur 39
+        équipes) et sur des plateformes d’entraînement.
+      </p>
+    </div>
+  </section>
+
+  <section class="wrap section" aria-labelledby="contact-title">
+    <div class="section-head">
+      <h2 class="section-title" id="contact-title">
+        Contact
+      </h2>
+    </div>
+    <ContactLinks />
+  </section>
 </BaseLayout>
+
+<style>
+  .hero {
+    padding-block: clamp(var(--space-8), 12vw, var(--space-10)) var(--space-4);
+  }
+
+  .hero__status {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    font-size: var(--step--1);
+    color: var(--fg-muted);
+  }
+
+  .hero__dot {
+    width: 0.5rem;
+    height: 0.5rem;
+    border-radius: 50%;
+    background: var(--accent);
+  }
+
+  .hero__title {
+    max-width: 17ch;
+    margin-block-start: var(--space-6);
+    font-size: var(--step-4);
+    font-weight: var(--weight-regular);
+    line-height: var(--leading-tight);
+    letter-spacing: var(--tracking-display);
+  }
+
+  .hero__lede {
+    max-width: 50ch;
+    margin-block-start: var(--space-6);
+    font-size: var(--step-1);
+    line-height: 1.45;
+  }
+
+  .about {
+    display: grid;
+    gap: var(--space-5);
+    max-width: 62ch;
+    font-size: var(--step-1);
+    line-height: 1.45;
+  }
+</style>

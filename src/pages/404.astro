@@ -1,0 +1,34 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { href } from '../lib/site';
+---
+
+<BaseLayout title="Page introuvable" noindex>
+  <section class="wrap not-found">
+    <p class="eyebrow">Erreur 404</p>
+    <h1>Cette page n’existe pas ou a été déplacée.</h1>
+    <p>
+      <a href={href()}>Revenir à l’accueil</a> ou consulter les{' '}
+      <a href={href('projets/')}>projets</a>.
+    </p>
+  </section>
+</BaseLayout>
+
+<style>
+  .not-found {
+    padding-block: var(--space-9);
+  }
+
+  h1 {
+    max-width: 20ch;
+    margin-block: var(--space-4) var(--space-6);
+    font-size: var(--step-3);
+    font-weight: var(--weight-regular);
+    line-height: var(--leading-tight);
+    letter-spacing: var(--tracking-display);
+  }
+
+  a {
+    text-decoration-color: var(--accent);
+  }
+</style>

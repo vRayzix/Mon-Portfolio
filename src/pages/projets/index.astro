@@ -1,0 +1,43 @@
+---
+import ProjectGrid from '../../components/ProjectGrid.astro';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getProjects } from '../../lib/projects';
+
+const projects = await getProjects();
+---
+
+<BaseLayout
+  title="Projets"
+  description="Études de cas : homelab Linux supervisé et sécurisé, déploiement Django sur Debian, réseau Cisco multi-services, radio internet ESP32."
+>
+  <header class="wrap page-header">
+    <h1 class="page-title rise">Projets</h1>
+    <p class="page-lede rise rise-delay-1">
+      Chaque projet est présenté comme une étude de cas : le contexte, l’architecture, les choix
+      techniques, les incidents rencontrés et le résultat.
+    </p>
+  </header>
+  <section class="wrap" aria-label="Liste des projets">
+    <ProjectGrid projects={projects} headingLevel="h2" />
+  </section>
+</BaseLayout>
+
+<style>
+  .page-header {
+    padding-block: var(--space-8) var(--space-8);
+  }
+
+  .page-title {
+    font-size: var(--step-3);
+    font-weight: var(--weight-regular);
+    line-height: var(--leading-tight);
+    letter-spacing: var(--tracking-display);
+  }
+
+  .page-lede {
+    max-width: 52ch;
+    margin-block-start: var(--space-5);
+    font-size: var(--step-1);
+    line-height: 1.45;
+  }
+</style>

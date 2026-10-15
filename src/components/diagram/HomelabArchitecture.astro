@@ -6,9 +6,10 @@ import DiagramNode from './DiagramNode.astro';
 interface Props {
   id?: string | undefined;
   caption?: boolean | undefined;
+  wideOnly?: boolean | undefined;
 }
 
-const { id = 'hl', caption = true } = Astro.props;
+const { id = 'hl', caption = true, wideOnly = false } = Astro.props;
 const w = `${id}-w`;
 const t = `${id}-t`;
 
@@ -18,7 +19,7 @@ const desc =
 
 <figure class="diagram">
   <svg
-    class="diagram__wide"
+    class:list={[{ diagram__wide: !wideOnly }]}
     viewBox="0 -32 1160 572"
     role="img"
     aria-labelledby={`${w}-title ${w}-desc`}
@@ -153,132 +154,152 @@ const desc =
     </text>
   </svg>
 
-  <svg
-    class="diagram__tall"
-    viewBox="0 -24 360 974"
-    role="img"
-    aria-labelledby={`${t}-title ${t}-desc`}
-  >
-    <title id={`${t}-title`}>Architecture du homelab</title>
-    <desc id={`${t}-desc`}>{desc}</desc>
-    <ArrowMarker id={`${t}-arrow`} />
+  {!wideOnly && (
+    <svg
+      class="diagram__tall"
+      viewBox="0 -24 360 974"
+      role="img"
+      aria-labelledby={`${t}-title ${t}-desc`}
+    >
+      <title id={`${t}-title`}>Architecture du homelab</title>
+      <desc id={`${t}-desc`}>{desc}</desc>
+      <ArrowMarker id={`${t}-arrow`} />
 
-    <DiagramNode
-      x={210}
-      y={0}
-      w={150}
-      h={52}
-      label="Internet"
-      sub="clients HTTPS"
-      variant="muted"
-    />
-    <path class="dg-edge" d="M285 52 V150" marker-end={`url(#${t}-arrow)`}></path>
-    <text class="dg-edge-label" x="297" y="80">
-      HTTPS
-    </text>
+      <DiagramNode
+        x={210}
+        y={0}
+        w={150}
+        h={52}
+        label="Internet"
+        sub="clients HTTPS"
+        variant="muted"
+      />
+      <path class="dg-edge" d="M285 52 V150" marker-end={`url(#${t}-arrow)`}></path>
+      <text class="dg-edge-label" x="297" y="80">
+        HTTPS
+      </text>
 
-    <rect class="dg-group" x="0" y="90" width="360" height="420" rx="8"></rect>
-    <text class="dg-group-title" x="16" y="118">
-      VPS cloud · Debian 12
-    </text>
-    <text class="dg-group-sub" x="16" y="136">
-      2 vCPU · 4 Go
-    </text>
+      <rect class="dg-group" x="0" y="90" width="360" height="420" rx="8"></rect>
+      <text class="dg-group-title" x="16" y="118">
+        VPS cloud · Debian 12
+      </text>
+      <text class="dg-group-sub" x="16" y="136">
+        2 vCPU · 4 Go
+      </text>
 
-    <DiagramNode
-      x={16}
-      y={152}
-      w={328}
-      h={56}
-      label="Caddy"
-      sub="reverse proxy · TLS (DNS-01)"
-      variant="accent"
-    />
-    <path class="dg-edge" d="M68 208 V230" marker-end={`url(#${t}-arrow)`}></path>
-    <path class="dg-edge" d="M180 208 V230" marker-end={`url(#${t}-arrow)`}></path>
-    <path class="dg-edge" d="M292 208 V230" marker-end={`url(#${t}-arrow)`}></path>
+      <DiagramNode
+        x={16}
+        y={152}
+        w={328}
+        h={56}
+        label="Caddy"
+        sub="reverse proxy · TLS (DNS-01)"
+        variant="accent"
+      />
+      <path class="dg-edge" d="M68 208 V230" marker-end={`url(#${t}-arrow)`}></path>
+      <path class="dg-edge" d="M180 208 V230" marker-end={`url(#${t}-arrow)`}></path>
+      <path class="dg-edge" d="M292 208 V230" marker-end={`url(#${t}-arrow)`}></path>
 
-    <DiagramNode x={16} y={232} w={104} h={52} label="Site statique" sub="page web" />
-    <DiagramNode x={128} y={232} w={104} h={52} label="Grafana" sub="tableaux" />
-    <DiagramNode x={240} y={232} w={104} h={52} label="Vaultwarden" sub="secrets" />
+      <DiagramNode x={16} y={232} w={104} h={52} label="Site statique" sub="page web" />
+      <DiagramNode x={128} y={232} w={104} h={52} label="Grafana" sub="tableaux" />
+      <DiagramNode x={240} y={232} w={104} h={52} label="Vaultwarden" sub="secrets" />
 
-    <DiagramNode x={16} y={312} w={104} h={52} label="CrowdSec" sub="iptables" variant="muted" />
-    <DiagramNode
-      x={128}
-      y={312}
-      w={104}
-      h={52}
-      label="Prometheus"
-      sub="Node Exporter"
-      variant="muted"
-    />
-    <DiagramNode
-      x={240}
-      y={312}
-      w={104}
-      h={52}
-      label="Agent Wazuh"
-      sub="journaux"
-      variant="muted"
-    />
-    <path class="dg-edge" d="M180 312 V286" marker-end={`url(#${t}-arrow)`}></path>
-    <path class="dg-edge dg-edge--dashed" d="M292 364 V390" marker-end={`url(#${t}-arrow)`}></path>
+      <DiagramNode x={16} y={312} w={104} h={52} label="CrowdSec" sub="iptables" variant="muted" />
+      <DiagramNode
+        x={128}
+        y={312}
+        w={104}
+        h={52}
+        label="Prometheus"
+        sub="Node Exporter"
+        variant="muted"
+      />
+      <DiagramNode
+        x={240}
+        y={312}
+        w={104}
+        h={52}
+        label="Agent Wazuh"
+        sub="journaux"
+        variant="muted"
+      />
+      <path class="dg-edge" d="M180 312 V286" marker-end={`url(#${t}-arrow)`}></path>
+      <path
+        class="dg-edge dg-edge--dashed"
+        d="M292 364 V390"
+        marker-end={`url(#${t}-arrow)`}
+      ></path>
 
-    <DiagramNode
-      x={16}
-      y={392}
-      w={328}
-      h={52}
-      label="WireGuard"
-      sub="extrémité côté VPS"
-      variant="accent"
-    />
-    <text class="dg-note" x="16" y="472">
-      Entrée publique unique : Caddy
-    </text>
-    <text class="dg-note" x="16" y="490">
-      SSH par clé, port non standard
-    </text>
+      <DiagramNode
+        x={16}
+        y={392}
+        w={328}
+        h={52}
+        label="WireGuard"
+        sub="extrémité côté VPS"
+        variant="accent"
+      />
+      <text class="dg-note" x="16" y="472">
+        Entrée publique unique : Caddy
+      </text>
+      <text class="dg-note" x="16" y="490">
+        SSH par clé, port non standard
+      </text>
 
-    <path class="dg-tunnel" d="M300 444 V626"></path>
-    <text class="dg-edge-label dg-edge-label--accent" x="288" y="532" text-anchor="end">
-      Tunnel WireGuard
-    </text>
-    <text class="dg-edge-label" x="288" y="548" text-anchor="end">
-      UDP · chiffré
-    </text>
+      <path class="dg-tunnel" d="M300 444 V626"></path>
+      <text class="dg-edge-label dg-edge-label--accent" x="288" y="532" text-anchor="end">
+        Tunnel WireGuard
+      </text>
+      <text class="dg-edge-label" x="288" y="548" text-anchor="end">
+        UDP · chiffré
+      </text>
 
-    <rect class="dg-group" x="0" y="568" width="360" height="372" rx="8"></rect>
-    <text class="dg-group-title" x="16" y="596">
-      VM de lab · Debian 12
-    </text>
-    <text class="dg-group-sub" x="16" y="614">
-      VMware Workstation
-    </text>
+      <rect class="dg-group" x="0" y="568" width="360" height="372" rx="8"></rect>
+      <text class="dg-group-title" x="16" y="596">
+        VM de lab · Debian 12
+      </text>
+      <text class="dg-group-sub" x="16" y="614">
+        VMware Workstation
+      </text>
 
-    <DiagramNode
-      x={16}
-      y={628}
-      w={328}
-      h={52}
-      label="WireGuard"
-      sub="extrémité côté lab"
-      variant="accent"
-    />
-    <path class="dg-edge" d="M180 680 V704" marker-end={`url(#${t}-arrow)`}></path>
-    <DiagramNode x={16} y={706} w={328} h={52} label="Wazuh Manager" sub="corrélation · alertes" />
-    <path class="dg-edge" d="M180 758 V782" marker-end={`url(#${t}-arrow)`}></path>
-    <DiagramNode
-      x={16}
-      y={784}
-      w={328}
-      h={52}
-      label="Indexeur OpenSearch"
-      sub="stockage des événements"
-    />
-    <path class="dg-edge" d="M180 836 V860" marker-end={`url(#${t}-arrow)`}></path>
-    <DiagramNode x={16} y={862} w={328} h={52} label="Wazuh Dashboard" sub="analyse des alertes" />
-  </svg>
+      <DiagramNode
+        x={16}
+        y={628}
+        w={328}
+        h={52}
+        label="WireGuard"
+        sub="extrémité côté lab"
+        variant="accent"
+      />
+      <path class="dg-edge" d="M180 680 V704" marker-end={`url(#${t}-arrow)`}></path>
+      <DiagramNode
+        x={16}
+        y={706}
+        w={328}
+        h={52}
+        label="Wazuh Manager"
+        sub="corrélation · alertes"
+      />
+      <path class="dg-edge" d="M180 758 V782" marker-end={`url(#${t}-arrow)`}></path>
+      <DiagramNode
+        x={16}
+        y={784}
+        w={328}
+        h={52}
+        label="Indexeur OpenSearch"
+        sub="stockage des événements"
+      />
+      <path class="dg-edge" d="M180 836 V860" marker-end={`url(#${t}-arrow)`}></path>
+      <DiagramNode
+        x={16}
+        y={862}
+        w={328}
+        h={52}
+        label="Wazuh Dashboard"
+        sub="analyse des alertes"
+      />
+    </svg>
+  )}
   {caption && (
     <figcaption>
       Deux machines Debian reliées par un tunnel WireGuard : le VPS expose les services, la VM de

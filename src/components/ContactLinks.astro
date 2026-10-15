@@ -1,0 +1,61 @@
+---
+import { href, site } from '../lib/site';
+
+const links = [
+  { label: 'LinkedIn', url: site.linkedin },
+  { label: 'GitHub', url: site.github },
+  { label: 'CV en PDF', url: href(site.cv) },
+];
+---
+
+<div class="contact">
+  <p class="contact__lead">
+    Un stage à proposer, une question sur un projet&nbsp;? Écrivez-moi directement.
+  </p>
+  <a class="contact__mail" href={`mailto:${site.email}`}>
+    {site.email}
+  </a>
+  <ul class="contact__links list-reset">
+    {links.map((link) => (
+      <li>
+        <a href={link.url}>{link.label}</a>
+      </li>
+    ))}
+  </ul>
+</div>
+
+<style>
+  .contact__lead {
+    max-width: 44ch;
+    font-size: var(--step-1);
+    line-height: 1.45;
+    color: var(--fg-body);
+  }
+
+  .contact__mail {
+    display: inline-block;
+    margin-block-start: var(--space-6);
+    font-size: var(--step-2);
+    letter-spacing: var(--tracking-heading);
+    color: var(--fg);
+    overflow-wrap: anywhere;
+    text-decoration-color: var(--accent);
+    text-decoration-thickness: 2px;
+    text-underline-offset: 0.18em;
+  }
+
+  .contact__links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2) var(--space-6);
+    margin-block-start: var(--space-6);
+  }
+
+  .contact__links a {
+    color: var(--fg-muted);
+  }
+
+  .contact__links a:hover {
+    color: var(--fg);
+  }
+</style>

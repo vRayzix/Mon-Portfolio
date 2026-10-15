@@ -1,0 +1,66 @@
+---
+import ProjectCard from './ProjectCard.astro';
+import type { Project } from '../lib/projects';
+
+interface Props {
+  projects: Project[];
+  headingLevel?: 'h2' | 'h3' | undefined;
+}
+
+const { projects, headingLevel = 'h3' } = Astro.props;
+const [first, ...rest] = projects;
+---
+
+<div class="project-grid">
+  {first && (
+    <ProjectCard
+      project={first}
+      featured={first.id === 'homelab'}
+      headingLevel={headingLevel}
+      eager
+    />
+  )}
+  {rest.map((project) => (
+    <ProjectCard project={project} headingLevel={headingLevel} />
+  ))}
+</div>
+
+<style>
+  .project-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--space-8) var(--space-6);
+  }
+
+  @media (min-width: 810px) {
+    .project-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .project-grid > :global(.card--featured) {
+      grid-column: 1 / -1;
+    }
+
+    .project-grid > :global(.card:last-child:nth-child(even)) {
+      grid-column: 1 / -1;
+    }
+
+    .project-grid > :global(.card:last-child:nth-child(even) .card__visual) {
+      aspect-ratio: 21 / 9;
+    }
+  }
+
+  @media (min-width: 1280px) {
+    .project-grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .project-grid > :global(.card:last-child:nth-child(even)) {
+      grid-column: auto;
+    }
+
+    .project-grid > :global(.card:last-child:nth-child(even) .card__visual) {
+      aspect-ratio: 4 / 3;
+    }
+  }
+</style>

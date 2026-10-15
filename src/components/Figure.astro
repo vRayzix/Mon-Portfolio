@@ -36,6 +36,10 @@ const widths = [480, 800, 1200, 1600].filter((w) => w <= src.width);
     max-width: 26rem;
   }
 
+  .figure :global(picture) {
+    display: block;
+  }
+
   .figure :global(img) {
     width: 100%;
     border: 1px solid var(--border);
