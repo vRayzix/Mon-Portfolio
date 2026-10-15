@@ -1,0 +1,8 @@
+dist/
+.astro/
+node_modules/
+CYBERHOMELAB/
+New doc/
+.claude/
+package-lock.json
+public/
