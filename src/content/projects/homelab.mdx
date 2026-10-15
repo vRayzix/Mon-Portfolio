@@ -1,0 +1,89 @@
+---
+title: 'Homelab : un serveur exposé à Internet, durci, supervisé et relié à un SIEM'
+summary: 'Une infrastructure personnelle en service : un VPS Debian qui publie des services en HTTPS, une VM de lab qui centralise ses journaux de sécurité, et un tunnel WireGuard entre les deux.'
+description: 'Homelab Debian : reverse proxy Caddy en HTTPS, tunnel WireGuard, supervision Prometheus et Grafana, SIEM Wazuh, CrowdSec et Vaultwarden.'
+order: 1
+kind: phare
+tags: [Linux, Supervision, Sécurité, VPN]
+role: 'Conception, déploiement et exploitation'
+context: 'Projet personnel'
+status: 'En service'
+stack:
+  [
+    Debian 12,
+    Caddy,
+    WireGuard,
+    Prometheus,
+    Node Exporter,
+    Grafana,
+    Wazuh,
+    OpenSearch,
+    CrowdSec,
+    Vaultwarden,
+    iptables,
+    Lynis,
+  ]
+---
+
+import ServicesTable from '../../components/homelab/ServicesTable.astro';
+
+## Objectif
+
+Administrer pour de vrai un serveur exposé à Internet, avec les contraintes qui vont avec : une seule porte d’entrée, des accès d’administration verrouillés, une supervision des ressources et des journaux de sécurité centralisés hors de la machine surveillée. Le tout est monté à la main, pour comprendre chaque brique plutôt que de s’appuyer sur une solution clé en main.
+
+## Architecture
+
+L’infrastructure repose sur deux machines Debian 12 aux rôles distincts :
+
+- **Un VPS cloud** (2 vCPU, 4 Go de RAM), seule machine exposée à Internet. Il héberge le reverse proxy, les services publiés, la supervision et la détection d’intrusion.
+- **Une VM de lab** sous VMware Workstation (4 Go de RAM), qui héberge le SIEM. Elle reçoit les journaux du VPS sans être un service public.
+
+Les deux machines communiquent par un **tunnel WireGuard** chiffré. Ce découpage sépare le SIEM de la machine qu’il surveille : si le VPS était compromis, l’historique des événements resterait consultable ailleurs.
+
+## Services
+
+<ServicesTable />
+
+## Flux réseau et tunnel WireGuard
+
+- **Une seule entrée publique.** Tout le trafic web passe par Caddy, en HTTPS uniquement. Caddy route chaque nom d’hôte vers le bon service : le site statique, Grafana ou Vaultwarden.
+- **Les services internes restent derrière.** Grafana et Vaultwarden ne sont joignables qu’à travers le reverse proxy. Prometheus et Node Exporter n’ont aucune route publique.
+- **Un tunnel WireGuard configuré à la main**, sans surcouche comme Tailscale : paires de clés, adressage privé dédié au tunnel et pairs déclarés explicitement de chaque côté.
+- **Des journaux qui ne traversent Internet que chiffrés.** L’agent Wazuh du VPS envoie ses événements au manager via l’adresse du tunnel.
+
+## Durcissement
+
+- **SSH** : authentification par clé uniquement, sur un port non standard.
+- **CrowdSec** analyse les journaux, identifie les comportements malveillants et fait bannir les adresses concernées par un bouncer **iptables**, directement au niveau du pare-feu.
+- **HTTPS partout** : aucun service web n’est servi en clair.
+- **Audit Lynis** : indice de durcissement mesuré à **68/100**. C’est le point de départ des prochains chantiers, dont l’automatisation du durcissement avec Ansible.
+
+## Supervision
+
+**Prometheus** collecte les métriques système exposées par **Node Exporter** : processeur, mémoire, disque, réseau. **Grafana** les affiche sous forme de tableaux de bord, publiés en HTTPS derrière Caddy. Ils servent à repérer une saturation ou un comportement anormal avant qu’il ne devienne une panne.
+
+## SIEM Wazuh
+
+- **Wazuh Manager** reçoit les événements des agents, les décode et les corrèle avec ses règles de détection pour produire des alertes.
+- **L’indexeur OpenSearch** stocke et indexe les événements.
+- **Wazuh Dashboard** sert d’interface d’analyse et de recherche.
+- **Deux agents** sont enrôlés, dont celui du VPS qui remonte ses journaux par le tunnel WireGuard.
+
+## HTTPS avec Caddy et le challenge DNS-01
+
+Caddy obtient et renouvelle seul ses certificats TLS via le protocole ACME. La validation passe par le **challenge DNS-01** : Caddy prouve le contrôle du domaine en publiant un enregistrement TXT via l’API du fournisseur DNS (DuckDNS). Cette méthode ne dépend pas d’un port ouvert pour la validation et fonctionne de la même façon pour chacun des sous-domaines publiés.
+
+## Gestion des secrets
+
+Les mots de passe et secrets d’administration sont rangés dans **Vaultwarden**, une implémentation légère et auto-hébergée du serveur Bitwarden, publiée en HTTPS derrière Caddy. Les clients Bitwarden standard s’y connectent.
+
+## Feuille de route
+
+1. **Automatisation** : playbooks **Ansible** pour le durcissement et le déploiement, afin de rendre la configuration reproductible.
+2. **Lab Active Directory** : **Windows Server 2022** (AD DS, DNS, DHCP, GPO), un poste client Windows et un agent Wazuh sur le serveur, puis des exercices offensifs contre ce lab depuis une machine Kali.
+3. **Honeypot T-Pot** pour observer de vraies tentatives d’attaque.
+4. **Hyperviseur Proxmox** sur un ancien poste (Ryzen 3600) reconverti en serveur de lab.
+
+## Ce que ce projet m’apporte
+
+Exploiter un service en continu oblige à des réflexes qu’un exercice ponctuel ne demande pas : réduire la surface exposée, savoir où regarder quand quelque chose ne va pas et documenter ce qu’on a fait pour pouvoir le refaire.
