@@ -1,6 +1,6 @@
 ---
-import ApproachList from '../components/ApproachList.astro';
 import ContactLinks from '../components/ContactLinks.astro';
+import MusicSection from '../components/MusicSection.astro';
 import ProjectGrid from '../components/ProjectGrid.astro';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { getProjects } from '../lib/projects';
@@ -67,16 +67,16 @@ const projects = await getProjects();
     </div>
   </section>
 
-  <section class="wrap section" id="methode" aria-labelledby="approche-title">
+  <section class="wrap section" id="musique" aria-labelledby="musique-title">
     <div class="section-head">
       <div>
-        <h2 class="section-title" id="approche-title">
-          Ma façon de travailler
+        <h2 class="section-title" id="musique-title">
+          Musique
         </h2>
-        <p class="section-intro">Quatre réflexes tirés de mes projets.</p>
+        <p class="section-intro">Mon autre terrain : le studio.</p>
       </div>
     </div>
-    <ApproachList />
+    <MusicSection />
   </section>
 
   <section class="wrap section" id="contact" aria-labelledby="contact-title">

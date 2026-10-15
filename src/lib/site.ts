@@ -7,6 +7,7 @@ export const site = {
   email: 'lucalexandrecrr@gmail.com',
   linkedin: 'https://www.linkedin.com/in/lucas-c-961610396/',
   github: 'https://github.com/vRayzix',
+  beatstars: 'https://www.beatstars.com/stahnageprod',
   location: 'Mulhouse, France',
   cv: 'cv.pdf',
 } as const;

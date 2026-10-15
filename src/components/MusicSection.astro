@@ -1,0 +1,110 @@
+---
+import studio from '../assets/musique/studio.png';
+import Figure from './Figure.astro';
+import { site } from '../lib/site';
+
+const points = [
+  {
+    term: 'Catalogue',
+    text: 'Je développe et maintiens un catalogue de productions sur BeatStars.',
+  },
+  {
+    term: 'Clients',
+    text: 'Ventes à l’international, en anglais et en allemand, avec licences et contrats de droits d’auteur.',
+  },
+  {
+    term: 'Technique',
+    text: 'MAO avancée sous FL Studio et Cubase, gestion de flux audio et traitement du signal.',
+  },
+  {
+    term: 'Diffusion',
+    text: 'Promotion sur les réseaux sociais et analyse des statistiques de vente.',
+  },
+];
+---
+
+<div class="music">
+  <div class="music__text">
+    <p class="music__lead">
+      Je compose et produis de la musique en indépendant. Égaliser une piste ou lire un spectre,
+      c’est du traitement du signal : le même que celui des télécoms, côté studio.
+    </p>
+    <dl class="music__points">
+      {points.map((p) => (
+        <div>
+          <dt>{p.term}</dt>
+          <dd>{p.text}</dd>
+        </div>
+      ))}
+    </dl>
+    <a class="music__link" href={site.beatstars}>
+      Écouter mes productions sur BeatStars
+    </a>
+  </div>
+  <div class="music__visual">
+    <Figure
+      src={studio}
+      alt="Session FL Studio : égaliseur FabFilter Pro-Q avec une légère bosse dans les aigus, au-dessus de la console de mixage et de ses bus kick, reverb, mélodies et drums."
+      caption="Une session en cours : égalisation au Pro-Q et console de mixage."
+    />
+  </div>
+</div>
+
+<style>
+  .music {
+    display: grid;
+    gap: var(--space-7);
+    align-items: start;
+  }
+
+  @media (min-width: 1024px) {
+    .music {
+      grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+      gap: var(--space-8);
+    }
+  }
+
+  .music__lead {
+    max-width: 44ch;
+    font-size: var(--step-1);
+    line-height: 1.45;
+  }
+
+  .music__points {
+    display: grid;
+    gap: var(--space-4);
+    margin-block-start: var(--space-6);
+  }
+
+  .music__points div {
+    display: grid;
+    gap: var(--space-1);
+    padding-block-start: var(--space-4);
+    border-block-start: 1px solid var(--border);
+  }
+
+  @media (min-width: 600px) {
+    .music__points div {
+      grid-template-columns: 7rem minmax(0, 1fr);
+      gap: var(--space-4);
+    }
+  }
+
+  .music__points dt {
+    color: var(--fg);
+  }
+
+  .music__points dd {
+    margin: 0;
+    color: var(--fg-muted);
+  }
+
+  .music__link {
+    display: inline-block;
+    margin-block-start: var(--space-6);
+    color: var(--fg);
+    text-decoration-color: var(--accent);
+    text-decoration-thickness: 2px;
+    text-underline-offset: 0.3em;
+  }
+</style>
