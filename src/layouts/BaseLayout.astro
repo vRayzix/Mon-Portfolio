@@ -12,17 +12,17 @@ import SiteHeader from '../components/SiteHeader.astro';
 import { href, site } from '../lib/site';
 
 interface Props {
-  title?: string;
-  description?: string;
-  image?: ImageMetadata;
-  type?: 'website' | 'article';
-  noindex?: boolean;
+  title?: string | undefined;
+  description?: string | undefined;
+  image?: ImageMetadata | undefined;
+  type?: 'website' | 'article' | undefined;
+  noindex?: boolean | undefined;
 }
 
 const {
   title,
   description = site.description,
-  image = ogDefault,
+  image,
   type = 'website',
   noindex = false,
 } = Astro.props;
@@ -30,7 +30,8 @@ const {
 const fullTitle = title ? `${title} · ${site.name}` : `${site.name} · ${site.role}`;
 const siteUrl = Astro.site ?? new URL('https://vrayzix.github.io');
 const canonical = new URL(Astro.url.pathname, siteUrl);
-const og = await getImage({ src: image, width: 1200, height: 630, format: 'png' });
+const ogSource = image && image.width >= 1200 && image.height >= 630 ? image : ogDefault;
+const og = await getImage({ src: ogSource, width: 1200, height: 630, format: 'png' });
 const ogUrl = new URL(og.src, siteUrl);
 ---
 
