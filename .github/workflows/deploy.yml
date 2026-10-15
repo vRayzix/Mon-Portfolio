@@ -43,10 +43,23 @@ jobs:
     permissions:
       pages: write
       id-token: write
+      deployments: read
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
+      - name: Cancel stalled Pages deployments
+        env:
+          GH_TOKEN: ${{ github.token }}
+          REPO: ${{ github.repository }}
+          CURRENT: ${{ github.sha }}
+        run: |
+          for sha in $(gh api "repos/$REPO/deployments?environment=github-pages&per_page=20" --jq '.[].sha' | sort -u); do
+            if [ "$sha" != "$CURRENT" ]; then
+              gh api -X POST "repos/$REPO/pages/deployments/$sha/cancel" > /dev/null 2>&1 && echo "Cancelled $sha" || true
+            fi
+          done
+
       - name: Deploy
         id: deployment
         uses: actions/deploy-pages@v5
