@@ -1,0 +1,57 @@
+---
+title: 'Réseau d’entreprise multi-services sur équipements Cisco'
+summary: 'Concevoir et configurer un réseau segmenté de bout en bout, des VLAN au NAT de sortie, avec ses services et ses règles de filtrage.'
+description: 'Étude de cas : réseau Cisco sous GNS3 avec VLAN, routage inter-VLAN, RIPv2, NAT, DHCP, port-security et ACL, plus des services FTP et Apache.'
+order: 3
+kind: principal
+tags: [Cisco IOS, VLAN, Routage, ACL]
+role: 'Conception et configuration du réseau et des services'
+context: 'Lab d’émulation GNS3'
+stack: [Cisco IOS, GNS3, 802.1Q, Spanning Tree, RIPv2, NAT, DHCP, ACL, FTP, Apache, rsync]
+snippet: |
+  vlan 100,200,300,999
+  switchport trunk native vlan 999
+  !
+  router rip
+   version 2
+   no auto-summary
+  !
+  switchport port-security
+  switchport port-security violation shutdown
+---
+
+## Contexte
+
+Le but : monter, dans un émulateur, le réseau d’une entreprise répartie sur plusieurs sites, avec ses services internes et un accès sortant, puis le sécuriser couche par couche. Tous les équipements sont des routeurs et commutateurs Cisco configurés en ligne de commande IOS.
+
+## Commutation et segmentation
+
+- **Trois VLAN de travail (100, 200, 300)** et un **VLAN natif dédié (999)**, tagué, pour qu’aucun trafic utilisateur ne circule non étiqueté sur les trunks.
+- **Routage inter-VLAN** porté par un commutateur de niveau 3.
+- **Trois liens trunk redondants** entre commutateurs, avec un **équilibrage de charge par les coûts Spanning Tree** : chaque lien porte une partie des VLAN au lieu qu’un seul soit actif.
+
+## Routage et sortie
+
+- **RIPv2** entre les routeurs, avec le résumé automatique désactivé pour annoncer les sous-réseaux tels quels.
+- Interconnexions point à point en **/30**, pour ne pas gaspiller d’adresses.
+- **NAT** sur le routeur de bordure pour l’accès vers l’extérieur.
+
+## Services
+
+- **DHCP par VLAN** : chaque segment reçoit son propre plan d’adressage.
+- **FTP** avec un accès anonyme et des comptes nominatifs.
+- **Apache** en deux environnements, développement et production, synchronisés par **rsync**.
+
+## Sécurité
+
+- **Port-security** sur les ports d’accès, avec mise en `shutdown` du port en cas de violation.
+- **ACL étendues** sur un routeur interne, qui encadrent les flux HTTP, SSH (TCP 22) et rsync (TCP 873).
+- **ACL de bordure** sur le routeur de sortie, qui encadrent ICMP et HTTP.
+
+## Validation et dépannage
+
+La validation s’est faite par étapes : joignabilité entre VLAN, routage, puis accès aux services. Les ACL et le NAT ont été les points les plus délicats : une règle mal placée coupe un flux sans message d’erreur explicite. Je les ai donc vérifiées une par une, en contrôlant l’interface et le sens auxquels chacune s’applique.
+
+## Ce que j’en retiens
+
+La sécurité d’un réseau se joue d’abord sur sa structure : segmentation, VLAN natif isolé, ports d’accès verrouillés. Le filtrage vient ensuite et se teste règle par règle.

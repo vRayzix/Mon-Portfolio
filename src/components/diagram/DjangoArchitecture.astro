@@ -1,0 +1,146 @@
+---
+import '../../styles/diagram.css';
+import ArrowMarker from './ArrowMarker.astro';
+import DiagramNode from './DiagramNode.astro';
+
+const desc =
+  'Un navigateur du réseau local envoie ses requêtes HTTP à Nginx sur la VM applicative. Nginx sert les fichiers statiques et transmet le reste à Gunicorn, lancé par systemd, qui exécute Django dans un environnement virtuel Python. Django interroge MariaDB sur une seconde VM dédiée à la base de données.';
+---
+
+<figure class="diagram">
+  <svg
+    class="diagram__wide"
+    viewBox="0 0 960 300"
+    role="img"
+    aria-labelledby="dj-w-title dj-w-desc"
+  >
+    <title id="dj-w-title">Architecture de déploiement sur deux VM Debian</title>
+    <desc id="dj-w-desc">{desc}</desc>
+    <ArrowMarker id="dj-w-arrow" />
+
+    <DiagramNode
+      x={0}
+      y={110}
+      w={130}
+      h={60}
+      label="Navigateur"
+      sub="réseau local"
+      variant="muted"
+    />
+    <path class="dg-edge" d="M130 140 H200" marker-end="url(#dj-w-arrow)"></path>
+    <text class="dg-edge-label" x="165" y="130" text-anchor="middle">
+      HTTP
+    </text>
+
+    <rect class="dg-group" x="180" y="20" width="470" height="260" rx="8"></rect>
+    <text class="dg-group-title" x="204" y="50">
+      VM applicative · Debian
+    </text>
+    <text class="dg-group-sub" x="204" y="68">
+      mode pont, adresse par DHCP
+    </text>
+    <DiagramNode
+      x={205}
+      y={110}
+      w={130}
+      h={60}
+      label="Nginx"
+      sub="reverse proxy"
+      variant="accent"
+    />
+    <path class="dg-edge" d="M335 140 H362" marker-end="url(#dj-w-arrow)"></path>
+    <DiagramNode x={365} y={110} w={130} h={60} label="Gunicorn" sub="WSGI · systemd" />
+    <path class="dg-edge" d="M495 140 H512" marker-end="url(#dj-w-arrow)"></path>
+    <DiagramNode x={515} y={110} w={110} h={60} label="Django" sub="venv Python" />
+    <text class="dg-note" x="205" y="210">
+      /static/ et /media/ servis directement par Nginx
+    </text>
+    <text class="dg-note" x="205" y="230">
+      collectstatic vers STATIC_ROOT
+    </text>
+
+    <path class="dg-edge" d="M625 140 H742" marker-end="url(#dj-w-arrow)"></path>
+    <text class="dg-edge-label" x="685" y="130" text-anchor="middle">
+      SQL
+    </text>
+
+    <rect class="dg-group" x="720" y="20" width="240" height="260" rx="8"></rect>
+    <text class="dg-group-title" x="744" y="50">
+      VM base de données
+    </text>
+    <text class="dg-group-sub" x="744" y="68">
+      Debian · mode pont
+    </text>
+    <DiagramNode x={745} y={110} w={190} h={60} label="MariaDB" sub="serveur SQL dédié" />
+  </svg>
+
+  <svg
+    class="diagram__tall"
+    viewBox="0 0 360 620"
+    role="img"
+    aria-labelledby="dj-t-title dj-t-desc"
+  >
+    <title id="dj-t-title">Architecture de déploiement sur deux VM Debian</title>
+    <desc id="dj-t-desc">{desc}</desc>
+    <ArrowMarker id="dj-t-arrow" />
+
+    <DiagramNode
+      x={105}
+      y={0}
+      w={150}
+      h={52}
+      label="Navigateur"
+      sub="réseau local"
+      variant="muted"
+    />
+    <path class="dg-edge" d="M180 52 V108" marker-end="url(#dj-t-arrow)"></path>
+    <text class="dg-edge-label" x="192" y="84">
+      HTTP
+    </text>
+
+    <rect class="dg-group" x="0" y="92" width="360" height="300" rx="8"></rect>
+    <text class="dg-group-title" x="16" y="120">
+      VM applicative · Debian
+    </text>
+    <text class="dg-group-sub" x="16" y="138">
+      mode pont, adresse par DHCP
+    </text>
+    <DiagramNode
+      x={16}
+      y={156}
+      w={328}
+      h={52}
+      label="Nginx"
+      sub="reverse proxy, fichiers statiques"
+      variant="accent"
+    />
+    <path class="dg-edge" d="M180 208 V230" marker-end="url(#dj-t-arrow)"></path>
+    <DiagramNode
+      x={16}
+      y={232}
+      w={328}
+      h={52}
+      label="Gunicorn"
+      sub="serveur WSGI lancé par systemd"
+    />
+    <path class="dg-edge" d="M180 284 V306" marker-end="url(#dj-t-arrow)"></path>
+    <DiagramNode x={16} y={308} w={328} h={52} label="Django" sub="environnement virtuel Python" />
+
+    <path class="dg-edge" d="M180 360 V508" marker-end="url(#dj-t-arrow)"></path>
+    <text class="dg-edge-label" x="192" y="430">
+      SQL
+    </text>
+
+    <rect class="dg-group" x="0" y="440" width="360" height="160" rx="8"></rect>
+    <text class="dg-group-title" x="16" y="468">
+      VM base de données
+    </text>
+    <text class="dg-group-sub" x="16" y="486">
+      Debian · mode pont
+    </text>
+    <DiagramNode x={16} y={510} w={328} h={52} label="MariaDB" sub="serveur SQL dédié" />
+  </svg>
+  <figcaption>
+    Deux VM Debian : l’application derrière Nginx et Gunicorn d’un côté, MariaDB de l’autre.
+  </figcaption>
+</figure>

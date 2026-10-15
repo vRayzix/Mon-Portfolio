@@ -1,0 +1,106 @@
+---
+title: 'Mise en production d’une application Django sur deux VM Debian'
+summary: 'Déployer une application web métier comme en production, avec Nginx, Gunicorn et systemd devant, MariaDB isolée sur sa propre machine.'
+description: 'Étude de cas : déploiement d’une application Django et MariaDB sur deux VM Debian avec Nginx, Gunicorn et systemd, et diagnostic d’incidents couche par couche.'
+order: 2
+kind: principal
+tags: [Linux, Nginx, Déploiement]
+role: 'Infrastructure, déploiement, front-end et documentation'
+context: 'Projet d’équipe, 3 personnes'
+period: '2026'
+stack: [Debian, Nginx, Gunicorn, systemd, Django 6, Python, MariaDB 11.4, Git]
+cover: ../../assets/projects/deploiement-django/dashboard.png
+coverAlt: 'Tableau de bord de l’application de gestion du trafic aérien, avec le nombre d’aéroports, de pistes, de compagnies, de types d’avions, d’avions et de vols.'
+---
+
+import DjangoArchitecture from '../../components/diagram/DjangoArchitecture.astro';
+import Figure from '../../components/Figure.astro';
+import gunicorn from '../../assets/projects/deploiement-django/gunicorn.png';
+import vols from '../../assets/projects/deploiement-django/vols.png';
+import formulaire from '../../assets/projects/deploiement-django/formulaire.png';
+import importCsv from '../../assets/projects/deploiement-django/import-csv.png';
+
+## Contexte
+
+L’application gère un trafic aérien : aéroports, pistes, compagnies, types d’avions, avions et vols, chacun avec ses opérations de création, modification et suppression. Elle applique une règle métier (une piste reste occupée dix minutes après un atterrissage, sinon un autre créneau est proposé), importe des vols par fichier CSV et produit des fiches de vols imprimables.
+
+L’objectif fixé : la faire tourner **comme en production**, et non avec le serveur de développement de Django. Nous étions trois. J’ai pris en charge l’infrastructure et le déploiement, le front-end, l’import CSV et la documentation. Le back-end et le schéma SQL étaient portés par mes deux coéquipiers.
+
+## Architecture
+
+<DjangoArchitecture />
+
+- **VM applicative** : Nginx en reverse proxy, Gunicorn comme serveur WSGI, Django dans un environnement virtuel Python.
+- **VM base de données** : MariaDB seule, configurée pour accepter les connexions de l’application.
+- Les deux VM sont en **mode pont** et obtiennent leur adresse par DHCP sur le réseau local, ce qui rend l’application joignable depuis n’importe quel poste.
+
+## Choix techniques
+
+- **Séparer l’application et la base.** Chaque VM a un rôle unique : on peut redémarrer, mettre à jour ou sauvegarder l’une sans toucher à l’autre.
+- **Gunicorn à la place de `runserver`.** Le serveur de développement n’est pas fait pour la production. Gunicorn gère plusieurs workers, Nginx se charge des connexions clientes.
+- **Nginx sert les fichiers statiques.** Les blocs `/static/` et `/media/` sont servis directement depuis le disque après un `collectstatic` vers `STATIC_ROOT`, sans passer par Python.
+- **systemd pour le cycle de vie.** Gunicorn tourne comme un service activé au démarrage (`systemctl enable`), redémarré automatiquement et consultable avec `journalctl`.
+- **Une procédure écrite.** Toute l’installation est décrite pas à pas dans un `DEPLOIEMENT.md`, de l’installation des paquets à la mise en service.
+
+<Figure
+  src={gunicorn}
+  alt="Sortie de systemctl status gunicorn : service chargé, activé au démarrage et en cours d’exécution depuis trois jours, avec un processus maître et trois workers."
+  caption="Le service Gunicorn, activé au démarrage et actif depuis trois jours."
+/>
+
+## Incidents et diagnostic
+
+Les problèmes ne venaient pas du code mais de l’environnement. La méthode qui a fonctionné : remonter les couches une par une plutôt que tester au hasard.
+
+<div class="table-scroll">
+
+| Symptôme                         | Cause                                            | Résolution                                                                                                 |
+| -------------------------------- | ------------------------------------------------ | ---------------------------------------------------------------------------------------------------------- |
+| `502 Bad Gateway`                | Nginx ne joint pas Gunicorn                      | Vérifier l’écoute (`ss -tlnp`), tester Gunicorn en direct (`curl 127.0.0.1:8000`), lire les journaux Nginx |
+| `ModuleNotFoundError: pymysql`   | Gunicorn lancé hors de l’environnement virtuel   | Lancer Gunicorn depuis l’environnement virtuel du projet                                                   |
+| Service absent après redémarrage | Unité systemd non activée                        | Unité avec chemins absolus, puis `systemctl enable gunicorn`                                               |
+| `settings.py` illisible          | Marqueurs de conflit Git laissés dans le fichier | Résolution manuelle de `ALLOWED_HOSTS` et de l’hôte de base de données                                     |
+
+</div>
+
+## Côté application
+
+En plus de l’infrastructure, j’ai réalisé :
+
+- un gabarit commun (navigation et barre latérale) dont héritent toutes les pages ;
+- un formulaire générique réutilisé pour les six entités ;
+- un tableau de bord avec des compteurs lus en direct dans la base ;
+- l’import de vols par CSV : lecture en UTF-8, correspondance par nom et collecte des erreurs ligne par ligne sans interrompre l’import ;
+- les fiches de vols filtrées par aéroport, date et sens, avec une feuille de style d’impression.
+
+<div class="figure-row">
+  <Figure
+    src={vols}
+    alt="Liste des vols avec leurs avions, aéroports de départ et d’arrivée, et boutons de modification et de suppression."
+    caption="Liste des vols."
+  />
+  <Figure
+    src={formulaire}
+    alt="Formulaire d’ajout d’un vol avec les champs avion, pilote, aéroports et horaires."
+    caption="Le formulaire générique, ici pour un vol."
+  />
+</div>
+
+<Figure
+  src={importCsv}
+  alt="Page d’import CSV indiquant le format attendu : séparateur virgule, encodage UTF-8, colonnes avion, pilote, aéroports et dates."
+  caption="Import CSV : le format attendu est rappelé sur la page."
+/>
+
+## Résultat
+
+L’application tourne derrière Nginx et Gunicorn, survit aux redémarrages et se réinstalle en suivant la procédure écrite. Le projet m’a surtout appris qu’un service web ne se résume pas à son code : il vaut aussi par sa capacité à être déployé, reproduit et dépanné.
+
+## Ce que je durcirais aujourd’hui
+
+Le déploiement visait un réseau de lab. Pour une vraie mise en production, je reprendrais :
+
+- les secrets (clé Django, identifiants de base) dans des variables d’environnement plutôt que dans `settings.py`, avec `DEBUG` désactivé ;
+- l’accès à MariaDB limité à l’adresse de la VM applicative, et le port SQL filtré par un pare-feu ;
+- HTTPS devant Nginx ;
+- des sauvegardes planifiées de la base.

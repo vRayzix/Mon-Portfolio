@@ -1,9 +1,13 @@
-.prose {
+.prose > :where(p, ul, ol, h2, h3, h4, blockquote, pre) {
   max-width: var(--prose-w);
 }
 
 .prose > * + * {
   margin-block-start: var(--space-5);
+}
+
+.prose > :where(figure, .figure-row, .table-scroll, .diagram) {
+  margin-block: var(--space-7);
 }
 
 .prose h2 {
@@ -51,6 +55,22 @@
   background: var(--bg-subtle);
   color: var(--fg);
   line-height: 1.55;
+}
+
+.figure-row {
+  display: grid;
+  gap: var(--space-6) var(--space-5);
+  align-items: start;
+}
+
+@media (min-width: 810px) {
+  .figure-row {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .figure-row--3 {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
 }
 
 .table-scroll {

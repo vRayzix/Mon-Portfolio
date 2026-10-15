@@ -1,0 +1,68 @@
+---
+title: 'Radio internet sur ESP32, pilotée en MQTT'
+summary: 'Un objet connecté complet, du câblage au firmware jusqu’à l’application mobile, qui diffuse des flux audio en Wi-Fi et se commande à distance.'
+description: 'Étude de cas : radio internet sur ESP32 avec décodeur audio VS1053, écran OLED, commande MQTT et application Android Flutter.'
+order: 4
+kind: secondaire
+tags: [Embarqué, MQTT, Wi-Fi]
+role: 'Conception et réalisation'
+context: 'Projet embarqué'
+stack: [ESP32, VS1053, C++ Arduino, MQTT, HTTP, I²C, SPI, Flutter]
+cover: ../../assets/projects/radio-internet-esp32/boitier.jpg
+coverAlt: 'La radio terminée dans son boîtier en bois peint en bleu, avec le haut-parleur éclairé en façade et l’écran OLED sur le dessus.'
+---
+
+import Figure from '../../components/Figure.astro';
+import carte from '../../assets/projects/radio-internet-esp32/carte-oled.jpg';
+import lecture from '../../assets/projects/radio-internet-esp32/lecture-station.jpg';
+import app from '../../assets/projects/radio-internet-esp32/app-controle.jpg';
+
+## Contexte
+
+Une radio internet autonome : elle se connecte en Wi-Fi, lit des flux audio en continu et se pilote depuis un téléphone. Le projet couvre toute la chaîne : choix des composants, câblage, firmware et application de commande.
+
+## Matériel
+
+- Carte **Adafruit HUZZAH32** (ESP32, Wi-Fi et Bluetooth).
+- Décodeur audio **VS1053** relié en **SPI** : le décodage MP3 et AAC est fait par le composant, ce qui laisse l’ESP32 libre pour le réseau.
+- Écran **OLED SSD1306** 128×32 en **I²C**, qui affiche la station, l’adresse obtenue, l’état et le volume.
+- Deux haut-parleurs 4 Ω de 5 W, une batterie Li-ion 18650 en montage parallèle et un boîtier en bois fait sur mesure.
+
+<div class="figure-row">
+  <Figure
+    src={carte}
+    alt="La carte HUZZAH32 tenue en main à côté de l’écran OLED câblé, qui affiche Station 0 et PLAY."
+    caption="La carte ESP32 et l’écran OLED pendant le câblage."
+  />
+  <Figure
+    src={lecture}
+    alt="Écran OLED monté sur le boîtier, affichant la station en cours, le volume, les basses, les aigus et l’égaliseur."
+    caption="Lecture en cours : station, volume et réglages audio."
+  />
+</div>
+
+## Réseau et protocoles
+
+- **Flux HTTP** lus en continu et envoyés au décodeur.
+- **Annuaire de stations** interrogé via l’API Radio Browser, soit plus de 35 000 stations disponibles.
+- **Commande en MQTT** (publication et abonnement) : lecture, choix de la station, volume et égaliseur se pilotent à distance depuis n’importe quel client.
+
+## Firmware
+
+- Courbe de volume logarithmique, `f(x) = 50 + √(x/100) × 50`, pour une progression perçue régulière.
+- Égaliseur 5 bandes réglé directement dans les registres du VS1053, avec 6 préréglages enregistrés en EEPROM.
+
+## Application de commande
+
+Une application **Flutter** pour Android parcourt l’annuaire des stations, pilote la radio en temps réel via MQTT et garde les favoris en mémoire sur le téléphone.
+
+<Figure
+  src={app}
+  alt="Écran de l’application de commande : URL du flux en cours, curseurs de volume, basses et aigus, choix de spatialisation et boutons lecture et arrêt."
+  caption="L’application Android : flux en cours et réglages audio."
+  narrow
+/>
+
+## Ce que j’en retiens
+
+Faire dialoguer un microcontrôleur, un broker MQTT et une application mobile oblige à penser en protocoles et en états, ce qui sert au quotidien en réseau.

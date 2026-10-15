@@ -1,0 +1,240 @@
+---
+import type { MarkdownHeading } from 'astro';
+import '../styles/prose.css';
+import Figure from '../components/Figure.astro';
+import Tags from '../components/Tags.astro';
+import { getProjects, kindLabel, projectHref, type Project } from '../lib/projects';
+import { href } from '../lib/site';
+import BaseLayout from './BaseLayout.astro';
+
+interface Props {
+  project: Project;
+  headings: MarkdownHeading[];
+}
+
+const { project, headings } = Astro.props;
+const { data } = project;
+const toc = headings.filter((h) => h.depth === 2);
+
+const all = await getProjects();
+const index = all.findIndex((p) => p.id === project.id);
+const next = all[(index + 1) % all.length];
+
+const meta = [
+  { term: 'Rôle', value: data.role },
+  { term: 'Cadre', value: data.context },
+  ...(data.period ? [{ term: 'Période', value: data.period }] : []),
+  ...(data.status ? [{ term: 'État', value: data.status }] : []),
+];
+---
+
+<BaseLayout title={data.title} description={data.description} image={data.cover} type="article">
+  <article class="case">
+    <header class="wrap case__header">
+      <p class="eyebrow rise">
+        <a href={href('projets/')}>Projets</a>
+        <span aria-hidden="true">/</span>
+        {kindLabel[data.kind]}
+      </p>
+      <h1 class="case__title rise">{data.title}</h1>
+      <p class="case__lede rise rise-delay-1">{data.summary}</p>
+
+      <dl class="case__meta rise rise-delay-2">
+        {meta.map((item) => (
+          <div>
+            <dt>{item.term}</dt>
+            <dd>{item.value}</dd>
+          </div>
+        ))}
+        <div class="case__meta-stack">
+          <dt>Stack</dt>
+          <dd>
+            <Tags items={data.stack} />
+          </dd>
+        </div>
+      </dl>
+    </header>
+
+    <slot name="cover">
+      {data.cover && data.coverAlt && (
+        <div class="wrap case__cover">
+          <Figure src={data.cover} alt={data.coverAlt} loading="eager" />
+        </div>
+      )}
+    </slot>
+
+    <div class="wrap case__body">
+      {toc.length > 2 && (
+        <nav class="case__toc" aria-label="Sommaire">
+          <p class="case__toc-title">Sommaire</p>
+          <ol class="list-reset">
+            {toc.map((h) => (
+              <li>
+                <a href={`#${h.slug}`}>{h.text}</a>
+              </li>
+            ))}
+          </ol>
+        </nav>
+      )}
+      <div class="prose">
+        <slot />
+        {data.links.length > 0 && (
+          <ul class="case__links list-reset">
+            {data.links.map((link) => (
+              <li>
+                <a href={link.url}>{link.label}</a>
+              </li>
+            ))}
+          </ul>
+        )}
+      </div>
+    </div>
+
+    {next && next.id !== project.id && (
+      <nav class="wrap case__next" aria-label="Projet suivant">
+        <p class="eyebrow">Projet suivant</p>
+        <a href={projectHref(next)}>{next.data.title}</a>
+      </nav>
+    )}
+  </article>
+</BaseLayout>
+
+<style>
+  .case__header {
+    padding-block: var(--space-8) var(--space-7);
+  }
+
+  .eyebrow {
+    display: flex;
+    gap: var(--space-2);
+  }
+
+  .eyebrow a {
+    text-decoration: none;
+  }
+
+  .eyebrow a:hover {
+    color: var(--fg);
+  }
+
+  .case__title {
+    max-width: 18ch;
+    margin-block-start: var(--space-4);
+    font-size: var(--step-3);
+    font-weight: var(--weight-regular);
+    line-height: var(--leading-tight);
+    letter-spacing: var(--tracking-display);
+  }
+
+  .case__lede {
+    max-width: 52ch;
+    margin-block-start: var(--space-5);
+    font-size: var(--step-1);
+    line-height: 1.45;
+    color: var(--fg-body);
+  }
+
+  .case__meta {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(9rem, 1fr));
+    gap: var(--space-5) var(--space-6);
+    margin-block-start: var(--space-7);
+    padding-block-start: var(--space-5);
+    border-block-start: 1px solid var(--border);
+    font-size: var(--step--1);
+  }
+
+  .case__meta-stack {
+    grid-column: 1 / -1;
+  }
+
+  .case__meta dt {
+    color: var(--fg-muted);
+  }
+
+  .case__meta dd {
+    margin: var(--space-1) 0 0;
+    color: var(--fg);
+  }
+
+  .case__cover {
+    margin-block-end: var(--space-8);
+  }
+
+  .case__body {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--space-7);
+  }
+
+  .case__toc {
+    display: none;
+  }
+
+  @media (min-width: 1280px) {
+    .case__body {
+      grid-template-columns: 14rem minmax(0, 1fr);
+      gap: var(--space-9);
+    }
+
+    .case__body > .prose:only-child {
+      grid-column: 2;
+    }
+
+    .case__toc {
+      display: block;
+      position: sticky;
+      inset-block-start: var(--space-6);
+      align-self: start;
+      font-size: var(--step--1);
+    }
+
+    .case__toc-title {
+      margin-block-end: var(--space-3);
+      color: var(--fg-muted);
+    }
+
+    .case__toc li + li {
+      margin-block-start: var(--space-2);
+    }
+
+    .case__toc a {
+      color: var(--fg-muted);
+      text-decoration: none;
+    }
+
+    .case__toc a:hover {
+      color: var(--fg);
+    }
+  }
+
+  .prose > :global(h2:first-child) {
+    margin-block-start: 0;
+  }
+
+  .case__links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-3) var(--space-6);
+    margin-block-start: var(--space-8);
+  }
+
+  .case__next {
+    margin-block-start: var(--section-gap);
+    padding-block-start: var(--space-5);
+    border-block-start: 1px solid var(--border);
+  }
+
+  .case__next a {
+    display: inline-block;
+    margin-block-start: var(--space-2);
+    font-size: var(--step-2);
+    color: var(--fg);
+    letter-spacing: var(--tracking-heading);
+    text-decoration-color: var(--border-strong);
+  }
+
+  .case__next a:hover {
+    text-decoration-color: var(--accent);
+  }
+</style>
