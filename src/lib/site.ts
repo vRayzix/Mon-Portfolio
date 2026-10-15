@@ -8,7 +8,7 @@ export const site = {
   linkedin: 'https://www.linkedin.com/in/lucas-c-961610396/',
   github: 'https://github.com/vRayzix',
   location: 'Mulhouse, France',
-  cv: 'cv/lucas-carriat-cv.pdf',
+  cv: 'cv.pdf',
 } as const;
 
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
