@@ -2,7 +2,7 @@
 import { Picture } from 'astro:assets';
 import HomelabArchitecture from './diagram/HomelabArchitecture.astro';
 import Tags from './Tags.astro';
-import { projectHref, type Project } from '../lib/projects';
+import { kindLabel, projectHref, type Project } from '../lib/projects';
 
 interface Props {
   project: Project;
@@ -44,6 +44,7 @@ const widths = data.cover ? [480, 800, 1200].filter((w) => w <= (data.cover?.wid
     ) : null}
   </div>
   <div class="card__body">
+    <p class="card__kind">{kindLabel[data.kind]}</p>
     <Heading class="card__title" id={titleId}>
       <a href={url}>{data.title}</a>
     </Heading>
@@ -107,6 +108,11 @@ const widths = data.cover ? [480, 800, 1200].filter((w) => w <= (data.cover?.wid
     display: flex;
     flex-direction: column;
     gap: var(--space-2);
+  }
+
+  .card__kind {
+    font-size: var(--step--1);
+    color: var(--fg-muted);
   }
 
   .card__title {

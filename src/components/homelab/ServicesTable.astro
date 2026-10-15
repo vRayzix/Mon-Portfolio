@@ -3,7 +3,6 @@ interface Service {
   name: string;
   role: string;
   host: 'VPS' | 'VM de lab';
-  version?: string;
   exposure: string;
 }
 
@@ -87,15 +86,12 @@ const services: Service[] = [
 
 <div class="table-scroll">
   <table class="data-table">
-    <caption class="visually-hidden">
-      Services du homelab : rôle, hôte, version et exposition
-    </caption>
+    <caption class="visually-hidden">Services du homelab : rôle, hôte et exposition</caption>
     <thead>
       <tr>
         <th scope="col">Service</th>
         <th scope="col">Rôle</th>
         <th scope="col">Hôte</th>
-        <th scope="col">Version</th>
         <th scope="col">Exposition</th>
       </tr>
     </thead>
@@ -105,14 +101,6 @@ const services: Service[] = [
           <td>{s.name}</td>
           <td>{s.role}</td>
           <td>{s.host}</td>
-          <td>
-            {s.version ?? (
-              <>
-                <span aria-hidden="true">—</span>
-                <span class="visually-hidden">non renseignée</span>
-              </>
-            )}
-          </td>
           <td>{s.exposure}</td>
         </tr>
       ))}
@@ -122,6 +110,6 @@ const services: Service[] = [
 
 <style>
   .data-table {
-    min-width: 44rem;
+    min-width: 38rem;
   }
 </style>

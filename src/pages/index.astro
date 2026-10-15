@@ -4,32 +4,37 @@ import ContactLinks from '../components/ContactLinks.astro';
 import ProjectGrid from '../components/ProjectGrid.astro';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { getProjects } from '../lib/projects';
-import { href, site } from '../lib/site';
+import { href } from '../lib/site';
 
 const projects = await getProjects();
 ---
 
 <BaseLayout>
   <section class="wrap hero" aria-labelledby="hero-title">
-    <p class="hero__status rise">
-      <span class="hero__dot" aria-hidden="true"></span>
-      Stage recherché · avril à juin 2027
-    </p>
-    <h1 class="hero__title rise rise-delay-1" id="hero-title">
-      J’installe, je supervise et je sécurise des infrastructures Linux, Windows et réseau.
+    <h1 class="hero__title rise" id="hero-title">
+      Étudiant en réseaux et télécoms, futur analyste SOC.
     </h1>
-    <p class="hero__lede rise rise-delay-2">
-      Je suis {site.name}, étudiant en réseaux et télécommunications et futur administrateur
-      systèmes et réseaux. Mon terrain d’entraînement principal : un homelab en service, exposé à
-      Internet, durci, supervisé et relié à un SIEM.
+    <p class="hero__lede rise rise-delay-1">
+      Je cherche un stage de 8 semaines en administration systèmes et réseaux, d’avril à juin 2027.
     </p>
+    <ul class="hero__links list-reset rise rise-delay-2">
+      <li>
+        <a href="#projets">Voir les projets</a>
+      </li>
+      <li>
+        <a href="#contact">Me contacter</a>
+      </li>
+    </ul>
   </section>
 
-  <section class="wrap section" aria-labelledby="projets-title">
+  <section class="wrap section" id="projets" aria-labelledby="projets-title">
     <div class="section-head">
-      <h2 class="section-title" id="projets-title">
-        Projets
-      </h2>
+      <div>
+        <h2 class="section-title" id="projets-title">
+          Projets
+        </h2>
+        <p class="section-intro">Le homelab d’abord, puis trois études de cas.</p>
+      </div>
       <a class="section-link" href={href('projets/')}>
         Tous les projets
       </a>
@@ -37,29 +42,23 @@ const projects = await getProjects();
     <ProjectGrid projects={projects} />
   </section>
 
-  <section class="wrap section" aria-labelledby="approche-title">
+  <section class="wrap section" id="apropos" aria-labelledby="apropos-title">
     <div class="section-head">
-      <h2 class="section-title" id="approche-title">
-        Ma façon de travailler
-      </h2>
-    </div>
-    <ApproachList />
-  </section>
-
-  <section class="wrap section" aria-labelledby="apropos-title">
-    <div class="section-head">
-      <h2 class="section-title" id="apropos-title">
-        À propos
-      </h2>
+      <div>
+        <h2 class="section-title" id="apropos-title">
+          À propos
+        </h2>
+        <p class="section-intro">Qui je suis et ce que je vise.</p>
+      </div>
       <a class="section-link" href={href('a-propos/')}>
         Parcours et compétences
       </a>
     </div>
     <div class="about">
       <p>
-        Je viens des systèmes numériques et je me suis spécialisé dans les réseaux et
-        l’administration de systèmes Linux et Windows. Ce qui me plaît : comprendre comment les
-        briques s’assemblent, rendre un service fiable et savoir l’expliquer.
+        Mon objectif est de devenir analyste SOC : surveiller, détecter et répondre aux incidents de
+        sécurité. J’y vais en passant par l’administration systèmes et réseaux, parce qu’on
+        surveille mieux une infrastructure qu’on sait faire tourner.
       </p>
       <p>
         En dehors des projets, je pratique la sécurité en compétition (CTF RhineTech, 12ᵉ sur 39
@@ -68,11 +67,25 @@ const projects = await getProjects();
     </div>
   </section>
 
-  <section class="wrap section" aria-labelledby="contact-title">
+  <section class="wrap section" id="methode" aria-labelledby="approche-title">
     <div class="section-head">
-      <h2 class="section-title" id="contact-title">
-        Contact
-      </h2>
+      <div>
+        <h2 class="section-title" id="approche-title">
+          Ma façon de travailler
+        </h2>
+        <p class="section-intro">Quatre réflexes tirés de mes projets.</p>
+      </div>
+    </div>
+    <ApproachList />
+  </section>
+
+  <section class="wrap section" id="contact" aria-labelledby="contact-title">
+    <div class="section-head">
+      <div>
+        <h2 class="section-title" id="contact-title">
+          Contact
+        </h2>
+      </div>
     </div>
     <ContactLinks />
   </section>
@@ -83,24 +96,8 @@ const projects = await getProjects();
     padding-block: clamp(var(--space-8), 12vw, var(--space-10)) var(--space-4);
   }
 
-  .hero__status {
-    display: flex;
-    align-items: center;
-    gap: var(--space-3);
-    font-size: var(--step--1);
-    color: var(--fg-muted);
-  }
-
-  .hero__dot {
-    width: 0.5rem;
-    height: 0.5rem;
-    border-radius: 50%;
-    background: var(--accent);
-  }
-
   .hero__title {
-    max-width: 17ch;
-    margin-block-start: var(--space-6);
+    max-width: 16ch;
     font-size: var(--step-4);
     font-weight: var(--weight-regular);
     line-height: var(--leading-tight);
@@ -108,10 +105,24 @@ const projects = await getProjects();
   }
 
   .hero__lede {
-    max-width: 50ch;
+    max-width: 46ch;
     margin-block-start: var(--space-6);
     font-size: var(--step-1);
     line-height: 1.45;
+  }
+
+  .hero__links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-3) var(--space-6);
+    margin-block-start: var(--space-6);
+  }
+
+  .hero__links a {
+    color: var(--fg);
+    text-decoration-color: var(--accent);
+    text-decoration-thickness: 2px;
+    text-underline-offset: 0.3em;
   }
 
   .about {

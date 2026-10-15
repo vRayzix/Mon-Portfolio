@@ -66,7 +66,7 @@ const meta = [
     <div class="wrap case__body">
       {toc.length > 2 && (
         <nav class="case__toc" aria-label="Sommaire">
-          <p class="case__toc-title">Sommaire</p>
+          <p class="case__toc-title">Sur cette page</p>
           <ol class="list-reset">
             {toc.map((h) => (
               <li>
@@ -168,7 +168,36 @@ const meta = [
   }
 
   .case__toc {
-    display: none;
+    padding: var(--space-5);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    font-size: var(--step--1);
+  }
+
+  .case__toc-title {
+    margin-block-end: var(--space-3);
+    color: var(--fg-muted);
+  }
+
+  .case__toc ol {
+    display: grid;
+    gap: var(--space-2) var(--space-6);
+  }
+
+  @media (min-width: 600px) {
+    .case__toc ol {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+
+  .case__toc a {
+    color: var(--fg);
+    text-decoration: none;
+  }
+
+  .case__toc a:hover {
+    text-decoration: underline;
+    text-decoration-color: var(--accent);
   }
 
   @media (min-width: 1280px) {
@@ -182,29 +211,24 @@ const meta = [
     }
 
     .case__toc {
-      display: block;
       position: sticky;
       inset-block-start: var(--space-6);
       align-self: start;
-      font-size: var(--step--1);
+      padding: 0;
+      border: 0;
     }
 
-    .case__toc-title {
-      margin-block-end: var(--space-3);
-      color: var(--fg-muted);
-    }
-
-    .case__toc li + li {
-      margin-block-start: var(--space-2);
+    .case__toc ol {
+      grid-template-columns: minmax(0, 1fr);
     }
 
     .case__toc a {
       color: var(--fg-muted);
-      text-decoration: none;
     }
 
     .case__toc a:hover {
       color: var(--fg);
+      text-decoration: none;
     }
   }
 

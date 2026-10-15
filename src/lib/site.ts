@@ -1,8 +1,8 @@
 export const site = {
   name: 'Lucas Carriat',
-  role: 'Administration systèmes et réseaux',
+  role: 'Étudiant en réseaux et télécoms, futur analyste SOC',
   description:
-    'Lucas Carriat, futur administrateur systèmes et réseaux. Homelab Linux supervisé et sécurisé, déploiements Debian, réseaux Cisco. Recherche un stage d’avril à juin 2027.',
+    'Lucas Carriat, étudiant en réseaux et télécommunications, futur analyste SOC. Homelab supervisé et relié à un SIEM, déploiements Debian, réseaux Cisco. Recherche un stage d’avril à juin 2027.',
   locale: 'fr_FR',
   email: 'lucalexandrecrr@gmail.com',
   linkedin: 'https://www.linkedin.com/in/lucas-c-961610396/',

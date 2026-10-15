@@ -44,12 +44,10 @@ const skills = [
 
 const timeline = [
   {
-    when: '2025 – 2028',
     what: 'BUT Réseaux et Télécommunications',
     where: 'IUT de Colmar, Université de Haute-Alsace',
   },
   {
-    when: '2025',
     what: 'Baccalauréat STI2D, spécialité Systèmes d’information et numérique',
     where: 'Lycée Camille Claudel, Blois',
   },
@@ -58,13 +56,13 @@ const timeline = [
 
 <BaseLayout
   title="À propos"
-  description="Parcours, compétences et pratique de la sécurité de Lucas Carriat, futur administrateur systèmes et réseaux."
+  description="Parcours, compétences et pratique de la sécurité de Lucas Carriat, étudiant en réseaux et télécommunications et futur analyste SOC."
 >
   <header class="wrap page-header">
     <h1 class="page-title rise">À propos</h1>
     <p class="page-lede rise rise-delay-1">
-      Je m’appelle Lucas Carriat. J’étudie les réseaux et les télécommunications et je me destine à
-      l’administration systèmes et réseaux, avec un intérêt marqué pour la sécurité.
+      Je m’appelle Lucas Carriat. J’étudie les réseaux et les télécommunications et je veux devenir
+      analyste SOC. L’administration systèmes et réseaux est ma première étape.
     </p>
   </header>
 
@@ -76,7 +74,8 @@ const timeline = [
           Un <strong>stage de 8 semaines</strong> en administration systèmes et réseaux,
           <strong>d’avril à juin 2027</strong>. J’aimerais rejoindre une équipe qui exploite une
           infrastructure réelle : parc Linux et Windows, réseau, supervision, sauvegardes. J’y
-          apporterai de la rigueur et le réflexe de documenter ce que je fais.
+          apporterai de la rigueur et le réflexe de documenter ce que je fais. Comprendre comment
+          une infrastructure fonctionne au quotidien, c’est la base pour la surveiller ensuite.
         </p>
         <p>
           Les projets qui montrent le mieux ma façon de travailler : le{' '}
@@ -107,7 +106,6 @@ const timeline = [
       <ol class="about__content timeline list-reset">
         {timeline.map((t) => (
           <li>
-            <p class="timeline__when">{t.when}</p>
             <p class="timeline__what">{t.what}</p>
             <p class="timeline__where">{t.where}</p>
           </li>
@@ -119,7 +117,7 @@ const timeline = [
       <h2 id="securite">Pratique de la sécurité</h2>
       <div class="about__content">
         <p>
-          <strong>CTF RhineTech 2025, Mulhouse : 12ᵉ sur 39 équipes.</strong> Un challenge mêlant
+          <strong>CTF RhineTech, Mulhouse : 12ᵉ sur 39 équipes.</strong> Un challenge mêlant
           sécurité physique et numérique en temps limité : crochetage, énigmes logiques et intrusion
           sur des systèmes.
         </p>
@@ -135,9 +133,9 @@ const timeline = [
       <h2 id="autres">Autres expériences</h2>
       <div class="about__content">
         <p>
-          <strong>Production musicale et mixage, en freelance depuis 2022.</strong> Gestion de
-          projet, relation directe avec les clients et travail en studio avec des artistes : des
-          réflexes qui servent aussi dans un service informatique.
+          <strong>Production musicale et mixage, en freelance.</strong> Gestion de projet, relation
+          directe avec les clients et travail en studio avec des artistes : des réflexes qui servent
+          aussi dans un service informatique.
         </p>
         <p>
           <strong>Olympiades de Sciences de l’Ingénieur, finaliste académique.</strong> Projet DYLO,
@@ -259,14 +257,13 @@ const timeline = [
     border-block-start: 1px solid var(--border);
   }
 
-  .timeline__when,
   .timeline__where {
     font-size: var(--step--1);
     color: var(--fg-muted);
   }
 
   .timeline__what {
-    margin-block: var(--space-1);
+    margin-block-end: var(--space-1);
     color: var(--fg);
   }
 
