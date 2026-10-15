@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://vrayzix.github.io/Mon-Portfolio/sitemap-index.xml

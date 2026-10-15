@@ -1,0 +1,81 @@
+---
+import { href, isCurrent, site } from '../lib/site';
+
+const current = Astro.url.pathname;
+const links = [
+  { path: 'projets/', label: 'Projets' },
+  { path: 'homelab/', label: 'Homelab' },
+  { path: 'a-propos/', label: 'À propos' },
+];
+---
+
+<header class="site-header">
+  <div class="wrap site-header__inner">
+    <a class="brand" href={href()} aria-current={isCurrent(current, '') ? 'page' : undefined}>
+      {site.name}
+    </a>
+    <nav aria-label="Navigation principale">
+      <ul class="nav list-reset">
+        {links.map((link) => (
+          <li>
+            <a
+              href={href(link.path)}
+              aria-current={isCurrent(current, link.path) ? 'page' : undefined}
+            >
+              {link.label}
+            </a>
+          </li>
+        ))}
+        <li>
+          <a href={href(site.cv)}>CV</a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<style>
+  .site-header {
+    padding-block: var(--space-5);
+  }
+
+  .site-header__inner {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: var(--space-2) var(--space-5);
+  }
+
+  .brand {
+    color: var(--fg);
+    font-weight: var(--weight-medium);
+    letter-spacing: -0.01em;
+    text-decoration: none;
+  }
+
+  .nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-1) var(--space-5);
+    font-size: var(--step--1);
+  }
+
+  .nav a {
+    color: var(--fg-muted);
+    text-decoration: none;
+    transition: color var(--dur-fast) var(--ease);
+  }
+
+  .nav a:hover,
+  .nav a[aria-current='page'] {
+    color: var(--fg);
+  }
+
+  .nav a[aria-current='page'] {
+    text-decoration: underline;
+    text-decoration-color: var(--accent);
+    text-decoration-thickness: 2px;
+    text-underline-offset: 0.45em;
+  }
+</style>
