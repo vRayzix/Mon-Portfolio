@@ -27,7 +27,7 @@ const {
   noindex = false,
 } = Astro.props;
 
-const fullTitle = title ? `${title} · ${site.name}` : `${site.name} · ${site.role}`;
+const fullTitle = title ? `${title} · ${site.name}` : `${site.name} · ${site.headline}`;
 const siteUrl = Astro.site ?? new URL('https://vrayzix.github.io');
 const canonical = new URL(Astro.url.pathname, siteUrl);
 const ogSource = image && image.width >= 1200 && image.height >= 630 ? image : ogDefault;
