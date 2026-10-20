@@ -17,14 +17,31 @@ const { items, label = 'Technologies' } = Astro.props;
   .tags {
     display: flex;
     flex-wrap: wrap;
-    gap: 0 var(--space-2);
-    font-size: var(--step--1);
-    color: var(--fg-muted);
+    gap: var(--space-2);
   }
 
-  .tags li:not(:last-child)::after {
-    content: '·';
-    margin-inline-start: var(--space-2);
-    color: var(--border-strong);
+  .tags li {
+    padding: 0.35rem 0.9rem;
+    border: 1px solid var(--border-hover);
+    border-radius: var(--radius-pill);
+    color: var(--fg-muted);
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    line-height: 1.4;
+    transition:
+      border-color var(--dur) ease,
+      color var(--dur) ease;
+  }
+
+  .tags li:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+  }
+
+  @media (max-width: 480px) {
+    .tags li {
+      padding: 0.25rem 0.7rem;
+      font-size: 0.7rem;
+    }
   }
 </style>

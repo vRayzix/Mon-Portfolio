@@ -114,14 +114,14 @@ const meta = [
   }
 
   .eyebrow a:hover {
-    color: var(--fg);
+    text-decoration: underline;
   }
 
   .case__title {
     max-width: 18ch;
     margin-block-start: var(--space-4);
-    font-size: var(--step-3);
-    font-weight: var(--weight-regular);
+    font-size: clamp(2rem, 1.4rem + 2.6vw, 3.5rem);
+    font-weight: var(--weight-bold);
     line-height: var(--leading-tight);
     letter-spacing: var(--tracking-display);
   }
@@ -130,8 +130,8 @@ const meta = [
     max-width: 52ch;
     margin-block-start: var(--space-5);
     font-size: var(--step-1);
-    line-height: 1.45;
-    color: var(--fg-body);
+    line-height: 1.55;
+    color: var(--fg-muted);
   }
 
   .case__meta {
@@ -139,8 +139,11 @@ const meta = [
     grid-template-columns: repeat(auto-fit, minmax(9rem, 1fr));
     gap: var(--space-5) var(--space-6);
     margin-block-start: var(--space-7);
-    padding-block-start: var(--space-5);
-    border-block-start: 1px solid var(--border);
+    padding: var(--space-6);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    background: var(--surface);
+    box-shadow: var(--shadow-card);
     font-size: var(--step--1);
   }
 
@@ -149,12 +152,17 @@ const meta = [
   }
 
   .case__meta dt {
-    color: var(--fg-muted);
+    color: #888888;
+    font-size: 0.7rem;
+    font-weight: 500;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
   }
 
   .case__meta dd {
-    margin: var(--space-1) 0 0;
+    margin: var(--space-2) 0 0;
     color: var(--fg);
+    font-weight: 500;
   }
 
   .case__cover {
@@ -170,13 +178,15 @@ const meta = [
   .case__toc {
     padding: var(--space-5);
     border: 1px solid var(--border);
-    border-radius: var(--radius);
+    border-radius: var(--radius-lg);
+    background: var(--surface);
     font-size: var(--step--1);
   }
 
   .case__toc-title {
     margin-block-end: var(--space-3);
-    color: var(--fg-muted);
+    color: var(--accent);
+    font-weight: var(--weight-medium);
   }
 
   .case__toc ol {
@@ -196,8 +206,7 @@ const meta = [
   }
 
   .case__toc a:hover {
-    text-decoration: underline;
-    text-decoration-color: var(--accent);
+    color: var(--accent);
   }
 
   @media (min-width: 1280px) {
@@ -212,10 +221,13 @@ const meta = [
 
     .case__toc {
       position: sticky;
-      inset-block-start: var(--space-6);
+      inset-block-start: calc(var(--nav-h) + var(--space-6));
       align-self: start;
-      padding: 0;
+      padding: 0 0 0 var(--space-4);
       border: 0;
+      border-inline-start: 2px solid var(--border-strong);
+      border-radius: 0;
+      background: none;
     }
 
     .case__toc ol {
@@ -227,13 +239,17 @@ const meta = [
     }
 
     .case__toc a:hover {
-      color: var(--fg);
+      color: var(--accent);
       text-decoration: none;
     }
   }
 
   .prose > :global(h2:first-child) {
     margin-block-start: 0;
+  }
+
+  .case__links a {
+    color: var(--accent);
   }
 
   .case__links {
@@ -246,7 +262,7 @@ const meta = [
   .case__next {
     margin-block-start: var(--section-gap);
     padding-block-start: var(--space-5);
-    border-block-start: 1px solid var(--border);
+    border-block-start: 1px solid var(--border-strong);
   }
 
   .case__next a {
@@ -255,10 +271,11 @@ const meta = [
     font-size: var(--step-2);
     color: var(--fg);
     letter-spacing: var(--tracking-heading);
-    text-decoration-color: var(--border-strong);
+    font-weight: var(--weight-bold);
+    text-decoration: none;
   }
 
   .case__next a:hover {
-    text-decoration-color: var(--accent);
+    color: var(--accent);
   }
 </style>

@@ -17,25 +17,26 @@ const Heading = headingLevel;
 const url = projectHref(project);
 const titleId = `card-${project.id}`;
 const widths = data.cover ? [480, 800, 1200].filter((w) => w <= (data.cover?.width ?? 0)) : [];
+const stack = data.stack.slice(0, featured ? 8 : 6);
 ---
 
 <article
   class:list={[
-    'card',
+    'card reveal',
     { 'card--featured': featured, 'card--secondary': data.kind === 'secondaire' },
   ]}
   aria-labelledby={titleId}
 >
   <div class:list={['card__visual', { 'card__visual--diagram': project.id === 'homelab' }]}>
     {project.id === 'homelab' ? (
-      <HomelabArchitecture id="hl-card" caption={false} wideOnly />
+      <HomelabArchitecture id={`hl-card-${headingLevel}`} caption={false} wideOnly />
     ) : data.cover && data.coverAlt ? (
       <Picture
         src={data.cover}
         alt={data.coverAlt}
         formats={['avif', 'webp']}
         widths={widths.length > 0 ? widths : [data.cover.width]}
-        sizes="(min-width: 1280px) 40rem, (min-width: 810px) 50vw, 100vw"
+        sizes="(min-width: 769px) 22rem, 100vw"
         loading={eager ? 'eager' : 'lazy'}
         decoding="async"
       />
@@ -44,30 +45,67 @@ const widths = data.cover ? [480, 800, 1200].filter((w) => w <= (data.cover?.wid
     ) : null}
   </div>
   <div class="card__body">
-    <p class="card__kind">{kindLabel[data.kind]}</p>
+    <p class="card__kind">
+      {kindLabel[data.kind]} · {data.context}
+    </p>
     <Heading class="card__title" id={titleId}>
       <a href={url}>{data.title}</a>
     </Heading>
     <p class="card__summary">{data.summary}</p>
-    <Tags items={data.tags} label="Thèmes" />
+    <Tags items={stack} />
+    <div class="card__actions">
+      <a class="btn btn--soft" href={url} aria-describedby={titleId}>
+        Lire l’étude de cas
+      </a>
+      {data.links.slice(0, 1).map((link) => (
+        <a class="btn btn--soft" href={link.url}>
+          {link.label}
+        </a>
+      ))}
+    </div>
   </div>
 </article>
 
 <style>
   .card {
-    position: relative;
     display: flex;
+    gap: 2.5rem;
+    padding: var(--space-6);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    background: var(--surface);
+    box-shadow: var(--shadow-card);
+    -webkit-backdrop-filter: blur(16px);
+    backdrop-filter: blur(16px);
+    transition:
+      transform 400ms ease,
+      box-shadow 400ms ease,
+      opacity 700ms var(--ease),
+      translate 700ms var(--ease);
+  }
+
+  .card--featured {
     flex-direction: column;
-    gap: var(--space-5);
   }
 
   .card__visual {
     position: relative;
+    flex-shrink: 0;
     overflow: hidden;
-    aspect-ratio: 4 / 3;
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
+    width: 22rem;
+    aspect-ratio: 3 / 2;
+    border-radius: 10px;
     background: var(--bg-subtle);
+  }
+
+  .card__visual::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgb(0 0 0 / 0.7) 0%, transparent 60%);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 400ms ease;
   }
 
   .card__visual :global(picture) {
@@ -81,7 +119,7 @@ const widths = data.cover ? [480, 800, 1200].filter((w) => w <= (data.cover?.wid
     height: 100%;
     object-fit: cover;
     object-position: top left;
-    transition: transform var(--dur) var(--ease);
+    transition: transform 500ms ease;
   }
 
   .card--secondary .card__visual :global(img) {
@@ -89,82 +127,125 @@ const widths = data.cover ? [480, 800, 1200].filter((w) => w <= (data.cover?.wid
   }
 
   .card__visual--diagram {
+    width: 100%;
     aspect-ratio: auto;
-    padding: clamp(var(--space-5), 4vw, var(--space-8));
+    padding: clamp(var(--space-4), 3vw, var(--space-7));
+    border: 1px solid var(--border);
+    background: var(--bg);
+  }
+
+  .card__visual--diagram::after {
+    display: none;
   }
 
   .card__snippet {
     height: 100%;
     margin: 0;
-    padding: clamp(var(--space-5), 4vw, var(--space-7));
+    padding: var(--space-5);
     overflow: hidden;
-    font-size: clamp(0.8125rem, 0.75rem + 0.3vw, 0.9375rem);
+    border: 1px solid var(--border-strong);
+    border-radius: 10px;
+    background: var(--bg-deep);
+    color: var(--accent);
+    font-size: 0.8rem;
     line-height: 1.7;
-    color: var(--fg-body);
-    transition: transform var(--dur) var(--ease);
+    transition: transform 500ms ease;
   }
 
   .card__body {
     display: flex;
+    flex: 1;
     flex-direction: column;
-    gap: var(--space-2);
+    gap: var(--space-3);
+    min-width: 0;
   }
 
   .card__kind {
-    font-size: var(--step--1);
-    color: var(--fg-muted);
+    color: var(--fg-faint);
+    font-size: 0.8rem;
+    font-weight: 500;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
   }
 
   .card__title {
-    font-size: var(--step-1);
+    font-size: 1.5rem;
     line-height: var(--leading-snug);
-    max-width: 32ch;
-  }
-
-  .card--featured .card__title {
-    font-size: var(--step-2);
-    max-width: 28ch;
+    letter-spacing: 0;
   }
 
   .card__title a {
+    color: var(--accent);
     text-decoration: none;
   }
 
-  .card__title a::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    border-radius: var(--radius);
-  }
-
-  .card__title a:focus-visible {
-    outline: none;
-  }
-
-  .card__title a:focus-visible::after {
-    outline: 2px solid var(--accent);
-    outline-offset: 6px;
+  .card__title a:hover {
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
   }
 
   .card__summary {
-    max-width: 60ch;
+    flex: 1;
     color: var(--fg-muted);
+    line-height: 1.6;
   }
 
   .card :global(.tags) {
     margin-block-start: var(--space-2);
   }
 
+  .card__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-4);
+    margin-block-start: var(--space-3);
+  }
+
   @media (hover: hover) {
-    .card:hover .card__title a {
-      text-decoration: underline;
-      text-decoration-thickness: 1px;
-      text-decoration-color: var(--accent);
+    .card:hover {
+      box-shadow: var(--shadow-lift);
+      transform: translateY(-8px);
     }
 
     .card:hover .card__visual :global(img),
     .card:hover .card__snippet {
-      transform: scale(1.015);
+      transform: scale(1.08);
+    }
+
+    .card:hover .card__visual::after {
+      opacity: 1;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .card {
+      flex-direction: column;
+      padding: var(--space-5);
+    }
+
+    .card__visual {
+      width: 100%;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .card {
+      padding: var(--space-4);
+      border-radius: 20px;
+    }
+
+    .card__title {
+      font-size: 1.2rem;
+    }
+
+    .card__actions {
+      flex-direction: column;
+    }
+
+    .card__actions .btn {
+      width: 100%;
+      white-space: normal;
+      text-align: center;
     }
   }
 </style>

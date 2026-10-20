@@ -1,64 +1,231 @@
 ---
+import { getProjects, projectHref } from '../lib/projects';
 import { href, site } from '../lib/site';
 
 const year = new Date().getFullYear();
+const projects = await getProjects();
+const initials = site.name
+  .split(' ')
+  .map((part) => part[0])
+  .join('');
+const nav = [
+  { label: 'Accueil', url: href('#home') },
+  { label: 'À propos', url: href('a-propos/') },
+  { label: 'Compétences', url: href('#competences') },
+  { label: 'Projets', url: href('projets/') },
+  { label: 'Contact', url: href('#contact') },
+];
+const socials = [
+  { label: 'LinkedIn', url: site.linkedin },
+  { label: 'GitHub', url: site.github },
+  { label: 'BeatStars', url: site.beatstars },
+  { label: 'CV', url: href(site.cv) },
+];
 ---
 
-<footer class="site-footer">
-  <div class="wrap site-footer__inner">
+<footer class="footer">
+  <div class="footer__glow" aria-hidden="true"></div>
+  <div class="footer__grid">
+    <div class="footer__bio">
+      <p class="footer__logo">{initials}</p>
+      <p class="footer__desc">
+        {site.name}, étudiant en réseaux et télécoms et futur analyste SOC. Je cherche un stage de 9
+        semaines en administration systèmes et réseaux, d’avril à juin 2027.
+      </p>
+    </div>
+    <nav aria-labelledby="footer-nav">
+      <h2 class="footer__title" id="footer-nav">
+        Navigation
+      </h2>
+      <ul class="footer__links list-reset">
+        {nav.map((item) => (
+          <li>
+            <a href={item.url}>{item.label}</a>
+          </li>
+        ))}
+      </ul>
+    </nav>
+    <nav aria-labelledby="footer-projects">
+      <h2 class="footer__title" id="footer-projects">
+        Projets
+      </h2>
+      <ul class="footer__links list-reset">
+        {projects.map((project) => (
+          <li>
+            <a href={projectHref(project)}>{project.data.short}</a>
+          </li>
+        ))}
+      </ul>
+    </nav>
+    <div>
+      <h2 class="footer__title">Me retrouver</h2>
+      <ul class="footer__socials list-reset">
+        {socials.map((item) => (
+          <li>
+            <a class="pill" href={item.url}>
+              {item.label}
+            </a>
+          </li>
+        ))}
+      </ul>
+      <a class="footer__mail" href={`mailto:${site.email}`}>
+        {site.email}
+      </a>
+    </div>
+  </div>
+  <div class="footer__bottom">
     <p>
       © {year} {site.name} · {site.location}
     </p>
-    <ul class="site-footer__links list-reset">
-      <li>
-        <a href={`mailto:${site.email}`}>E-mail</a>
-      </li>
-      <li>
-        <a href={site.linkedin}>LinkedIn</a>
-      </li>
-      <li>
-        <a href={site.github}>GitHub</a>
-      </li>
-      <li>
-        <a href={href(site.cv)}>CV</a>
-      </li>
-    </ul>
-    <p class="site-footer__note">Site statique, sans cookie ni traceur.</p>
+    <p class="footer__slogan">Site statique, sans cookie ni traceur.</p>
   </div>
 </footer>
 
 <style>
-  .site-footer {
+  .footer {
+    position: relative;
+    overflow: hidden;
     margin-block-start: var(--section-gap);
-    padding-block: var(--space-6) var(--space-7);
-    border-block-start: 1px solid var(--border);
-    font-size: var(--step--1);
-    color: var(--fg-muted);
+    padding: 5rem var(--space-6) 0;
+    border-block-start: 1px solid #1f1f1f;
+    background: var(--bg-deep);
+    color: var(--fg-body);
   }
 
-  .site-footer__inner {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: baseline;
-    justify-content: space-between;
-    gap: var(--space-3) var(--space-6);
+  .footer__glow {
+    position: absolute;
+    inset-block-start: -150px;
+    inset-inline-start: -150px;
+    width: 500px;
+    height: 500px;
+    background: radial-gradient(circle, rgb(255 204 0 / 0.15) 0%, transparent 60%);
+    pointer-events: none;
   }
 
-  .site-footer__links {
-    display: flex;
-    flex-wrap: wrap;
-    gap: var(--space-1) var(--space-5);
+  .footer__grid {
+    position: relative;
+    display: grid;
+    grid-template-columns: 1.6fr 1fr 1fr 1.2fr;
+    gap: 2.5rem;
+    max-width: var(--max-w);
+    margin-inline: auto;
+    padding-block-end: var(--space-8);
   }
 
-  .site-footer a {
+  .footer__logo {
+    margin-block-end: 1.2rem;
+    color: var(--fg);
+    font-size: 2.5rem;
+    font-style: italic;
+    font-weight: 800;
+    letter-spacing: 2px;
+    line-height: 1;
+  }
+
+  .footer__desc {
+    max-width: 90%;
+    color: #a3a3a3;
+    font-size: 0.95rem;
+    line-height: 1.8;
+  }
+
+  .footer__title {
+    position: relative;
+    display: inline-block;
+    margin-block-end: var(--space-6);
+    font-size: 1.15rem;
+    font-weight: var(--weight-bold);
+    letter-spacing: 0;
+  }
+
+  .footer__title::after {
+    content: '';
+    position: absolute;
+    inset-block-end: -10px;
+    inset-inline-start: 0;
+    width: 35px;
+    height: 2px;
+    background: var(--accent);
+  }
+
+  .footer__links {
+    display: grid;
+    gap: 1.1rem;
+  }
+
+  .footer__links a {
+    color: #a3a3a3;
+    font-size: 0.95rem;
     text-decoration: none;
   }
 
-  .site-footer a:hover {
+  .footer__links a:hover {
     color: var(--fg);
   }
 
-  .site-footer__note {
-    flex-basis: 100%;
+  .footer__socials {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.8rem;
+  }
+
+  .footer__mail {
+    display: inline-block;
+    margin-block-start: var(--space-5);
+    color: #a3a3a3;
+    font-size: 0.9rem;
+    overflow-wrap: anywhere;
+    text-decoration: none;
+  }
+
+  .footer__mail:hover {
+    color: var(--accent);
+  }
+
+  .footer__bottom {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-4);
+    max-width: var(--max-w);
+    margin-inline: auto;
+    padding-block: var(--space-5);
+    border-block-start: 1px solid #1f1f1f;
+    color: var(--fg-faint);
+    font-size: 0.85rem;
+  }
+
+  .footer__slogan {
+    font-style: italic;
+  }
+
+  @media (max-width: 992px) {
+    .footer__grid {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .footer__bio {
+      grid-column: span 2;
+    }
+  }
+
+  @media (max-width: 576px) {
+    .footer {
+      padding: var(--space-7) var(--space-4) 0;
+    }
+
+    .footer__grid {
+      grid-template-columns: 1fr;
+    }
+
+    .footer__bio {
+      grid-column: auto;
+    }
+
+    .footer__bottom {
+      flex-direction: column;
+      text-align: center;
+    }
   }
 </style>

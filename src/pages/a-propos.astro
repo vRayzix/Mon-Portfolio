@@ -1,5 +1,5 @@
 ---
-import ContactLinks from '../components/ContactLinks.astro';
+import ContactSection from '../components/ContactSection.astro';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { href, site } from '../lib/site';
 
@@ -60,7 +60,10 @@ const timeline = [
   description="Parcours, compétences et pratique de la sécurité de Lucas Carriat, étudiant en réseaux et télécommunications et futur analyste SOC."
 >
   <header class="wrap page-header">
-    <h1 class="page-title rise">À propos</h1>
+    <p class="eyebrow rise">Parcours et compétences</p>
+    <h1 class="page-title rise">
+      À propos de <span class="highlight">moi</span>
+    </h1>
     <p class="page-lede rise rise-delay-1">
       Je m’appelle Lucas Carriat. J’étudie les réseaux et les télécommunications et je veux devenir
       analyste SOC. L’administration systèmes et réseaux est ma première étape.
@@ -68,7 +71,7 @@ const timeline = [
   </header>
 
   <div class="wrap about">
-    <section class="about__row" aria-labelledby="recherche">
+    <section class="about__row glass reveal" aria-labelledby="recherche">
       <h2 id="recherche">Ce que je recherche</h2>
       <div class="about__content">
         <p>
@@ -86,7 +89,7 @@ const timeline = [
       </div>
     </section>
 
-    <section class="about__row" aria-labelledby="competences">
+    <section class="about__row glass reveal" aria-labelledby="competences">
       <h2 id="competences">Compétences techniques</h2>
       <div class="about__content skills">
         {skills.map((s) => (
@@ -102,7 +105,7 @@ const timeline = [
       </div>
     </section>
 
-    <section class="about__row" aria-labelledby="parcours">
+    <section class="about__row glass reveal" aria-labelledby="parcours">
       <h2 id="parcours">Parcours</h2>
       <ol class="about__content timeline list-reset">
         {timeline.map((t) => (
@@ -114,7 +117,7 @@ const timeline = [
       </ol>
     </section>
 
-    <section class="about__row" aria-labelledby="securite">
+    <section class="about__row glass reveal" aria-labelledby="securite">
       <h2 id="securite">Pratique de la sécurité</h2>
       <div class="about__content">
         <p>
@@ -130,7 +133,7 @@ const timeline = [
       </div>
     </section>
 
-    <section class="about__row" aria-labelledby="autres">
+    <section class="about__row glass reveal" aria-labelledby="autres">
       <h2 id="autres">Expériences</h2>
       <div class="about__content">
         <p>
@@ -157,7 +160,7 @@ const timeline = [
       </div>
     </section>
 
-    <section class="about__row" aria-labelledby="langues">
+    <section class="about__row glass reveal" aria-labelledby="langues">
       <h2 id="langues">Langues</h2>
       <dl class="about__content langs">
         <div>
@@ -175,39 +178,39 @@ const timeline = [
       </dl>
     </section>
 
-    <section class="about__row" aria-labelledby="contact">
-      <h2 id="contact">Contact</h2>
-      <div class="about__content">
-        <ContactLinks />
+    <section class="about__contact" aria-labelledby="contact">
+      <div class="section-head">
+        <h2 class="section-title" id="contact">
+          Me <span class="highlight">contacter</span>
+        </h2>
       </div>
+      <ContactSection />
     </section>
   </div>
 </BaseLayout>
 
 <style>
-  .page-header {
-    padding-block: var(--space-8);
-  }
-
-  .page-title {
-    font-size: var(--step-3);
-    font-weight: var(--weight-regular);
-    line-height: var(--leading-tight);
-    letter-spacing: var(--tracking-display);
-  }
-
-  .page-lede {
-    max-width: 52ch;
-    margin-block-start: var(--space-5);
-    font-size: var(--step-1);
-    line-height: 1.45;
+  .about {
+    display: grid;
+    gap: var(--space-6);
   }
 
   .about__row {
     display: grid;
     gap: var(--space-5);
-    padding-block: var(--space-6) var(--space-8);
-    border-block-start: 1px solid var(--border);
+    padding: var(--space-7);
+    border-radius: var(--radius-lg);
+  }
+
+  .about__contact {
+    margin-block-start: var(--space-8);
+  }
+
+  @media (max-width: 480px) {
+    .about__row {
+      padding: var(--space-5);
+      border-radius: 20px;
+    }
   }
 
   @media (min-width: 810px) {
@@ -218,8 +221,8 @@ const timeline = [
   }
 
   .about__row > h2 {
-    font-size: var(--step--1);
-    font-weight: var(--weight-medium);
+    color: var(--accent);
+    font-size: 1.3rem;
     letter-spacing: 0;
   }
 
@@ -234,8 +237,15 @@ const timeline = [
     font-weight: var(--weight-medium);
   }
 
+  .about__content p,
+  .about__content li,
+  .about__content dd {
+    color: var(--fg-muted);
+  }
+
   .about__content a {
-    text-decoration-color: var(--accent);
+    color: var(--accent);
+    text-decoration-color: rgb(255 204 0 / 0.4);
   }
 
   .skills {
@@ -250,7 +260,8 @@ const timeline = [
   }
 
   .skills h3 {
-    font-size: var(--step-0);
+    color: var(--fg);
+    font-size: 1.05rem;
     font-weight: var(--weight-medium);
     letter-spacing: 0;
   }
@@ -266,17 +277,19 @@ const timeline = [
 
   .timeline li + li {
     padding-block-start: var(--space-5);
-    border-block-start: 1px solid var(--border);
+    border-block-start: 1px solid var(--border-strong);
   }
 
-  .timeline__where {
-    font-size: var(--step--1);
-    color: var(--fg-muted);
+  .timeline .timeline__where {
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--accent);
   }
 
-  .timeline__what {
+  .timeline .timeline__what {
     margin-block-end: var(--space-1);
     color: var(--fg);
+    font-weight: var(--weight-medium);
   }
 
   .langs {
@@ -291,6 +304,7 @@ const timeline = [
   .langs dt {
     min-width: 6rem;
     color: var(--fg);
+    font-weight: var(--weight-medium);
   }
 
   .langs dd {

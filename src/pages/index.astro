@@ -1,135 +1,243 @@
 ---
-import ContactLinks from '../components/ContactLinks.astro';
+import ContactSection from '../components/ContactSection.astro';
+import Hero from '../components/Hero.astro';
 import MusicSection from '../components/MusicSection.astro';
 import ProjectGrid from '../components/ProjectGrid.astro';
+import SkillsMarquee from '../components/SkillsMarquee.astro';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { getProjects } from '../lib/projects';
 import { href } from '../lib/site';
 
 const projects = await getProjects();
+
+const education = [
+  {
+    what: 'BUT Réseaux et Télécommunications',
+    where: 'IUT de Colmar, Université de Haute-Alsace',
+    detail: 'Réseaux d’entreprise, systèmes Linux et Windows, sécurité et télécoms.',
+  },
+  {
+    what: 'Baccalauréat STI2D, spécialité SIN',
+    where: 'Lycée Camille Claudel, Blois',
+    detail: 'Systèmes d’information et numérique.',
+  },
+];
+
+const coreSkills = [
+  'Administration Linux : Debian, services systemd',
+  'Réseaux Cisco : VLAN, routage, NAT, ACL',
+  'Supervision avec Prometheus et Grafana',
+  'Détection avec le SIEM Wazuh et CrowdSec',
+  'VPN WireGuard et pare-feu iptables',
+];
 ---
 
 <BaseLayout>
-  <section class="wrap hero" aria-labelledby="hero-title">
-    <h1 class="hero__title rise" id="hero-title">
-      Étudiant en réseaux et télécoms, futur analyste SOC.
-    </h1>
-    <p class="hero__lede rise rise-delay-1">
-      Je cherche un stage de 9 semaines en administration systèmes et réseaux, d’avril à juin 2027.
-    </p>
-    <ul class="hero__links list-reset rise rise-delay-2">
-      <li>
-        <a href="#projets">Voir les projets</a>
-      </li>
-      <li>
-        <a href="#contact">Me contacter</a>
-      </li>
-    </ul>
+  <Hero />
+
+  <section class="section" id="apropos" aria-labelledby="apropos-title">
+    <div class="wrap">
+      <div class="about glass reveal">
+        <div class="about__left">
+          <h2 class="about__title" id="apropos-title">
+            À propos de <span class="highlight">moi</span>
+          </h2>
+          <p class="about__text">
+            Mon objectif est de devenir analyste SOC : surveiller, détecter et répondre aux
+            incidents de sécurité. J’y vais en passant par l’administration systèmes et réseaux,
+            parce qu’on surveille mieux une infrastructure qu’on sait faire tourner.
+          </p>
+          <p class="about__text">
+            Mon projet phare est un homelab en service : un VPS Debian durci qui publie des services
+            en HTTPS, supervisé et relié à un SIEM par un tunnel WireGuard.
+          </p>
+          <p class="about__text">
+            En dehors des projets, je pratique la sécurité en compétition (CTF RhineTech, 12ᵉ sur 39
+            équipes) et sur des plateformes d’entraînement.
+          </p>
+          <a class="btn btn--secondary about__more" href={href('a-propos/')}>
+            Parcours complet
+          </a>
+        </div>
+        <div class="about__right">
+          <h3 class="about__subtitle">Formation</h3>
+          <ul class="edu list-reset">
+            {education.map((item) => (
+              <li>
+                <p class="edu__degree">{item.what}</p>
+                <p class="edu__meta">{item.where}</p>
+                <p class="edu__detail">{item.detail}</p>
+              </li>
+            ))}
+          </ul>
+          <h3 class="about__subtitle about__subtitle--skills">Compétences clés</h3>
+          <ul class="core list-reset">
+            {coreSkills.map((skill) => (
+              <li>{skill}</li>
+            ))}
+          </ul>
+        </div>
+      </div>
+    </div>
   </section>
 
-  <section class="wrap section" id="projets" aria-labelledby="projets-title">
-    <div class="section-head">
-      <div>
+  <section class="section" id="competences" aria-labelledby="competences-title">
+    <div class="wrap">
+      <div class="section-head">
+        <h2 class="section-title" id="competences-title">
+          Outils et <span class="highlight-gradient">technologies</span>
+        </h2>
+      </div>
+      <SkillsMarquee />
+    </div>
+  </section>
+
+  <section class="section" id="projets" aria-labelledby="projets-title">
+    <div class="wrap">
+      <div class="section-head">
         <h2 class="section-title" id="projets-title">
-          Projets
+          Mes <span class="highlight">projets</span>
         </h2>
         <p class="section-intro">Le homelab d’abord, puis trois études de cas.</p>
       </div>
-      <a class="section-link" href={href('projets/')}>
-        Tous les projets
-      </a>
-    </div>
-    <ProjectGrid projects={projects} />
-  </section>
-
-  <section class="wrap section" id="apropos" aria-labelledby="apropos-title">
-    <div class="section-head">
-      <div>
-        <h2 class="section-title" id="apropos-title">
-          À propos
-        </h2>
-        <p class="section-intro">Qui je suis et ce que je vise.</p>
-      </div>
-      <a class="section-link" href={href('a-propos/')}>
-        Parcours et compétences
-      </a>
-    </div>
-    <div class="about">
-      <p>
-        Mon objectif est de devenir analyste SOC : surveiller, détecter et répondre aux incidents de
-        sécurité. J’y vais en passant par l’administration systèmes et réseaux, parce qu’on
-        surveille mieux une infrastructure qu’on sait faire tourner.
-      </p>
-      <p>
-        En dehors des projets, je pratique la sécurité en compétition (CTF RhineTech, 12ᵉ sur 39
-        équipes) et sur des plateformes d’entraînement.
-      </p>
+      <ProjectGrid projects={projects} />
     </div>
   </section>
 
-  <section class="wrap section" id="musique" aria-labelledby="musique-title">
-    <div class="section-head">
-      <div>
+  <section class="section" id="musique" aria-labelledby="musique-title">
+    <div class="wrap">
+      <div class="section-head">
         <h2 class="section-title" id="musique-title">
-          Musique
+          Côté <span class="highlight">studio</span>
         </h2>
-        <p class="section-intro">Mon autre terrain : le studio.</p>
+        <p class="section-intro">Mon autre terrain : la production musicale.</p>
       </div>
+      <MusicSection />
     </div>
-    <MusicSection />
   </section>
 
-  <section class="wrap section" id="contact" aria-labelledby="contact-title">
-    <div class="section-head">
-      <div>
+  <section class="section" id="contact" aria-labelledby="contact-title">
+    <div class="wrap">
+      <div class="section-head">
         <h2 class="section-title" id="contact-title">
-          Contact
+          Me <span class="highlight">contacter</span>
         </h2>
       </div>
+      <ContactSection />
     </div>
-    <ContactLinks />
   </section>
 </BaseLayout>
 
 <style>
-  .hero {
-    padding-block: clamp(var(--space-8), 12vw, var(--space-10)) var(--space-4);
-  }
-
-  .hero__title {
-    max-width: 16ch;
-    font-size: var(--step-4);
-    font-weight: var(--weight-regular);
-    line-height: var(--leading-tight);
-    letter-spacing: var(--tracking-display);
-  }
-
-  .hero__lede {
-    max-width: 46ch;
-    margin-block-start: var(--space-6);
-    font-size: var(--step-1);
-    line-height: 1.45;
-  }
-
-  .hero__links {
-    display: flex;
-    flex-wrap: wrap;
-    gap: var(--space-3) var(--space-6);
-    margin-block-start: var(--space-6);
-  }
-
-  .hero__links a {
-    color: var(--fg);
-    text-decoration-color: var(--accent);
-    text-decoration-thickness: 2px;
-    text-underline-offset: 0.3em;
-  }
-
   .about {
     display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: var(--space-8);
+    max-width: 68.75rem;
+    margin-inline: auto;
+    padding: var(--space-7);
+    border-radius: var(--radius-xl);
+  }
+
+  .about__title {
+    margin-block-end: var(--space-5);
+    font-size: 2rem;
+    letter-spacing: 0;
+  }
+
+  .about__text {
+    color: var(--fg-muted);
+    font-size: 1.05rem;
+    line-height: 1.8;
+  }
+
+  .about__text + .about__text {
+    margin-block-start: var(--space-4);
+  }
+
+  .about__more {
+    margin-block-start: var(--space-6);
+  }
+
+  .about__subtitle {
+    margin-block-end: 1.2rem;
+    font-size: 1.3rem;
+    letter-spacing: 0;
+  }
+
+  .about__subtitle--skills {
+    margin-block-start: 2.5rem;
+  }
+
+  .edu {
+    display: grid;
     gap: var(--space-5);
-    max-width: 62ch;
-    font-size: var(--step-1);
-    line-height: 1.45;
+  }
+
+  .edu__degree {
+    margin-block-end: 0.3rem;
+    color: var(--fg);
+    font-size: 1.05rem;
+    font-weight: var(--weight-medium);
+  }
+
+  .edu__meta {
+    margin-block-end: var(--space-2);
+    color: var(--accent);
+    font-size: 0.85rem;
+    font-weight: 500;
+  }
+
+  .edu__detail {
+    color: var(--fg-muted);
+    font-size: 0.9rem;
+    line-height: 1.6;
+  }
+
+  .core {
+    display: grid;
+    gap: 0.6rem;
+  }
+
+  .core li {
+    position: relative;
+    padding-inline-start: 1.2rem;
+    color: var(--fg-muted);
+    font-size: 1rem;
+  }
+
+  .core li::before {
+    content: '';
+    position: absolute;
+    inset-block-start: 0.65em;
+    inset-inline-start: 0;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--accent);
+  }
+
+  @media (max-width: 968px) {
+    .about {
+      grid-template-columns: minmax(0, 1fr);
+      gap: 2.5rem;
+      padding: var(--space-6);
+      border-radius: var(--radius-lg);
+    }
+  }
+
+  @media (max-width: 480px) {
+    .about {
+      padding: var(--space-5);
+      border-radius: 20px;
+    }
+
+    .about__title {
+      font-size: 1.8rem;
+    }
+
+    .about__text {
+      font-size: 0.95rem;
+    }
   }
 </style>

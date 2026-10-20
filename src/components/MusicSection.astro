@@ -23,7 +23,7 @@ const points = [
 ];
 ---
 
-<div class="music">
+<div class="music glass reveal">
   <div class="music__text">
     <p class="music__lead">
       Je compose et produis de la musique en indépendant. Égaliser une piste ou lire un spectre,
@@ -37,8 +37,8 @@ const points = [
         </div>
       ))}
     </dl>
-    <a class="music__link" href={site.beatstars}>
-      Écouter mes productions sur BeatStars
+    <a class="btn btn--primary music__link" href={site.beatstars}>
+      Écouter sur BeatStars
     </a>
   </div>
   <div class="music__visual">
@@ -54,20 +54,24 @@ const points = [
   .music {
     display: grid;
     gap: var(--space-7);
-    align-items: start;
+    align-items: center;
+    max-width: 68.75rem;
+    margin-inline: auto;
+    padding: var(--space-7);
+    border-radius: var(--radius-xl);
   }
 
   @media (min-width: 1024px) {
     .music {
-      grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+      grid-template-columns: minmax(0, 5fr) minmax(0, 6fr);
       gap: var(--space-8);
     }
   }
 
   .music__lead {
-    max-width: 44ch;
-    font-size: var(--step-1);
-    line-height: 1.45;
+    color: var(--fg-muted);
+    font-size: 1.05rem;
+    line-height: 1.8;
   }
 
   .music__points {
@@ -77,34 +81,54 @@ const points = [
   }
 
   .music__points div {
+    position: relative;
     display: grid;
     gap: var(--space-1);
-    padding-block-start: var(--space-4);
-    border-block-start: 1px solid var(--border);
+    padding-inline-start: 1.2rem;
   }
 
-  @media (min-width: 600px) {
-    .music__points div {
-      grid-template-columns: 7rem minmax(0, 1fr);
-      gap: var(--space-4);
-    }
+  .music__points div::before {
+    content: '';
+    position: absolute;
+    inset-block-start: 0.6em;
+    inset-inline-start: 0;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--accent);
   }
 
   .music__points dt {
     color: var(--fg);
+    font-weight: var(--weight-medium);
   }
 
   .music__points dd {
     margin: 0;
     color: var(--fg-muted);
+    font-size: 0.95rem;
   }
 
   .music__link {
-    display: inline-block;
     margin-block-start: var(--space-6);
-    color: var(--fg);
-    text-decoration-color: var(--accent);
-    text-decoration-thickness: 2px;
-    text-underline-offset: 0.3em;
+  }
+
+  .music__visual :global(img) {
+    border-color: var(--border-strong);
+    border-radius: var(--radius);
+  }
+
+  @media (max-width: 968px) {
+    .music {
+      padding: var(--space-6);
+      border-radius: var(--radius-lg);
+    }
+  }
+
+  @media (max-width: 480px) {
+    .music {
+      padding: var(--space-5);
+      border-radius: 20px;
+    }
   }
 </style>

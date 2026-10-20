@@ -7,10 +7,14 @@ import { href } from '../lib/site';
   <section class="wrap not-found">
     <p class="eyebrow">Erreur 404</p>
     <h1>Cette page n’existe pas ou a été déplacée.</h1>
-    <p>
-      <a href={href()}>Revenir à l’accueil</a> ou consulter les{' '}
-      <a href={href('projets/')}>projets</a>.
-    </p>
+    <div class="not-found__actions">
+      <a class="btn btn--primary" href={href()}>
+        Revenir à l’accueil
+      </a>
+      <a class="btn btn--secondary" href={href('projets/')}>
+        Voir les projets
+      </a>
+    </div>
   </section>
 </BaseLayout>
 
@@ -23,12 +27,14 @@ import { href } from '../lib/site';
     max-width: 20ch;
     margin-block: var(--space-4) var(--space-6);
     font-size: var(--step-3);
-    font-weight: var(--weight-regular);
+    font-weight: var(--weight-bold);
     line-height: var(--leading-tight);
     letter-spacing: var(--tracking-display);
   }
 
-  a {
-    text-decoration-color: var(--accent);
+  .not-found__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-4);
   }
 </style>

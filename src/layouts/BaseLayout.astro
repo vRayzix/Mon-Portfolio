@@ -45,9 +45,11 @@ const ogUrl = new URL(og.src, siteUrl);
     <meta name="author" content={site.name} />
     <link rel="canonical" href={canonical} />
     {noindex && <meta name="robots" content="noindex" />}
-    <meta name="color-scheme" content="light dark" />
-    <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)" />
-    <meta name="theme-color" content="#0c0c0d" media="(prefers-color-scheme: dark)" />
+    <meta name="color-scheme" content="dark" />
+    <meta name="theme-color" content="#0f0f0f" />
+    <script is:inline>
+      document.documentElement.classList.add('js');
+    </script>
     <link rel="icon" href={href('favicon.svg')} type="image/svg+xml" />
     <link rel="sitemap" href={href('sitemap-index.xml')} />
     <link rel="preload" href={interLatin} as="font" type="font/woff2" crossorigin />
@@ -72,5 +74,103 @@ const ogUrl = new URL(og.src, siteUrl);
       <slot />
     </main>
     <SiteFooter />
+    <button class="to-top" type="button" aria-label="Remonter en haut de la page" data-to-top>
+      <svg
+        viewBox="0 0 24 24"
+        width="20"
+        height="20"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        aria-hidden="true"
+      >
+        <path d="m18 15-6-6-6 6" />
+      </svg>
+    </button>
   </body>
 </html>
+
+<script>
+  const toTop = document.querySelector<HTMLButtonElement>('[data-to-top]');
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  const onScroll = () => toTop?.classList.toggle('is-visible', window.scrollY > 500);
+  onScroll();
+  window.addEventListener('scroll', onScroll, { passive: true });
+  toTop?.addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: reduce ? 'auto' : 'smooth' });
+    document.querySelector<HTMLElement>('.navbar__logo')?.focus({ preventScroll: true });
+  });
+
+  const reveals = document.querySelectorAll<HTMLElement>('.reveal');
+  if ('IntersectionObserver' in window) {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+          entry.target.classList.add('is-visible');
+          observer.unobserve(entry.target);
+        });
+      },
+      { rootMargin: '0px 0px -10% 0px', threshold: 0.1 },
+    );
+    reveals.forEach((element) => observer.observe(element));
+  } else {
+    reveals.forEach((element) => element.classList.add('is-visible'));
+  }
+</script>
+
+<style>
+  .to-top {
+    position: fixed;
+    inset-block-end: var(--space-6);
+    inset-inline-end: var(--space-6);
+    z-index: 999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    border: 1px solid rgb(255 204 0 / 0.3);
+    border-radius: 50%;
+    background: rgb(255 204 0 / 0.15);
+    color: var(--accent);
+    cursor: pointer;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(20px);
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    transition:
+      opacity var(--dur) ease,
+      visibility var(--dur) ease,
+      transform var(--dur) ease,
+      background-color var(--dur) ease,
+      color var(--dur) ease,
+      box-shadow var(--dur) ease;
+  }
+
+  .to-top.is-visible {
+    opacity: 1;
+    visibility: visible;
+    transform: none;
+  }
+
+  .to-top:hover {
+    background: var(--accent);
+    color: var(--on-accent);
+    box-shadow: 0 10px 25px var(--accent-glow);
+    transform: translateY(-3px);
+  }
+
+  @media (max-width: 480px) {
+    .to-top {
+      inset-block-end: var(--space-5);
+      inset-inline-end: var(--space-5);
+      width: 40px;
+      height: 40px;
+    }
+  }
+</style>
